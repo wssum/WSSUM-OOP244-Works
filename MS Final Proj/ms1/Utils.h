@@ -38,6 +38,6 @@ piece of work is entirely of my own creation.
 ***********************************************************************/
 
 namespace sdds {
-	int daysInMonth(int yyyy, int mm);
+	int daysInMonth(int mm);
 
 }

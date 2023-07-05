@@ -149,12 +149,12 @@ namespace sdds {
 
         /*This whole section is to convert all of right operands years, months and days to pure days to be validated.*/
         yearR = (D1.m_year * 365) + D1.m_day;
-        mmR = daysInMonth(D1.m_year, D1.m_mon);//Uses a special custom func to get the amount of days in the month leading to said month.       
+        mmR = daysInMonth(D1.m_mon);//Uses a special custom func to get the amount of days in the month leading to said month.       
         daysR = yearR + mmR;
 
         /*This whole section is to convert all of left operands years, months and days to pure days to be validated.*/
         yearL = (this->m_year * 365) + this->m_day;
-        mmL = daysInMonth(this->m_year, this->m_mon);//Uses a special custom func to get the amount of days in the month leading to said month.     
+        mmL = daysInMonth(this->m_mon);//Uses a special custom func to get the amount of days in the month leading to said month.     
         daysL = yearL + mmL;
 
         days = daysL - daysR;
@@ -206,12 +206,12 @@ namespace sdds {
 
         /*This whole section is to convert all of right operands years, months and days to pure days to be validated.*/
         yearR = (D1.m_year * 365) + D1.m_day;
-        mmR = daysInMonth(D1.m_year, D1.m_mon);//Uses a special custom func to get the amount of days in the month leading to said month.       
+        mmR = daysInMonth(D1.m_mon);//Uses a special custom func to get the amount of days in the month leading to said month.       
         daysR = yearR + mmR;
 
         /*This whole section is to convert all of left operands years, months and days to pure days to be validated.*/
         yearL = (this->m_year * 365) + this->m_day;
-        mmL = daysInMonth(this->m_year, this->m_mon);//Uses a special custom func to get the amount of days in the month leading to said month.     
+        mmL = daysInMonth(this->m_mon);//Uses a special custom func to get the amount of days in the month leading to said month.     
         daysL = yearL + mmL;
 
         return daysL > daysR;//Returns the comparison result.
@@ -225,12 +225,12 @@ namespace sdds {
 
         /*This whole section is to convert all of right operands years, months and days to pure days to be validated.*/
         yearR = (D1.m_year * 365) + D1.m_day;
-        mmR = daysInMonth(D1.m_year, D1.m_mon);//Uses a special custom func to get the amount of days in the month leading to said month.       
+        mmR = daysInMonth(D1.m_mon);//Uses a special custom func to get the amount of days in the month leading to said month.       
         daysR = yearR + mmR;
 
         /*This whole section is to convert all of left operands years, months and days to pure days to be validated.*/
         yearL = (this->m_year * 365) + this->m_day;
-        mmL = daysInMonth(this->m_year, this->m_mon);//Uses a special custom func to get the amount of days in the month leading to said month.     
+        mmL = daysInMonth(this->m_mon);//Uses a special custom func to get the amount of days in the month leading to said month.     
         daysL = yearL + mmL;
 
         return daysL < daysR;//Returns the comparison result.
@@ -244,12 +244,12 @@ namespace sdds {
 
         /*This whole section is to convert all of right operands years, months and days to pure days to be validated.*/
         yearR = (D1.m_year * 365) + D1.m_day;
-        mmR = daysInMonth(D1.m_year, D1.m_mon);//Uses a special custom func to get the amount of days in the month leading to said month.       
+        mmR = daysInMonth(D1.m_mon);//Uses a special custom func to get the amount of days in the month leading to said month.       
         daysR = yearR + mmR;
 
         /*This whole section is to convert all of left operands years, months and days to pure days to be validated.*/
         yearL = (this->m_year * 365) + this->m_day;
-        mmL = daysInMonth(this->m_year, this->m_mon);//Uses a special custom func to get the amount of days in the month leading to said month.     
+        mmL = daysInMonth(this->m_mon);//Uses a special custom func to get the amount of days in the month leading to said month.     
         daysL = yearL + mmL;
 
         return daysL <= daysR;//Returns the comparison result.
@@ -263,12 +263,12 @@ namespace sdds {
 
         /*This whole section is to convert all of right operands years, months and days to pure days to be validated.*/
         yearR = (D1.m_year * 365) + D1.m_day;
-        mmR = daysInMonth(D1.m_year, D1.m_mon);//Uses a special custom func to get the amount of days in the month leading to said month.       
+        mmR = daysInMonth(D1.m_mon);//Uses a special custom func to get the amount of days in the month leading to said month.       
         daysR = yearR + mmR;
 
         /*This whole section is to convert all of left operands years, months and days to pure days to be validated.*/
         yearL = (this->m_year * 365) + this->m_day;
-        mmL = daysInMonth(this->m_year, this->m_mon);//Uses a special custom func to get the amount of days in the month leading to said month.     
+        mmL = daysInMonth(this->m_mon);//Uses a special custom func to get the amount of days in the month leading to said month.     
         daysL = yearL + mmL;
 
         return daysL >= daysR;//Returns the comparison result.
@@ -282,12 +282,12 @@ namespace sdds {
 
         /*This whole section is to convert all of right operands years, months and days to pure days to be validated.*/
         yearR = (D1.m_year * 365) + D1.m_day;
-        mmR = daysInMonth(D1.m_year, D1.m_mon);//Uses a special custom func to get the amount of days in the month leading to said month.       
+        mmR = daysInMonth(D1.m_mon);//Uses a special custom func to get the amount of days in the month leading to said month.       
         daysR = yearR + mmR;
 
         /*This whole section is to convert all of left operands years, months and days to pure days to be validated.*/
         yearL = (this->m_year * 365) + this->m_day;
-        mmL = daysInMonth(this->m_year, this->m_mon);//Uses a special custom func to get the amount of days in the month leading to said month.     
+        mmL = daysInMonth(this->m_mon);//Uses a special custom func to get the amount of days in the month leading to said month.     
         daysL = yearL + mmL;
 
         return daysL == daysR;//Returns the comparison result.
@@ -301,12 +301,12 @@ namespace sdds {
 
         /*This whole section is to convert all of right operands years, months and days to pure days to be validated.*/
         yearR = (D1.m_year * 365) + D1.m_day;
-        mmR = daysInMonth(D1.m_year, D1.m_mon);//Uses a special custom func to get the amount of days in the month leading to said month.       
+        mmR = daysInMonth(D1.m_mon);//Uses a special custom func to get the amount of days in the month leading to said month.       
         daysR = yearR + mmR;
 
         /*This whole section is to convert all of left operands years, months and days to pure days to be validated.*/
         yearL = (this->m_year * 365) + this->m_day;
-        mmL = daysInMonth(this->m_year, this->m_mon);//Uses a special custom func to get the amount of days in the month leading to said month.     
+        mmL = daysInMonth(this->m_mon);//Uses a special custom func to get the amount of days in the month leading to said month.     
         daysL = yearL + mmL;
 
         return daysL != daysR;//Returns the comparison result.

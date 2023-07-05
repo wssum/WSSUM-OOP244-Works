@@ -39,7 +39,7 @@ piece of work is entirely of my own creation.
 
 #include "Utils.h"
 namespace sdds {
-	int daysInMonth(int yyyy, int mm)
+	int daysInMonth(int mm)
 	{
 		int days = 0;//This days variable will be used to represent how many days are leading to the month and will be returned. 
 
