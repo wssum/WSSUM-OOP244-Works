@@ -43,7 +43,7 @@ using namespace std;
 namespace sdds {
     bool Date::validate() {
         errCode(NO_ERROR);
-        if (m_year < MIN_YEAR || m_year > m_CUR_YEAR + 1) {
+        if (m_year < MIN_YEAR || m_year > m_CUR_YEAR) {
             errCode(YEAR_ERROR);
         }
         else if (m_mon < 1 || m_mon > 12) {
@@ -140,7 +140,7 @@ namespace sdds {
 
         return os;
     }
-    int Date::operator-(Date D1)const 
+    int Date::operator-(Date D1)const
     {
         int yearR = 0, yearL = 0;
         int mmR = 0, mmL = 0;
@@ -156,7 +156,7 @@ namespace sdds {
         yearL = (this->m_year * 365) + this->m_day;
         mmL = daysInMonth(this->m_year, this->m_mon);//Uses a special custom func to get the amount of days in the month leading to said month.     
         daysL = yearL + mmL;
- 
+
         days = daysL - daysR;
         return days;//Returns values difference between the two dates.
     }
@@ -184,13 +184,15 @@ namespace sdds {
         {
             errCode(CIN_FAILED);
             is.clear();
-            is.ignore(1000, '\n');;
+            is.ignore(1000, '\n');
         }
         else
         {
+            m_year++;
             validate();//If is worked then values will be validated.
         }
 
+        m_year--;
         is.clear();
 
         return is;

@@ -104,23 +104,6 @@ namespace sdds {
 		{
 			days = 334;
 		}
-		/*This is where the list ends*/
-
-		/*The following else if statement is to determine if the year was a leap year and if so 1 will be added to the result of days to represenct the leap year change.*/
-		if ((yyyy % 4) == 0)
-		{
-			if ((yyyy % 100) != 0)
-			{
-				if ((mm >= 3) && (mm <= 12))
-				{
-					days = days + 1;
-				}
-			}
-		}
-		else if ((yyyy % 400) == 0)
-		{
-			days = days + 1;
-		}
 
 		return days;
 	}
