@@ -24,7 +24,7 @@ piece of work is entirely of my own creation.
 
 #ifndef SDDS_LIBAPP_H
 #define SDDS_LIBAPP_H
-#include "MenuB.h"
+#include "Menu.h"
 namespace sdds {
 	class LibApp {
 		bool m_changed;
