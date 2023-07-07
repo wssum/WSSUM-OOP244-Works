@@ -31,7 +31,7 @@ namespace sdds {
 		Menu m_mainMenu;
 		Menu m_exitMenu;
 		bool confirm(const char* message);
-	    void load();  // prints: "Loading Data"<NEWLINE>
+		void load();  // prints: "Loading Data"<NEWLINE>
 		void save();  // prints: "Saving Data"<NEWLINE>
 		void search();  // prints: "Searching for publication"<NEWLINE>
 
@@ -50,5 +50,6 @@ namespace sdds {
 	};
 }
 #endif // !SDDS_LIBAPP_H
+
 
 

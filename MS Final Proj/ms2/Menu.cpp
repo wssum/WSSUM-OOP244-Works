@@ -36,7 +36,6 @@ piece of work is entirely of my own creation.
 #include <iomanip>
 #include <iostream>
 #include <ctype.h>
-#include <string.h>
 using namespace std;
 #include "Menu.h"
 
@@ -203,20 +202,19 @@ namespace sdds {
 		if (menuTitle)
 		{
 			menuTitle->displayName(os);
-			os << ':' << endl;
 		}
 
 		/*Will run through a loop by the amount of items added and using the displayName
 		function will display the Name of the MenuItem.*/
 		for (int i = 0; i < amtOfItems; i++)
 		{
-			os << " " << a << "- ";
+			os << a << "- ";
 			Items[i]->displayName(os);
 			os << endl;
 			a++;
 		}
 
-		os << " 0- Exit" << endl << "> ";
+		os << "0- Exit" << endl << '>';
 
 		return os;
 	}
@@ -278,6 +276,7 @@ namespace sdds {
 	}
 
 }
+
 
 
 

@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{a8d9d370-4785-4fc7-92c5-106a2a53ae84}</ProjectGuid>
+    <ProjectGuid>{ad80ce6f-740c-4b2a-9492-2c75d2af77af}</ProjectGuid>
     <RootNamespace>ms2</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -128,14 +128,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="LibApp.h" />
-    <ClInclude Include="MenuB.h" />
-    <ClInclude Include="UtilsB.h" />
+    <ClInclude Include="Menu.h" />
+    <ClInclude Include="Utils.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LibApp.cpp" />
-    <ClCompile Include="mainB.cpp" />
-    <ClCompile Include="MenuB.cpp" />
-    <ClCompile Include="UtilsB.cpp" />
+    <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="ms2_tester.cpp" />
+    <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

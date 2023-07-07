@@ -211,22 +211,22 @@ namespace sdds {
 
 					if (subSelect == 0)
 					{
-						 yRn = confirm("This will discard all the changes are you sure?");
-						 /*If 0 is selcted a confirmation will be made to make sure that the user trully wants to exit completely
-						   without saving as option 0 will simply exit without making any changes whatsoever. The confirmation
-						   will be from the confirm function and the result will be assigned to yRn which will then be validated.*/
-						 if (yRn == true)
-						 {
-							 flag = 1;//If the user chooses to exit without saving the flag will be set to 1 which will terminate the program.
-						 }
-						 else
-						 {
-							 selection = -1;//If the user wishes not to exit, they will be led back to the main screen and variables selection
-							 subSelect = -1;//and subSelect will be set back to their original position to be reused.
-						 }
+						yRn = confirm("This will discard all the changes are you sure?");
+						/*If 0 is selcted a confirmation will be made to make sure that the user trully wants to exit completely
+						  without saving as option 0 will simply exit without making any changes whatsoever. The confirmation
+						  will be from the confirm function and the result will be assigned to yRn which will then be validated.*/
+						if (yRn == true)
+						{
+							flag = 1;//If the user chooses to exit without saving the flag will be set to 1 which will terminate the program.
+						}
+						else
+						{
+							selection = -1;//If the user wishes not to exit, they will be led back to the main screen and variables selection
+							subSelect = -1;//and subSelect will be set back to their original position to be reused.
+						}
 					}
 				}
-				
+
 			}
 		}
 		cout << "GoodBye." << endl;

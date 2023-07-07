@@ -21,8 +21,8 @@ shared with any other student or 3rd party content provider. This submitted
 piece of work is entirely of my own creation.
 
 /////////////////////////////////////////////////////////////////////////*/
-#ifndef SDDS_MENU_H__
-#define SDDS_MENU_H__
+#ifndef SDDS_MENUB_H__
+#define SDDS_MENUB_H__
 #include <iostream>
 
 
@@ -72,6 +72,7 @@ namespace sdds
 
 }
 #endif
+
 
 
 

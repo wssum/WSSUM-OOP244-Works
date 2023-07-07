@@ -1,6 +1,6 @@
 ﻿  LibApp.cpp
-  mainB.cpp
-  MenuB.cpp
-  UtilsB.cpp
+  Menu.cpp
+  ms2_tester.cpp
+  Utils.cpp
   Generating Code...
   ms2.vcxproj -> C:\Users\netsa\source\repos\ms2\x64\Debug\ms2.exe
