@@ -79,6 +79,7 @@ namespace sdds {
 	{
 		Menu tempMenu(message);//Makes temp menu obj with parameter message to represent a question to ask for confirmation.
 		int select = -1;//The variable that will hold the result.
+		bool yeOrNo = false;
 
 		tempMenu << "yes";//Using the << overload operator yes is the only given MenuItem as well as the mandatory exit from the menu.
 
@@ -86,10 +87,10 @@ namespace sdds {
 
 		if (select == 1)
 		{
-			return true;
+			yeOrNo = true;
 		}
 
-		return false;
+		return yeOrNo;
 	}
 
 	void LibApp::newPublication()
@@ -103,9 +104,13 @@ namespace sdds {
 		if (decider == true)//If decider is true then the value of m_changed will become true to signify change.
 		{
 			m_changed = true;
-			cout << "Publication added" << endl;
+			cout << "Publication added" << endl << endl;
 		}
-
+		else
+		{
+			cout << endl;
+		}
+		
 	}
 
 
@@ -122,7 +127,7 @@ namespace sdds {
 		if (decider == true)//If decider is true then the value of m_changed will become true to signify change.
 		{
 			m_changed = true;
-			cout << "Publication removed" << endl;
+			cout << "Publication removed" << endl << endl;
 		}
 
 	}
@@ -140,14 +145,18 @@ namespace sdds {
 			m_changed = true;
 			cout << "Publication checked out" << endl;
 		}
-
+		else
+		{
+			cout << endl;
+		}
+		cout << endl;
 	}
 
 	void LibApp::returnPub()
 	{
 		search();
 		cout << "Returning publication" << endl;
-		cout << "Publication returned" << endl;
+		cout << "Publication returned" << endl<< endl;
 		m_changed = true;
 	}
 
@@ -207,6 +216,7 @@ namespace sdds {
 					{
 						selection = -1;//Option 2 will set both variables selection and subSelect back to their safe empty positions and then
 						subSelect = -1;//since flag is still 0 will continue the program going back to the main menu.
+						cout << endl;
 					}
 
 					if (subSelect == 0)
@@ -229,7 +239,9 @@ namespace sdds {
 
 			}
 		}
-		cout << "GoodBye." << endl;
+		cout << endl;
+		cout << "-------------------------------------------" << endl;
+		cout << "Thanks for using Seneca Library Application" << endl;
 	}
 
 }
