@@ -20,7 +20,7 @@
 
 using namespace std;
 using namespace sdds;
-/*
+
 void printHeader(const char* title)
 {
 	char oldFill = cout.fill('-');
@@ -34,7 +34,7 @@ void printHeader(const char* title)
 	cout << "" << endl;
 	cout.fill(oldFill);
 }
-
+/*
 void moveAndLoad(Truck& aTruck, const char* destination, double cargo)
 {
 	//cout << aTruck << endl;
@@ -59,12 +59,12 @@ void moveAndUnload(Truck& aTruck, const char* destination)
 
 int main()
 {
-	/*{
+	{
 		printHeader("T1: Vehicle");
 
 		MotorVehicle aVehicle("VVV-111", 2010);
 		cout << aVehicle << endl << endl;
-
+		
 		aVehicle.moveTo("Downtown Toronto");
 		aVehicle.moveTo("Mississauga");
 		aVehicle.moveTo("North York");
@@ -74,11 +74,11 @@ int main()
 		printHeader("T2: Read/Write");
 		cin >> aVehicle;
 		cout << endl << aVehicle << endl << endl;
-	}*/
+	}
 
-	/*{
+	{
 		printHeader("T3: Truck");
-
+		/*
 		Truck aTruck("T-1111", 2015, 5432, "Toronto HQ");
 		cout << endl;
 
@@ -96,7 +96,7 @@ int main()
 		printHeader("T4: Read/Write");
 		cin >> aTruck;
 		cout << endl << (MotorVehicle)aTruck;
-		cout << endl << aTruck << endl << endl;
-	}*/
+		cout << endl << aTruck << endl << endl;*/
+	}
 }
 

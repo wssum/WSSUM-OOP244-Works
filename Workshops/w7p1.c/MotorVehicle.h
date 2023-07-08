@@ -35,13 +35,14 @@ namespace sdds
 		int builtIn;
 
 	public:
-		//MotorVehicle(char* lPlate, int yyyy);
-		//void moveTo(const char* address);
-		//ostream& write(ostream& os);
-		//istream& read(istream& in);
+		MotorVehicle(const char* lPlate, int yyyy);
+		void moveTo(const char* address);
+		std::ostream& write(std::ostream& os);
+		std::istream& read(std::istream& in);
 	};
-	//istream& operator>>(MotorVehicle& arg);
-	//ostream& operator<<(MotorVehicle& arg);
+	std::istream& operator>>(std::istream& os, MotorVehicle& vehicle);
+	std::ostream& operator<<(std::ostream& os, MotorVehicle& vehicle);
+
 }
 
 #endif
