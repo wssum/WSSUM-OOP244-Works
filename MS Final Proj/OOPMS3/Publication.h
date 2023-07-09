@@ -46,7 +46,7 @@ namespace sdds {
 		char m_shelfId[4];
 		int m_membership;
 		int m_libRef;
-		Date* m_date;
+		Date m_date;
 	public:
 		Publication();
 	};

@@ -61,7 +61,17 @@ namespace sdds {
 
 		int mm = currentMM();
 
-		m_date = new Date(yyyy,mm,dd);
+		//m_date = new Date(yyyy, mm, dd);//In case we are allowed to use pointers change your func to this and make m_date a pointer.
+
+		Date* dummyDate = &m_date;
+
+		dummyDate = new Date(yyyy,mm,dd);
+
+		delete dummyDate;
+
+		dummyDate = nullptr;
+		//dummy func to display results
+		//m_date.display();
 
 	}
 
