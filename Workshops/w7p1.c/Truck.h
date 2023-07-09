@@ -39,12 +39,12 @@ namespace sdds
 		Truck();
 		Truck(const char* lPlate, int yyyy,float capacity,const char* currentAddress);
 		bool addCargo(double cargo);
-		//bool unloadCargo();
+		bool unloadCargo();
 		std::ostream& write(std::ostream& os);
-		//istream& read(istream& in);
+		std::istream& read(std::istream& in);
 		~Truck();
 	};
-	//std::istream& operator>>(std::istream& os, Truck& vehicle);
+	std::istream& operator>>(std::istream& is, Truck& vehicle);
 	std::ostream& operator<<(std::ostream& os, Truck& vehicle);
 }
 

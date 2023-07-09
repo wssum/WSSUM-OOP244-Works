@@ -73,17 +73,47 @@ namespace sdds
 		return changed;
 
 	}
-	//bool unloadCargo();
+	bool Truck::unloadCargo()
+	{
+		bool changed{};
+
+		if (cargo > 0)
+		{
+			cargo = 0;
+			changed = true;
+		}
+		else
+		{
+			changed = false;
+		}
+
+		return changed;
+	}
+
 	ostream& Truck::write(ostream& os)
 	{
 		MotorVehicle::write(os);
 		os << " | " << cargo << "/" << loadInKg;
 		return os;
 	}
-	//istream& read(istream& in);
 
+	istream& Truck::read(istream& in)
+	{
+		MotorVehicle::read(in);
 
-//istream& operator>>(Truck& arg);
+		cout << "Capacity: ";
+		in >> loadInKg;
+		cout << "Cargo: ";
+		in >> cargo;
+
+		return in;
+	}
+
+	istream& operator>>(istream& is, Truck& vehicle)
+	{
+		vehicle.read(is);
+		return is;
+	}
 	ostream& operator<<(ostream& os, Truck& vehicle)
 	{
 		vehicle.write(os);

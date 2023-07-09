@@ -33,7 +33,7 @@ namespace sdds
 		char licensePlate[9];
 		char address[64];
 		int builtIn;
-
+		bool truthSeeker(char* stringA, const char* stringB);
 	public:
 		MotorVehicle();
 		~MotorVehicle();

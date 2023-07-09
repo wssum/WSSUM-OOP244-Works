@@ -45,7 +45,7 @@ void moveAndLoad(Truck& aTruck, const char* destination, double cargo)
 		cout << "Adding cargo failed!\n";
 	cout << aTruck << endl << endl;
 }
-/*
+
 void moveAndUnload(Truck& aTruck, const char* destination)
 {
 	//cout << aTruck << endl;
@@ -55,7 +55,7 @@ void moveAndUnload(Truck& aTruck, const char* destination)
 	else
 		cout << "Unloading cargo failed!\n";
 	cout << aTruck << endl << endl;
-}*/
+}
 
 int main()
 {
@@ -72,8 +72,8 @@ int main()
 		cout << endl << aVehicle << endl << endl;
 
 		printHeader("T2: Read/Write");
-		//cin >> aVehicle;
-		//cout << endl << aVehicle << endl << endl;
+		cin >> aVehicle;
+		cout << endl << aVehicle << endl << endl;
 	}
 
 	{
@@ -88,7 +88,7 @@ int main()
 
 		moveAndLoad(aTruck, "New York", 4567);
 
-		/*moveAndUnload(aTruck, "New Jersey");
+		moveAndUnload(aTruck, "New Jersey");
 
 		moveAndUnload(aTruck, "Toronto");
 
@@ -96,7 +96,7 @@ int main()
 		printHeader("T4: Read/Write");
 		cin >> aTruck;
 		cout << endl << (MotorVehicle)aTruck;
-		cout << endl << aTruck << endl << endl;*/
+		cout << endl << aTruck << endl << endl;
 	}
 }
 

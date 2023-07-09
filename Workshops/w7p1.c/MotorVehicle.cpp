@@ -44,20 +44,43 @@ namespace sdds
 		builtIn = yyyy;
 	}
 
+	bool MotorVehicle::truthSeeker(char* stringA, const char* stringB)
+	{
+		int lengthA = static_cast<int>(strLen(stringA));
+		int lengthB = static_cast<int>(strLen(stringB));
+		bool tRf{};
+
+		if (lengthA != lengthB)
+		{
+			tRf = false;
+		}
+		else
+		{
+			int flag = 0, i = 0;
+
+			while (flag == 0)
+			{
+				if(stringA[i] != stringB[i])
+				{
+					flag = 1;
+					tRf = false;
+				}
+
+				if (i == lengthA)
+				{
+					flag = 1;
+					tRf = true;
+				}
+				i++;
+			}
+		}
+		return tRf;
+	}
+
 	void MotorVehicle::moveTo(const char* address)
 	{
 
-		int length = static_cast<int>(strLen(address));
-
-		if (strCmp(this->address, address))
-		{
-			cout << "|" << right << setw(8) << licensePlate << "|"; 
-			cout << " |" << right << setw(20) << this->address << " ---> ";
-			cout << left << setw(20) << address << "|"  << endl;
-
-			strCpy(this->address, address);
-		}
-		else if (strnCmp(this->address, address, length))
+		if (!truthSeeker(this->address, address))
 		{
 			cout << "|" << right << setw(8) << licensePlate << "|";
 			cout << " |" << right << setw(20) << this->address << " ---> ";
