@@ -329,7 +329,4 @@ namespace sdds {
     istream& operator>>(istream& is, Date& RO) {
         return RO.read(is);
     }
-
-
-
 }

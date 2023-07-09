@@ -36,8 +36,11 @@ piece of work is entirely of my own creation.
 //
 /////////////////////////////////////////////////////////////////
 ***********************************************************************/
-
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <ctime>
 #include "Utils.h"
+
 namespace sdds {
 	int daysInMonth(int yyyy, int mm)
 	{
@@ -122,4 +125,31 @@ namespace sdds {
 		return days;
 	}
 
+
+	int currentYYYY()
+	{
+		time_t t = time(NULL);
+		tm lt = *localtime(&t);
+		int year = lt.tm_year + 1900;
+
+		return year;
+	}
+
+	int currentDD()
+	{
+		time_t t = time(NULL);
+		tm lt = *localtime(&t);
+		int day = lt.tm_mday;
+
+		return day;
+	}
+
+	int currentMM()
+	{
+        time_t t = time(NULL);
+		tm lt = *localtime(&t);
+	    int month = lt.tm_mon + 1;
+
+		return month;
+	}
 }

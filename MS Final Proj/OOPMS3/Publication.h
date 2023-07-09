@@ -37,10 +37,18 @@ piece of work is entirely of my own creation.
 /////////////////////////////////////////////////////////////////
 ***********************************************************************/
 
+#include "Date.h"
+
 namespace sdds {
 	class Publication
 	{
+		char m_title[255];
+		char m_shelfId[4];
+		int m_membership;
+		int m_libRef;
+		Date* m_date;
 	public:
+		Publication();
 	};
 
 }

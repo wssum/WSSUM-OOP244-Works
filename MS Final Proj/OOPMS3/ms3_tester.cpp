@@ -30,9 +30,9 @@ Publication getNextRec(ifstream& ifstr) {
 }*/
 
 int main() {
-    /*sdds::sdds_test = true;
+   // sdds::sdds_test = true;
     Publication pd;
-    cout << "An Invalid publication printout:" << endl;
+    /*cout << "An Invalid publication printout:" << endl;
     cout << ">" << pd << "<" << endl;
     cout << "Enter the following: " << endl
         << "P1234" << endl

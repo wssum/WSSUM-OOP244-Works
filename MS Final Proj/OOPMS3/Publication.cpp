@@ -36,8 +36,33 @@ piece of work is entirely of my own creation.
 //
 /////////////////////////////////////////////////////////////////
 ***********************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <ctype.h>
+#include <ctime>
+#include "Utils.h"
+#include "Publication.h"
+#include "Date.h"
+
+using namespace sdds;
+using namespace std;
 
 namespace sdds {
+	Publication::Publication()
+	{
+		strcpy(m_title, "");
+		strcpy(m_shelfId, "");
+		m_membership = 0;
+		m_libRef = -1;
 
+		int yyyy = currentYYYY();
+	
+		int dd = currentDD();
+
+		int mm = currentMM();
+
+		m_date = new Date(yyyy,mm,dd);
+
+	}
 
 }
