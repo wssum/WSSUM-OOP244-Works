@@ -39,11 +39,11 @@ namespace sdds
 		~MotorVehicle();
 		MotorVehicle(const char* lPlate, int yyyy);
 		void moveTo(const char* address);
-		std::ostream& write(std::ostream& os);
+	    std::ostream& write(std::ostream& os)const;
 		std::istream& read(std::istream& in);
 	};
-	std::istream& operator>>(std::istream& os, MotorVehicle& vehicle);
-	std::ostream& operator<<(std::ostream& os, MotorVehicle& vehicle);
+	std::istream& operator>>(std::istream& os, sdds::MotorVehicle& vehicle);
+	std::ostream& operator<<(std::ostream& os, const sdds::MotorVehicle& vehicle);
 
 }
 

@@ -92,7 +92,6 @@ int main()
 
 		moveAndUnload(aTruck, "Toronto");
 
-
 		printHeader("T4: Read/Write");
 		cin >> aTruck;
 		cout << endl << (MotorVehicle)aTruck;

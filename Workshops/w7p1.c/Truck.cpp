@@ -23,10 +23,12 @@ piece of work is entirely of my own creation.
 /////////////////////////////////////////////////////////////////////////*/
 
 #include<iostream>
+#include "MotorVehicle.h"
 #include "Truck.h"
 #include "cstring.h"
 
 using namespace std;
+using namespace sdds;
 
 namespace sdds
 {
@@ -90,7 +92,7 @@ namespace sdds
 		return changed;
 	}
 
-	ostream& Truck::write(ostream& os)
+	ostream& Truck::write(ostream& os)const
 	{
 		MotorVehicle::write(os);
 		os << " | " << cargo << "/" << loadInKg;
@@ -114,7 +116,7 @@ namespace sdds
 		vehicle.read(is);
 		return is;
 	}
-	ostream& operator<<(ostream& os, Truck& vehicle)
+	ostream& operator<<(ostream& os, const Truck& vehicle)
 	{
 		vehicle.write(os);
 		return os;

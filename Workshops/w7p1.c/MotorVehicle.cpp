@@ -34,7 +34,7 @@ namespace sdds
 {
 	MotorVehicle::MotorVehicle()
 	{
-	
+
 	}
 
 	MotorVehicle::MotorVehicle(const char* lPlate, int yyyy)
@@ -77,6 +77,7 @@ namespace sdds
 		return tRf;
 	}
 
+
 	void MotorVehicle::moveTo(const char* address)
 	{
 
@@ -91,11 +92,12 @@ namespace sdds
 
 	}
 
-	ostream& MotorVehicle :: write(ostream& os)
+	ostream& MotorVehicle :: write(ostream& os) const
 	{
 		os << "| " << builtIn << " |" << " " << licensePlate << " | " << address;
 		return os;
 	}
+
 	istream& MotorVehicle::read(istream& in)
 	{
 		cout << "Built year: ";
@@ -109,13 +111,13 @@ namespace sdds
 	}
 
 	
-	istream& operator>>(istream& is, MotorVehicle& vehicle)
+	istream& operator>>(istream& is, sdds::MotorVehicle& vehicle)
 	{
 		vehicle.read(is);
 		return is;
 	}
 
-	ostream& operator<<(ostream& os, MotorVehicle& vehicle)
+	ostream& operator<<(ostream& os, const MotorVehicle& vehicle)
 	{
 		vehicle.write(os);
 		return os;

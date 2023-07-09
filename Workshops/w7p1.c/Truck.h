@@ -34,18 +34,17 @@ namespace sdds
 	{
 		double loadInKg;
 		double cargo;
-
 	public:
 		Truck();
 		Truck(const char* lPlate, int yyyy,float capacity,const char* currentAddress);
 		bool addCargo(double cargo);
 		bool unloadCargo();
-		std::ostream& write(std::ostream& os);
+		std::ostream& write(std::ostream& os)const;
 		std::istream& read(std::istream& in);
 		~Truck();
 	};
-	std::istream& operator>>(std::istream& is, Truck& vehicle);
-	std::ostream& operator<<(std::ostream& os, Truck& vehicle);
+	std::istream& operator>>(std::istream& is, sdds::Truck& vehicle);
+	std::ostream& operator<<(std::ostream& os, const sdds::Truck& vehicle);
 }
 
 #endif
