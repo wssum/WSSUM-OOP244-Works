@@ -84,14 +84,9 @@ namespace sdds {
 
         std::istream& read(std::istream& is = std::cin);
         operator bool()const;
-
     };
 
     std::ostream& operator<<(std::ostream& os, const Date& RO);
     std::istream& operator>>(std::istream& is, Date& RO);
-    extern bool sdds_test;
-    extern int sdds_year;
-    extern int sdds_mon;
-    extern int sdds_day;
 }
 #endif

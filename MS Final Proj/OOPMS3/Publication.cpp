@@ -38,6 +38,6 @@ piece of work is entirely of my own creation.
 ***********************************************************************/
 
 namespace sdds {
-	
+
 
 }

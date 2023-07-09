@@ -200,7 +200,7 @@ namespace sdds {
         if (!is)//Checks to see if cin worked or not, if it did not thenerrCode will be set sin_failed and the buffer will becleared even deeper thanks to the ignore func
         {
             errCode(CIN_FAILED);
-            
+
         }
         else
         {
