@@ -34,7 +34,7 @@ void printHeader(const char* title)
 	cout << "" << endl;
 	cout.fill(oldFill);
 }
-/*
+
 void moveAndLoad(Truck& aTruck, const char* destination, double cargo)
 {
 	//cout << aTruck << endl;
@@ -45,7 +45,7 @@ void moveAndLoad(Truck& aTruck, const char* destination, double cargo)
 		cout << "Adding cargo failed!\n";
 	cout << aTruck << endl << endl;
 }
-
+/*
 void moveAndUnload(Truck& aTruck, const char* destination)
 {
 	//cout << aTruck << endl;
@@ -72,23 +72,23 @@ int main()
 		cout << endl << aVehicle << endl << endl;
 
 		printHeader("T2: Read/Write");
-		cin >> aVehicle;
-		cout << endl << aVehicle << endl << endl;
+		//cin >> aVehicle;
+		//cout << endl << aVehicle << endl << endl;
 	}
 
 	{
 		printHeader("T3: Truck");
-		/*
+		
 		Truck aTruck("T-1111", 2015, 5432, "Toronto HQ");
 		cout << endl;
 
-		moveAndLoad(aTruck, "Toronto Deposit", 2345);
+	    moveAndLoad(aTruck, "Toronto Deposit", 2345);
 
 		moveAndLoad(aTruck, "Montreal", 3456);
 
 		moveAndLoad(aTruck, "New York", 4567);
 
-		moveAndUnload(aTruck, "New Jersey");
+		/*moveAndUnload(aTruck, "New Jersey");
 
 		moveAndUnload(aTruck, "Toronto");
 

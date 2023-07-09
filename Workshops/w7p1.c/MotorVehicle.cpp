@@ -32,23 +32,36 @@ using namespace sdds;
 
 namespace sdds
 {
+	MotorVehicle::MotorVehicle()
+	{
+	
+	}
+
 	MotorVehicle::MotorVehicle(const char* lPlate, int yyyy)
 	{
 		strCpy(licensePlate, lPlate);
 		strCpy(address, "Factory");
 		builtIn = yyyy;
 	}
+
 	void MotorVehicle::moveTo(const char* address)
 	{
-		bool yeOrNo{};
 
-		yeOrNo = strCmp(this->address, address);
+		int length = static_cast<int>(strLen(address));
 
-		if (yeOrNo == true)
+		if (strCmp(this->address, address))
 		{
 			cout << "|" << right << setw(8) << licensePlate << "|"; 
 			cout << " |" << right << setw(20) << this->address << " ---> ";
 			cout << left << setw(20) << address << "|"  << endl;
+
+			strCpy(this->address, address);
+		}
+		else if (strnCmp(this->address, address, length))
+		{
+			cout << "|" << right << setw(8) << licensePlate << "|";
+			cout << " |" << right << setw(20) << this->address << " ---> ";
+			cout << left << setw(20) << address << "|" << endl;
 
 			strCpy(this->address, address);
 		}
@@ -57,7 +70,7 @@ namespace sdds
 
 	ostream& MotorVehicle :: write(ostream& os)
 	{
-		os << "| " << builtIn << " |" << " " << licensePlate << " | " << address << endl;
+		os << "| " << builtIn << " |" << " " << licensePlate << " | " << address;
 		return os;
 	}
 	istream& MotorVehicle::read(istream& in)
@@ -83,6 +96,11 @@ namespace sdds
 	{
 		vehicle.write(os);
 		return os;
+	}
+
+	MotorVehicle::~MotorVehicle()
+	{
+
 	}
 
 }

@@ -32,19 +32,20 @@ namespace sdds
 {
 	class Truck:public MotorVehicle
 	{
-		float loadInKg;
-		float currentLoad;
+		double loadInKg;
+		double cargo;
 
 	public:
-		//Truck(char* lPlate, int yyyy);
-		//bool addCargo(double cargo);
+		Truck();
+		Truck(const char* lPlate, int yyyy,float capacity,const char* currentAddress);
+		bool addCargo(double cargo);
 		//bool unloadCargo();
-		//ostream& write(ostream& os);
+		std::ostream& write(std::ostream& os);
 		//istream& read(istream& in);
-
+		~Truck();
 	};
-	//istream& operator>>(Truck& arg);
-//ostream& operator<<(Truck& arg);
+	//std::istream& operator>>(std::istream& os, Truck& vehicle);
+	std::ostream& operator<<(std::ostream& os, Truck& vehicle);
 }
 
 #endif

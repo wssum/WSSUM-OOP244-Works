@@ -26,8 +26,67 @@ piece of work is entirely of my own creation.
 #include "Truck.h"
 #include "cstring.h"
 
+using namespace std;
+
 namespace sdds
 {
+	Truck::Truck()
+	{
 
 
+	}
+
+	Truck::~Truck()
+	{
+
+	}
+
+	Truck::Truck(const char* lPlate, int yyyy, float capacity, const char* currentAddress):MotorVehicle(lPlate, yyyy)
+	{
+		moveTo(currentAddress);
+		loadInKg = capacity;
+		cargo = 0;
+	}
+
+	bool Truck::addCargo(double cargo)
+	{
+		bool changed{};
+
+		if (this->cargo < loadInKg)
+		{
+			if ((this->cargo + cargo) < loadInKg)
+			{
+				this->cargo = this->cargo + cargo;
+			}
+			else
+			{
+				this->cargo = loadInKg;
+			}
+			
+			changed = true;
+		}
+		else
+		{
+			changed = false;
+		}
+
+		return changed;
+
+	}
+	//bool unloadCargo();
+	ostream& Truck::write(ostream& os)
+	{
+		MotorVehicle::write(os);
+		os << " | " << cargo << "/" << loadInKg;
+		return os;
+	}
+	//istream& read(istream& in);
+
+
+//istream& operator>>(Truck& arg);
+	ostream& operator<<(ostream& os, Truck& vehicle)
+	{
+		vehicle.write(os);
+		return os;
+	}
 }

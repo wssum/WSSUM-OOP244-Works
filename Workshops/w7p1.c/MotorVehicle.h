@@ -35,6 +35,8 @@ namespace sdds
 		int builtIn;
 
 	public:
+		MotorVehicle();
+		~MotorVehicle();
 		MotorVehicle(const char* lPlate, int yyyy);
 		void moveTo(const char* address);
 		std::ostream& write(std::ostream& os);
