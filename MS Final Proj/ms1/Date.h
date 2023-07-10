@@ -90,4 +90,3 @@ namespace sdds {
     std::istream& operator>>(std::istream& is, Date& RO);
 }
 #endif
-
