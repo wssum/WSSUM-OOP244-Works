@@ -75,4 +75,27 @@ namespace sdds {
 
 	}
 
+	Publication::~Publication()
+	{
+		//delete m_date;
+	}
+
+	//virtual void set(int member_id);
+
+	//void setRef(int value);
+
+	//void resetDate();
+
+	//virtual char type()const;
+		
+	//bool onLoan()const;
+		
+	//Date checkoutDate()const;
+		
+	//bool operator==(const char* title)const;
+		
+	//operator const char* ()const;
+	
+	//int getRef()const;
+	
 }
