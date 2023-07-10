@@ -72,14 +72,15 @@ namespace sdds {
 
 	MenuItem::operator bool()
 	{
+		bool yRn = false;
 		/*If the current objects Name data member is not null then this operator will return true
 		otherwise it will return false to signify that this object has not a valid name.*/
 		if (Name)
 		{
-			return true;
+			yRn = true;
 		}
 
-		return false;
+		return yRn;
 	}
 
 	MenuItem::operator const char* ()const
@@ -267,14 +268,15 @@ namespace sdds {
 
 	const char* Menu::operator[](int select)const
 	{
+		bool yesOrNo = false;
 		if (amtOfItems > 0)//Checks to see that there are any items to begin with.
 		{
 			select = select % amtOfItems; //Using modulus it will get the result of the selection and also if selection is more than the amtOfItems then it will loop back.
+			yesOrNo = true;
 
-			return static_cast<const char*>(*Items[select]);//Returns selected item as const character type.
 		}
 
-		return nullptr; // Return nullptr if there are no items in the menu
+		return (yesOrNo == true)? static_cast<const char*>(*Items[select]): nullptr; // Return nullptr if there are no items in the menu
 	}
 
 }

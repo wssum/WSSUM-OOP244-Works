@@ -48,7 +48,6 @@ namespace sdds {
 	//With this method the one arg constructor from menu class is called multiple times to initialize the titles of the Menu type objects within the LibApp Object.
 	LibApp::LibApp() : m_mainMenu("Seneca Library Application"), m_exitMenu("Changes have been made to the data, what would you like to do?")//<<<<(This Method)
 	{
-		load();
 		m_changed = false;
 		/*Using the << overload operator the Items from the Menu class is initialized with multiple strings.*/
 		m_mainMenu << "Add New Publication" << "Remove Publication" << "Checkout publication from library" << "Return publication to library";
@@ -82,7 +81,7 @@ namespace sdds {
 		int select = -1;//The variable that will hold the result.
 		bool yeOrNo = false;
 
-		tempMenu << "Yes";//Using the << overload operator yes is the only given MenuItem as well as the mandatory exit from the menu.
+		tempMenu << "yes";//Using the << overload operator yes is the only given MenuItem as well as the mandatory exit from the menu.
 
 		select = tempMenu.run();//Option chosen by user will be assigned to select variable and be evaluated to return the proper bool.
 
@@ -111,7 +110,7 @@ namespace sdds {
 		{
 			cout << endl;
 		}
-
+		
 	}
 
 
@@ -157,7 +156,7 @@ namespace sdds {
 	{
 		search();
 		cout << "Returning publication" << endl;
-		cout << "Publication returned" << endl << endl;
+		cout << "Publication returned" << endl<< endl;
 		m_changed = true;
 	}
 
