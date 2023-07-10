@@ -44,11 +44,11 @@ namespace sdds {
 	class Streamable
 	{
 		public:
-		/*
+		
 		virtual bool conIO(std::ios&) = 0;
 		virtual operator bool()const = 0;
 		virtual ~Streamable();
-		virtual std::ostream& write(std::ostream& os)const = 0;
+		/*virtual std::ostream& write(std::ostream& os)const = 0;
 		virtual std::istream& read(std::istream& os) = 0;*/
 	
 	};

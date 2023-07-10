@@ -49,16 +49,18 @@ namespace sdds {
 		
 	}
 		
-	//virtual std::istream& read(std::istream& os)
+	//virtual std::istream& read(std::istream& os)*/
 		
 	bool Streamable::conIO(std::ios& io)
 	{
-		
+	//if(&io == this)what ive tried and failed its not much I know sorry for my dumb question
+
+
 	}
 		
 	Streamable::operator bool()const
 	{
-
+		
 	}
 		
 	Streamable:: ~Streamable()
@@ -66,7 +68,7 @@ namespace sdds {
 
 	}
 
-	
+	/*
 	std::ostream& operator<<(std::ostream& os, const Streamable& obj)
 	{
 		if (obj)
