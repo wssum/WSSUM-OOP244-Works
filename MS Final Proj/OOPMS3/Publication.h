@@ -36,10 +36,14 @@ piece of work is entirely of my own creation.
 //
 /////////////////////////////////////////////////////////////////
 ***********************************************************************/
+#ifndef PUBLICATION_H
+#define PUBLICATION_H
 #include "Streamable.h"
 #include "Date.h"
 
 namespace sdds {
+
+
 	class Publication: public Streamable
 	{
 		char m_title[255];
@@ -50,6 +54,9 @@ namespace sdds {
 	public:
 		Publication();
 		~Publication();
+		operator bool()const;
+		bool conIO(std::ios& io)const;
+		std::ostream& write(std::ostream& os)const;
 		//virtual void set(int member_id);
 		// Sets the membership attribute to either zero or a five-digit integer.
 		//void setRef(int value);
@@ -71,4 +78,6 @@ namespace sdds {
 		//Returns the libRef attirbute. 
 	};
 
+	std::ostream& operator<<(std::ostream& os, const Streamable& obj);
 }
+#endif

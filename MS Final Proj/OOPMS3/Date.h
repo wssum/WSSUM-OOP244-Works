@@ -89,5 +89,7 @@ namespace sdds {
 
     std::ostream& operator<<(std::ostream& os, const Date& RO);
     std::istream& operator>>(std::istream& is, Date& RO);
+
+    extern bool sdds_test;
 }
 #endif

@@ -80,6 +80,52 @@ namespace sdds {
 		//delete m_date;
 	}
 
+	Publication::operator bool()const
+	{
+		bool yesORno = strcmp(m_title, nullptr);
+		yesORno = strcmp(m_shelfId, nullptr);
+
+		return yesORno;
+	}
+
+	bool Publication::conIO(std::ios& io)const
+	{
+		bool yesORno = false;
+
+		if (&io == &cout)
+		{
+			yesORno = true;
+		}
+
+		if (&io == &cin)
+		{
+			yesORno = true;
+		}
+		return yesORno;
+
+	}
+
+	std::ostream& Publication:: write(std::ostream& os)const
+	{
+		bool yesORno = conIO(os);
+
+		if (yesORno == true)
+		{
+			os << m_shelfId << " " << m_title << " " << m_membership << m_date;
+		}
+		return os;
+	}
+
+
+	std::ostream& operator<<(std::ostream& os, const Streamable& obj)
+	{
+		if (obj)
+		{
+			obj.write(os);
+		}
+		return os;
+	}
+
 	//virtual void set(int member_id);
 
 	//void setRef(int value);
