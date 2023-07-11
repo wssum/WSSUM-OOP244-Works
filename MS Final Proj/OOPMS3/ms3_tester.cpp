@@ -21,8 +21,8 @@ using namespace sdds;
     Publication P;
     cin >> P;
     return P;
-}
-Publication getNextRec(ifstream& ifstr) {
+}*/
+/*Publication getNextRec(ifstream& ifstr) {
     Publication P;
     ifstr >> P;
     ifstr.ignore(1000, '\n');
@@ -32,9 +32,9 @@ Publication getNextRec(ifstream& ifstr) {
 int main() {
     sdds::sdds_test = true;
     Publication pd;
-    cout << "An Invalid publication printout:" << endl;
+    /*cout << "An Invalid publication printout:" << endl;
     cout << ">" << pd << "<" << endl;
-    /*cout << "Enter the following: " << endl
+    cout << "Enter the following: " << endl
         << "P1234" << endl
         << "------------------------------" << endl;
     pd = readPublication(cin);
@@ -46,8 +46,8 @@ int main() {
         cout << "This is not supposed to be printed!" << endl;
     }
     cout << "You entered:" << endl;
-    cout << ">" << pd << "<" << endl;
-    cout << "Enter the following: " << endl
+    cout << ">" << pd << "<" << endl;*/
+   /* cout << "Enter the following: " << endl
         << "P123" << endl
         << "Seneca Weekly" << endl
         << "2021/13/17" << endl

@@ -38,11 +38,21 @@ piece of work is entirely of my own creation.
 ***********************************************************************/
 #ifndef PUBLICATION_H
 #define PUBLICATION_H
-#include "Streamable.h"
+
 #include "Date.h"
 
 namespace sdds {
 
+	class Streamable
+	{
+	public:
+		virtual operator bool()const = 0;
+		virtual bool conIO(std::ios& io)const = 0;
+		virtual std::ostream& write(std::ostream& os)const = 0;
+		virtual std::istream& read(std::istream& is) = 0;
+		virtual ~Streamable()
+		{}
+	};
 
 	class Publication: public Streamable
 	{
@@ -52,32 +62,30 @@ namespace sdds {
 		int m_libRef;
 		Date m_date;
 	public:
+		virtual char type()const;
+		virtual void set(int member_id);
+		void setRef(int value);
+		void resetDate();
+		bool onLoan()const;
+		int getRef()const;
+		operator const char* ()const;
 		Publication();
 		~Publication();
 		operator bool()const;
 		bool conIO(std::ios& io)const;
 		std::ostream& write(std::ostream& os)const;
-		//virtual void set(int member_id);
-		// Sets the membership attribute to either zero or a five-digit integer.
-		//void setRef(int value);
-		// Sets the **libRef** attribute value
-		//void resetDate();
-		// Sets the date to the current date of the system.
-		//virtual char type()const;
-		//Returns the character 'P' to identify this object as a "Publication object"
-		//bool onLoan()const;
-		//Returns true is the publication is checkout (membership is non-zero)
-		//Date checkoutDate()const;
-		//Returns the date attribute
-		//bool operator==(const char* title)const;
-		//Returns true if the argument title appears anywhere in the title of the 
-		//publication. Otherwise, it returns false; (use strstr() function in <cstring>)
-		//operator const char* ()const;
-		//Returns the title attribute
-		//int getRef()const;
-		//Returns the libRef attirbute. 
+		std::istream& read(std::istream& is);
+
 	};
 
 	std::ostream& operator<<(std::ostream& os, const Streamable& obj);
+	std::istream& operator>>(std::istream& is, Streamable& obj);
 }
 #endif
+
+//Date checkoutDate()const;
+//Returns the date attribute
+//bool operator==(const char* title)const;
+//Returns true if the argument title appears anywhere in the title of the 
+//publication. Otherwise, it returns false; (use strstr() function in <cstring>)
+

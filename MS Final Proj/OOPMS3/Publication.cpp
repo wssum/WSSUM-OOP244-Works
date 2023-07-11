@@ -48,30 +48,73 @@ using namespace sdds;
 using namespace std;
 
 namespace sdds {
-	Publication::Publication()
+	Publication::operator const char* ()const//untested
+	{
+		return m_title;
+	}
+	char Publication::type()const
+	{
+		return 'P';
+	}
+
+	int Publication::getRef()const//Tested good
+	{
+		return m_libRef;
+	}
+	void Publication::set(int member_id)//Tested good
+	{
+		if ((member_id >= 10000) && (member_id <= 99999))
+		{
+			m_membership = member_id;
+		}
+		else
+		{
+			m_membership = 0;
+		}
+	}
+	void Publication::setRef(int value)//Tested good
+	{
+		m_libRef = value;
+	}
+
+	bool Publication::onLoan()const//Tested good
+	{
+		bool yesORno{};
+		if (m_membership > 0)
+		{
+			yesORno = true;
+		}
+		else
+		{
+			yesORno = false;
+		}
+		return yesORno;
+	}
+
+	void Publication::resetDate()//Tested odd its returning the worng date.
+	{
+		int day = currentDD();
+		int mon = currentMM();
+		int year = currentYYYY();
+
+		Date* dummy = &m_date;
+
+		dummy = new  Date(year, mon, day);
+
+		delete dummy;
+
+		dummy = nullptr;
+	}
+
+	Publication::Publication():m_date(currentYYYY(), currentMM(), currentDD())
 	{
 		strcpy(m_title, "");
 		strcpy(m_shelfId, "");
-		m_membership = 0;
-		m_libRef = -1;
-
-		int yyyy = currentYYYY();
-	
-		int dd = currentDD();
-
-		int mm = currentMM();
-
-		//m_date = new Date(yyyy, mm, dd);//In case we are allowed to use pointers change your func to this and make m_date a pointer.
-
-		Date* dummyDate = &m_date;
-
-		dummyDate = new Date(yyyy,mm,dd);
-
-		delete dummyDate;
-
-		dummyDate = nullptr;
-		//dummy func to display results
-		//m_date.display();
+		set(0);
+		setRef(-1);
+		//resetDate();
+		
+		m_date.display();
 
 	}
 
@@ -80,15 +123,16 @@ namespace sdds {
 		//delete m_date;
 	}
 
-	Publication::operator bool()const
+	Publication::operator bool()const//Tested good
 	{
-		bool yesORno = strcmp(m_title, nullptr);
-		yesORno = strcmp(m_shelfId, nullptr);
+		bool yesORno{};
+		yesORno = strcmp(m_title, "");
+		yesORno = strcmp(m_shelfId, "");
 
 		return yesORno;
 	}
 
-	bool Publication::conIO(std::ios& io)const
+	bool Publication::conIO(std::ios& io)const//Tested good
 	{
 		bool yesORno = false;
 
@@ -105,7 +149,23 @@ namespace sdds {
 
 	}
 
-	std::ostream& Publication:: write(std::ostream& os)const
+	std::istream& Publication:: read(std::istream& is)//Unfinished
+	{
+		strcpy(m_title, "");
+		strcpy(m_shelfId, "");
+		resetDate();
+		
+
+		if (conIO(is))
+		{
+
+		}
+
+		return is;
+
+	}
+
+	std::ostream& Publication:: write(std::ostream& os)const//Tested it doesn't die out atleast
 	{
 		bool yesORno = conIO(os);
 
@@ -117,7 +177,7 @@ namespace sdds {
 	}
 
 
-	std::ostream& operator<<(std::ostream& os, const Streamable& obj)
+	std::ostream& operator<<(std::ostream& os, const Streamable& obj)//Tested good
 	{
 		if (obj)
 		{
@@ -126,22 +186,19 @@ namespace sdds {
 		return os;
 	}
 
-	//virtual void set(int member_id);
-
-	//void setRef(int value);
-
-	//void resetDate();
-
-	//virtual char type()const;
-		
-	//bool onLoan()const;
-		
-	//Date checkoutDate()const;
-		
-	//bool operator==(const char* title)const;
-		
-	//operator const char* ()const;
-	
-	//int getRef()const;
+	std::istream& operator>>(std::istream& is, Streamable& obj)//Untested
+	{
+		if (obj)
+		{
+			obj.read(is);
+		}
+		return is;
+	}
 	
 }
+
+
+
+//Date checkoutDate()const;
+
+//bool operator==(const char* title)const;

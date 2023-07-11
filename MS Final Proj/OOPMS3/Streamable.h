@@ -40,7 +40,7 @@ piece of work is entirely of my own creation.
 
 
 namespace sdds {
-
+/*
 	class Streamable
 	{
 	public:
@@ -50,7 +50,7 @@ namespace sdds {
 		//virtual std::istream& read(std::istream& os) = 0;
 		virtual ~Streamable()
 		{}
-	};
+	};*/
 
 
 	/*
