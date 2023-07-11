@@ -53,8 +53,18 @@ namespace sdds {
 		
 	bool Streamable::conIO(std::ios& io)
 	{
-	//if(&io == this)what ive tried and failed its not much I know sorry for my dumb question
+		bool yesORno{};
+		if (&io == &cout)
+		{
+			yesORno = true;
+	    }
 
+		if (&io == &cin)
+		{
+			yesORno = true;
+		}
+
+		return yesORno;
 
 	}
 		
