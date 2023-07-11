@@ -40,7 +40,7 @@ piece of work is entirely of my own creation.
 #define PUBLICATION_H
 
 #include "Date.h"
-
+//Still need to implement 3 funcs
 namespace sdds {
 
 	class Streamable
