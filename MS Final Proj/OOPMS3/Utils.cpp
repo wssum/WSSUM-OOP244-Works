@@ -120,7 +120,10 @@ namespace sdds {
 		}
 		else if ((yyyy % 400) == 0)
 		{
-			days = days + 1;
+			if ((mm >= 3) && (mm <= 12))
+			{
+				days = days + 1;
+			}
 		}
 		return days;
 	}
