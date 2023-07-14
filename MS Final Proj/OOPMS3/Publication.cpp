@@ -41,8 +41,10 @@ piece of work is entirely of my own creation.
 #include <ctype.h>
 #include <ctime>
 #include "Utils.h"
+#include <iomanip>
 #include "Publication.h"
 #include "Date.h"
+#include "Lib.h"
 
 using namespace sdds;
 using namespace std;
@@ -112,10 +114,22 @@ namespace sdds {
 		strcpy(m_shelfId, "");
 		set(0);
 		setRef(-1);
-		//resetDate();
+		resetDate();
 		
-		m_date.display();
+		//m_date.display();
 
+	}
+
+	/*
+	bool Publication:: operator==(const char* title)const
+	{
+
+	}
+	*/
+
+	Date Publication::checkoutDate()const
+	{
+		return m_date;
 	}
 
 	Publication::~Publication()
@@ -134,7 +148,7 @@ namespace sdds {
 
 	bool Publication::conIO(std::ios& io)const//Tested good
 	{
-		bool yesORno = false;
+		bool yesORno{};
 
 		if (&io == &cout)
 		{
@@ -149,29 +163,75 @@ namespace sdds {
 
 	}
 
-	std::istream& Publication:: read(std::istream& is)//Unfinished
+	std::istream& Publication:: read(std::istream& istr)//Unfinished
 	{
 		strcpy(m_title, "");
 		strcpy(m_shelfId, "");
 		resetDate();
+		char id[100] = " ";
+		char title[SDDS_TITLE_WIDTH] = " ";
+		bool test{};
 		
-
-		if (conIO(is))
+		if (conIO(istr))
+		{
+			cout << "Shelf No: ";
+			istr >> id;
+			istr.clear();
+			istr.ignore(1000, '\n');
+			cout << "Title: ";
+			istr >> title;
+			cout << "Date: ";
+			m_date.read(istr);
+		}
+		else
 		{
 
+			cout << "Shelf No: ";
+			istr >> id;
+			istr.clear();
+			istr.ignore(1000, '\n');
+			cout << "Title: ";
+			istr >> title;
+			cout << "Date: ";
+			m_date.read(istr);
 		}
 
-		return is;
+		if (strlen(id) > SDDS_SHELF_ID_LEN)
+		{
+			istr.setstate(std::ios::failbit);
+		}
+
+		if (m_date.errCode() != 0)
+		{
+			istr.setstate(std::ios::failbit);
+		}
+
+		if (istr)
+		{
+			strcpy(m_shelfId, id);
+			strcpy(m_title, title);
+		}
+
+		return istr;
 
 	}
 
-	std::ostream& Publication:: write(std::ostream& os)const//Tested it doesn't die out atleast
+	std::ostream& Publication:: write(std::ostream& os)const//Tested good
 	{
-		bool yesORno = conIO(os);
 
-		if (yesORno == true)
+		if (conIO(os))
 		{
-			os << m_shelfId << " " << m_title << " " << m_membership << m_date;
+			os << "| " << m_shelfId << " | ";
+			os << left << setw(SDDS_TITLE_WIDTH)<< setfill('.') << m_title;
+			if ((m_membership >= 10000) && (m_membership <= 99999))
+			{
+				os << " | " << m_membership << " | " << m_date << " |";
+			}
+			else
+			{
+				os << " |" << "  N/A  " << "| " << m_date << " |";
+			}
+			
 		}
 		return os;
 	}
@@ -188,10 +248,8 @@ namespace sdds {
 
 	std::istream& operator>>(std::istream& is, Streamable& obj)//Untested
 	{
-		if (obj)
-		{
 			obj.read(is);
-		}
+		
 		return is;
 	}
 	

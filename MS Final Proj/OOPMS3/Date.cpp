@@ -329,11 +329,16 @@ namespace sdds {
     istream& operator>>(istream& is, Date& RO) {
         return RO.read(is);
     }
+
+    Date ::~Date()
+    {
+
+    }
     //dummy func to display results
    
     
-    void Date::display()
+   /* void Date::display()
     {
         cout << "year is " << m_year << "month is " << m_mon << "day is " << m_day;
-    }
+    }*/
 }

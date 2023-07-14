@@ -49,7 +49,7 @@ namespace sdds {
 		virtual operator bool()const = 0;
 		virtual bool conIO(std::ios& io)const = 0;
 		virtual std::ostream& write(std::ostream& os)const = 0;
-		virtual std::istream& read(std::istream& is) = 0;
+		virtual std::istream& read(std::istream& istr) = 0;
 		virtual ~Streamable()
 		{}
 	};
@@ -57,11 +57,13 @@ namespace sdds {
 	class Publication: public Streamable
 	{
 		char m_title[255];
-		char m_shelfId[4];
+		char m_shelfId[4 + 1];
 		int m_membership;
 		int m_libRef;
 		Date m_date;
 	public:
+		//bool operator==(const char* title)const;
+		Date checkoutDate()const;
 		virtual char type()const;
 		virtual void set(int member_id);
 		void setRef(int value);
@@ -74,7 +76,7 @@ namespace sdds {
 		operator bool()const;
 		bool conIO(std::ios& io)const;
 		std::ostream& write(std::ostream& os)const;
-		std::istream& read(std::istream& is);
+		std::istream& read(std::istream& istr);
 
 	};
 
@@ -83,8 +85,6 @@ namespace sdds {
 }
 #endif
 
-//Date checkoutDate()const;
-//Returns the date attribute
 //bool operator==(const char* title)const;
 //Returns true if the argument title appears anywhere in the title of the 
 //publication. Otherwise, it returns false; (use strstr() function in <cstring>)

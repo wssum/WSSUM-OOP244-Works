@@ -84,7 +84,8 @@ namespace sdds {
 
         std::istream& read(std::istream& is = std::cin);
         operator bool()const;
-        void display();//dummy func to display results
+        ~Date();
+        //void display();//dummy func to display results
     };
 
     std::ostream& operator<<(std::ostream& os, const Date& RO);
