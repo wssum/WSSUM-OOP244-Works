@@ -101,7 +101,6 @@ namespace sdds {
 		int year = currentYYYY();
 
 		m_date = Date(year, mon, day);
-		cout << checkoutDate();
 	}
 
 	Publication::Publication():m_date(currentYYYY(), currentMM(), currentDD())
@@ -111,8 +110,6 @@ namespace sdds {
 		set(0);
 		setRef(-1);
 		resetDate();
-	
-
 	}
 
 	/*
@@ -129,7 +126,6 @@ namespace sdds {
 
 	Publication::~Publication()
 	{
-		//delete m_date;
 	}
 
 	Publication::operator bool()const//Tested good
