@@ -51,44 +51,49 @@ int main() {
     }
     cout << "You entered:" << endl;
     cout << ">" << pd << "<" << endl;
-
+    cout << "Enter the following: " << endl
+        << "P123" << endl
+        << "Seneca Weekly" << endl
+        << "2021/13/17" << endl
+        << "------------------------------" << endl;
+    pd = readPublication(cin);
+    if (!cin) {
+        cin.clear();
+        cin.ignore(1000, '\n');
+    }
+    else {
+        cout << "This is not supposed to be printed!" << endl;
+    }
+    cout << "You entered:" << endl;
+    cout << ">" << pd << "<" << endl;
+    cout << "Enter the following: " << endl
+        << "P123" << endl
+        << "Seneca Weekly" << endl
+        << "2021/11/17" << endl
+        << "------------------------------" << endl;
+    pd = readPublication(cin);
+    cout << "You entered:" << endl;
+    cout << pd << endl;
+    cout << "And the title is agian: \"" << (const char*)pd << "\"" << endl;
+    pd.set(12345);
+    if (pd.onLoan()) {
+        cout << "Now this publication is on loan to a member with the id: 12345" << endl;
+        pd.resetDate();
+        cout << "The checkout date is: " << pd.checkoutDate() << endl;
+        pd.setRef(9999);
+        cout << "The library unique reference id is: " << pd.getRef() << endl;
+        cout << pd << endl;
+        cout << "----------------------------------------------------------------" << endl;
+    }
     return 0;
 }
 
-/* cout << "Enter the following: " << endl
-     << "P123" << endl
-     << "Seneca Weekly" << endl
-     << "2021/13/17" << endl
-     << "------------------------------" << endl;
- pd = readPublication(cin);
- if (!cin) {
-     cin.clear();
-     cin.ignore(1000, '\n');
- }
- else {
-     cout << "This is not supposed to be printed!" << endl;
- }
- cout << "You entered:" << endl;
- cout << ">" << pd << "<" << endl;
- cout << "Enter the following: " << endl
-     << "P123" << endl
-     << "Seneca Weekly" << endl
-     << "2021/11/17" << endl
-     << "------------------------------" << endl;
- pd = readPublication(cin);
- cout << "You entered:" << endl;
- cout << pd << endl;
- cout << "And the title is agian: \"" << (const char*)pd << "\"" << endl;
- pd.set(12345);
- if (pd.onLoan()) {
-     cout << "Now this publication is on loan to a member with the id: 12345" << endl;
-     pd.resetDate();
-     cout << "The checkout date is: " << pd.checkoutDate() << endl;
-     pd.setRef(9999);
-     cout << "The library unique reference id is: " << pd.getRef() << endl;
-     cout << pd << endl;
-     cout << "----------------------------------------------------------------" << endl;
- }
+
+ 
+
+ 
+
+ /*
  cout << "Adding the periodical publication to the end of the data file:" << endl;
  ofstream fileout("Periodicals.txt", ios::app);
  if (pd) {

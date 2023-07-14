@@ -38,6 +38,7 @@ piece of work is entirely of my own creation.
 ***********************************************************************/
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
+#include <string>
 #include <ctype.h>
 #include <ctime>
 #include "Utils.h"
@@ -99,13 +100,8 @@ namespace sdds {
 		int mon = currentMM();
 		int year = currentYYYY();
 
-		Date* dummy = &m_date;
-
-		dummy = new  Date(year, mon, day);
-
-		delete dummy;
-
-		dummy = nullptr;
+		m_date = Date(year, mon, day);
+		cout << checkoutDate();
 	}
 
 	Publication::Publication():m_date(currentYYYY(), currentMM(), currentDD())
@@ -115,8 +111,7 @@ namespace sdds {
 		set(0);
 		setRef(-1);
 		resetDate();
-		
-		//m_date.display();
+	
 
 	}
 
@@ -169,7 +164,7 @@ namespace sdds {
 		strcpy(m_shelfId, "");
 		resetDate();
 		char id[100] = " ";
-		char title[SDDS_TITLE_WIDTH] = " ";
+		string title{};
 		bool test{};
 		
 		if (conIO(istr))
@@ -179,7 +174,7 @@ namespace sdds {
 			istr.clear();
 			istr.ignore(1000, '\n');
 			cout << "Title: ";
-			istr >> title;
+			getline(istr, title);
 			cout << "Date: ";
 			m_date.read(istr);
 		}
@@ -191,7 +186,7 @@ namespace sdds {
 			istr.clear();
 			istr.ignore(1000, '\n');
 			cout << "Title: ";
-			istr >> title;
+			getline(istr, title);
 			cout << "Date: ";
 			m_date.read(istr);
 		}
@@ -209,7 +204,7 @@ namespace sdds {
 		if (istr)
 		{
 			strcpy(m_shelfId, id);
-			strcpy(m_title, title);
+			strcpy(m_title, title.c_str());//
 		}
 
 		return istr;
@@ -221,15 +216,16 @@ namespace sdds {
 
 		if (conIO(os))
 		{
+			os << "1234567890123456789012345678901234567890123456789012345678901234567890" << endl;
 			os << "| " << m_shelfId << " | ";
 			os << left << setw(SDDS_TITLE_WIDTH)<< setfill('.') << m_title;
 			if ((m_membership >= 10000) && (m_membership <= 99999))
 			{
-				os << " | " << m_membership << " | " << m_date << " |";
+				os << " | " << m_membership << " | " << m_date << " |"<< endl;
 			}
 			else
 			{
-				os << " |" << "  N/A  " << "| " << m_date << " |";
+				os << " |" << "  N/A  " << "| " << m_date << " |" << endl;
 			}
 			
 		}
@@ -255,8 +251,5 @@ namespace sdds {
 	
 }
 
-
-
-//Date checkoutDate()const;
 
 //bool operator==(const char* title)const;
