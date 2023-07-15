@@ -31,7 +31,7 @@ int main() {
     cout << *L << endl;
     cout << *R << endl;
     cout << "Enter the following:\n>Line two,40<ETNER>\n>";
-    /*cin >> *L;
+    cin >> *L;
     cout << "The following outputs should be the same" << endl;
     cout << "The correct output:" << endl;
     cout << "Line two\n========================================" << endl;
@@ -71,6 +71,6 @@ int main() {
             cout << *sptr << endl;
             delete sptr;
         }
-    }*/
+    }
     return 0;
 }

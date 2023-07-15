@@ -39,16 +39,12 @@ namespace sdds
 	{
 		m_length = length;
 	}
-	/// <summary>
-	/// Incomplete still need to implement a way to  read the rest of the characters so that it reads till it finds
-	///a \n and then ignore the rest.
-	/// </summary>
-	/// <param name="is"></param>
+	
 	void Line::getSpecs(std::istream& is)
 	{
 		LblShape::getSpecs(is);
 		is >> m_length;
-		
+		is.ignore(1000, '\n');
 	}
 
 	void Line::draw(std::ostream& os)const

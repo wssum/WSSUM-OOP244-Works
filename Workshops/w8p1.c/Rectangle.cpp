@@ -102,7 +102,11 @@ namespace sdds
 
 	void Rectangle:: getSpecs(istream& is)
 	{
-		cout << " this is just a dummy function will implement later...." << endl;
+		LblShape::getSpecs(is);
+		is  >> m_width;
+		is.ignore(1000, ',');
+		is  >> m_height;
+		is.ignore(1000, '\n');
 	}
 
 
