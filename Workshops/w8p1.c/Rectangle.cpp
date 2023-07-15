@@ -39,6 +39,7 @@ namespace sdds
 
 	Rectangle::Rectangle(const char* string, int width, int height):LblShape(string)
 	{
+
 		if (height >= 3)
 		{
 			m_height = height;
@@ -48,7 +49,7 @@ namespace sdds
 			m_height = 0;
 		}
 
-		if (width < (strlen(label()+2)))
+		if (width > (strlen(label()))+2)
 		{
 			m_width = width;
 		}
@@ -73,8 +74,26 @@ namespace sdds
 				os << '+'<< endl;
 
 				os << '|';
-				os
+				os << setw(m_width - 2) << left << label();
+				os<< '|' << endl;
 
+				for (i = 0; i < m_height-3; i++)
+				{
+					os << '|';
+					for (int a = 0; a < m_width - 2; a++)
+					{
+						os << ' ';
+					}
+					os << '|' << endl;
+				}
+
+
+				os << '+';
+				for (i = 0; i < m_width - 2; i++)
+				{
+					os << '-';
+				}
+				os << '+' << endl;
 			}
 		}
 

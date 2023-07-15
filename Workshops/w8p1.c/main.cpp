@@ -27,11 +27,11 @@ int main() {
     Line* L = new Line("Separator", 50);
     Rectangle* R = new Rectangle("Container", 30, 5);
     Shape* S[2] = {L, R};
-    cout << BadOne;// << BadRectangle;
+    cout << BadOne << BadRectangle;
     cout << *L << endl;
     cout << *R << endl;
-    /*cout << "Enter the following:\n>Line two,40<ETNER>\n>";
-    cin >> *L;
+    cout << "Enter the following:\n>Line two,40<ETNER>\n>";
+    /*cin >> *L;
     cout << "The following outputs should be the same" << endl;
     cout << "The correct output:" << endl;
     cout << "Line two\n========================================" << endl;
