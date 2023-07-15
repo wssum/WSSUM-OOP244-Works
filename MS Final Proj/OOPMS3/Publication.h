@@ -72,7 +72,7 @@ namespace sdds {
 		int getRef()const;
 		operator const char* ()const;
 		Publication();
-		~Publication();
+		virtual ~Publication();
 		operator bool()const;
 		bool conIO(std::ios& io)const;
 		std::ostream& write(std::ostream& os)const;

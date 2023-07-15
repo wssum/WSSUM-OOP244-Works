@@ -84,7 +84,7 @@ namespace sdds {
 
         std::istream& read(std::istream& is = std::cin);
         operator bool()const;
-        ~Date();
+        virtual ~Date();
         void display();//dummy func to display results
     };
 
