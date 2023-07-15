@@ -83,14 +83,12 @@ namespace sdds {
 	bool Publication::onLoan()const//Tested good
 	{
 		bool yesORno{};
-		if (m_membership > 0)
+
+		if ((m_membership >= 10000) && (m_membership <= 99999))
 		{
 			yesORno = true;
 		}
-		else
-		{
-			yesORno = false;
-		}
+	
 		return yesORno;
 	}
 
@@ -112,12 +110,21 @@ namespace sdds {
 		resetDate();
 	}
 
-	/*
+	
 	bool Publication:: operator==(const char* title)const
 	{
+		bool yesORno{};
 
+		if (strstr(m_title, title))
+		{
+			yesORno = true;
+		}
+		else
+		{
+			yesORno = false;
+		}
+		return yesORno;
 	}
-	*/
 
 	Date Publication::checkoutDate()const
 	{
@@ -176,14 +183,18 @@ namespace sdds {
 		}
 		else
 		{
+			istr >> m_libRef;
+			istr.ignore();
 
-			cout << "Shelf No: ";
-			istr >> id;
-			istr.clear();
-			istr.ignore(1000, '\n');
-			cout << "Title: ";
-			getline(istr, title);
-			cout << "Date: ";
+			istr.get(id, SDDS_SHELF_ID_LEN + 1, '\t');
+			istr.ignore();
+
+			getline(istr, title, '\t');
+			istr.ignore();
+
+			istr >> m_membership;
+			istr.ignore();
+
 			m_date.read(istr);
 		}
 
@@ -225,6 +236,10 @@ namespace sdds {
 			}
 			
 		}
+		else
+		{
+			os << type() << "\t\t" << m_libRef << "\t" << m_shelfId << "\t" << m_title << "\t\t" << m_membership << "\t" << m_date;
+		}
 		return os;
 	}
 
@@ -246,6 +261,3 @@ namespace sdds {
 	}
 	
 }
-
-
-//bool operator==(const char* title)const;

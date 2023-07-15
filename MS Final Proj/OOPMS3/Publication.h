@@ -62,7 +62,7 @@ namespace sdds {
 		int m_libRef;
 		Date m_date;
 	public:
-		//bool operator==(const char* title)const;
+		bool operator==(const char* title)const;
 		Date checkoutDate()const;
 		virtual char type()const;
 		virtual void set(int member_id);
@@ -79,13 +79,11 @@ namespace sdds {
 		std::istream& read(std::istream& istr);
 
 	};
-
 	std::ostream& operator<<(std::ostream& os, const Streamable& obj);
 	std::istream& operator>>(std::istream& is, Streamable& obj);
+	
 }
 #endif
 
-//bool operator==(const char* title)const;
-//Returns true if the argument title appears anywhere in the title of the 
-//publication. Otherwise, it returns false; (use strstr() function in <cstring>)
+
 

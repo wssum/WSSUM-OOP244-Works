@@ -42,7 +42,7 @@ using namespace std;
 
 namespace sdds {
     bool sdds_test = false;
-    int sdds_year = 2021;
+    int sdds_year = 2023;
     int sdds_mon = 12;
     int sdds_day = 25;
 

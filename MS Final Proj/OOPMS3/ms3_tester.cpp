@@ -17,21 +17,17 @@
 
 using namespace std;
 using namespace sdds;
-
-/*Publication getNextRec(ifstream& ifstr) {
+Publication readPublication(istream& istr) {
+    Publication P;
+    cin >> P;
+    return P;
+}
+Publication getNextRec(ifstream& ifstr) {
     Publication P;
     ifstr >> P;
     ifstr.ignore(1000, '\n');
     return P;
-}*/
-
-Publication readPublication(istream& istr) {
-    Publication P;
-    cin >> P;
-    
-    return P;
 }
-
 
 int main() {
     sdds::sdds_test = true;
@@ -39,7 +35,7 @@ int main() {
     cout << "An Invalid publication printout:" << endl;
     cout << ">" << pd << "<" << endl;
     cout << "Enter the following: " << endl
-     << "P1234" << endl
+        << "P1234" << endl
         << "------------------------------" << endl;
     pd = readPublication(cin);
     if (!cin) {
@@ -85,40 +81,33 @@ int main() {
         cout << pd << endl;
         cout << "----------------------------------------------------------------" << endl;
     }
+    cout << "Adding the periodical publication to the end of the data file:" << endl;
+    ofstream fileout("Periodicals.txt", ios::app);
+    if (pd) {
+        cout << "appeneded to the file" << endl;
+        fileout << pd << endl;
+    }
+    fileout.close();
+    cout << endl << "Contents of the file:" << endl;
+    ifstream filein("Periodicals.txt");
+    char pType{};
+    for (int row = 1; filein; row++) {
+        filein >> pType;
+        if (pType != 'P') {
+            cout << "The Record type signature is supposed to be B, but it is: " << pType << endl;
+            filein.setstate(ios::failbit);
+        }
+        filein.ignore();
+        pd = getNextRec(filein);
+        if (filein) {
+            cout << (pd.onLoan() ? "|*" : "| ");
+            cout.width(4);
+            cout.fill(' ');
+            cout.setf(ios::right);
+            cout << row << (pd.onLoan() ? "*" : " ");
+            cout.unsetf(ios::right);
+            cout << pd << (pd == "Star" ? "<<<" : "") << endl;
+        }
+    }
     return 0;
 }
-
-
- 
-
- 
-
- /*
- cout << "Adding the periodical publication to the end of the data file:" << endl;
- ofstream fileout("Periodicals.txt", ios::app);
- if (pd) {
-     cout << "appeneded to the file" << endl;
-     fileout << pd << endl;
- }
- fileout.close();
- cout << endl << "Contents of the file:" << endl;
- ifstream filein("Periodicals.txt");
- char pType{};
- for (int row = 1; filein; row++) {
-     filein >> pType;
-     if (pType != 'P') {
-         cout << "The Record type signature is supposed to be B, but it is: " << pType << endl;
-         filein.setstate(ios::failbit);
-     }
-     filein.ignore();
-     pd = getNextRec(filein);
-     if (filein) {
-         cout << (pd.onLoan() ? "|*" : "| ");
-         cout.width(4);
-         cout.fill(' ');
-         cout.setf(ios::right);
-         cout << row << (pd.onLoan() ? "*" : " ");
-         cout.unsetf(ios::right);
-         cout << pd << (pd == "Star" ? "<<<" : "") << endl;
-     }
- }*/
