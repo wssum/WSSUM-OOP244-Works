@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{070a546a-e73d-4985-af93-d3c38f5f7911}</ProjectGuid>
+    <ProjectGuid>{447f0dc9-b4ca-49a1-ba3a-5c48b62b7f84}</ProjectGuid>
     <RootNamespace>mockOOPMS4</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -139,6 +139,7 @@
     <ClCompile Include="DateB.cpp" />
     <ClCompile Include="ms4_tester.cpp" />
     <ClCompile Include="PublicationB.cpp" />
+    <ClCompile Include="StreamableB.cpp" />
     <ClCompile Include="UtilsB.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -35,9 +35,12 @@ int main() {
     cout << "An Invalid Book printout:" << endl;
     cout << ">" << pd << "<" << endl;
     cout << endl << "Enter the following: " << endl
-    << "P1234" << endl
+        << "P1234" << endl
         << "------------------------------" << endl;
-   /* pd = readBook(cin);
+   
+    return 0;
+}
+/* pd = readBook(cin);
     if (!cin) {
         cin.clear();
         cin.ignore(1000, '\n');
@@ -109,5 +112,3 @@ int main() {
             cout << pd << (pd == "Star" ? "<<<" : "") << endl;
         }
     }*/
-    return 0;
-}

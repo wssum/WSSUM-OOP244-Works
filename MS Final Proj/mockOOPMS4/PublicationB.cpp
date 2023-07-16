@@ -43,7 +43,7 @@ piece of work is entirely of my own creation.
 #include <ctime>
 #include <iomanip>
 #include "UtilsB.h"
-#include "Publication.h"
+#include "PublicationB.h"
 #include "DateB.h"
 #include "LibB.h"
 
@@ -211,7 +211,7 @@ namespace sdds {
 		if (istr)
 		{
 			strcpy(m_shelfId, id);
-			strcpy(m_title, title.c_str());//
+			strcpy(m_title, title.c_str());
 		}
 
 		return istr;

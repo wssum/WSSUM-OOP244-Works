@@ -47,6 +47,10 @@ namespace sdds {
 		char* m_authorName{};
 	public:
 		Book();
+		~Book();
+		char Type()const;
+		std::ostream& write(std::ostream& os)const;
+		operator bool()const;
 	};
 }
 

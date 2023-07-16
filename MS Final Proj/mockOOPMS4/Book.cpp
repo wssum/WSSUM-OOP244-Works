@@ -36,17 +36,69 @@ piece of work is entirely of my own creation.
 //
 /////////////////////////////////////////////////////////////////
 ***********************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <string>
 #include <ctype.h>
 #include <ctime>
 #include <iomanip>
 #include "Book.h"
+#include "LibB.h"
+
+using namespace std;
 
 namespace sdds {
 	Book::Book()
 	{
 
 	}
+
+	Book:: ~Book()
+	{
+		delete[] m_authorName;
+	}
+
+	Book::operator bool()const
+	{
+		bool yesOrNo{};
+
+		if (Publication::operator bool())
+		{
+			if (m_authorName != nullptr)
+			{
+				yesOrNo = true;
+			}
+		}
+
+		return yesOrNo;
+	}
+
+	char Book::Type()const
+	{
+		return 'B';
+	}
+
+	std::ostream& Book:: write(std::ostream& os)const
+	{
+		Publication::write(os);
+
+		if (conIO(os))
+		{
+			
+			os << ' ';
+			os << setw(SDDS_AUTHOR_WIDTH) << m_authorName;
+			os << " |";
+		}
+		else
+		{
+			
+			os << "\t" << m_authorName;
+			
+
+		}
+
+		return os;
+	}
+
 
 }
