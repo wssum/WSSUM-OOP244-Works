@@ -27,7 +27,7 @@
     <ClInclude Include="StreamableB.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Publication.h">
+    <ClInclude Include="PublicationB.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Book.h">

@@ -38,9 +38,16 @@ piece of work is entirely of my own creation.
 ***********************************************************************/
 #ifndef BOOK_H
 #define BOOK_H
+#include "PublicationB.h"
 
 namespace sdds {
 
+	class Book :public Publication
+	{
+		char* m_authorName{};
+	public:
+		Book();
+	};
 }
 
 #endif

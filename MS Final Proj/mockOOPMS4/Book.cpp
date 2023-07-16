@@ -44,5 +44,9 @@ piece of work is entirely of my own creation.
 #include "Book.h"
 
 namespace sdds {
+	Book::Book()
+	{
+
+	}
 
 }

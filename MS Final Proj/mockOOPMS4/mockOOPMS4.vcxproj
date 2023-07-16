@@ -130,7 +130,7 @@
     <ClInclude Include="Book.h" />
     <ClInclude Include="DateB.h" />
     <ClInclude Include="LibB.h" />
-    <ClInclude Include="Publication.h" />
+    <ClInclude Include="PublicationB.h" />
     <ClInclude Include="StreamableB.h" />
     <ClInclude Include="UtilsB.h" />
   </ItemGroup>

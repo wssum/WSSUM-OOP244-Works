@@ -31,13 +31,13 @@ Book getNextRec(ifstream& ifstr) {
 
 int main() {
     sdds::sdds_test = true;
-   /* Book pd;
+    Book pd;
     cout << "An Invalid Book printout:" << endl;
     cout << ">" << pd << "<" << endl;
     cout << endl << "Enter the following: " << endl
-        << "P1234" << endl
+    << "P1234" << endl
         << "------------------------------" << endl;
-    pd = readBook(cin);
+   /* pd = readBook(cin);
     if (!cin) {
         cin.clear();
         cin.ignore(1000, '\n');
