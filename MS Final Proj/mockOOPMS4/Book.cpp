@@ -78,22 +78,22 @@ namespace sdds {
 		return 'B';
 	}
 
-	std::ostream& Book:: write(std::ostream& os)const
+	std::ostream& Book::write(std::ostream& os)const
 	{
 		Publication::write(os);
 
 		if (conIO(os))
 		{
-			
+
 			os << ' ';
 			os << setw(SDDS_AUTHOR_WIDTH) << m_authorName;
 			os << " |";
 		}
 		else
 		{
-			
+
 			os << "\t" << m_authorName;
-			
+
 
 		}
 

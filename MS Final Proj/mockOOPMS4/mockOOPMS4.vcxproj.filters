@@ -21,6 +21,9 @@
     <ClInclude Include="UtilsB.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Book.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="DateB.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -28,9 +31,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PublicationB.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Book.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -41,6 +41,9 @@
     <ClCompile Include="DateB.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="StreamableB.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="PublicationB.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -48,9 +51,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Book.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="StreamableB.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
