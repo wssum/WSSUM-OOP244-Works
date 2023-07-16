@@ -49,8 +49,9 @@ namespace sdds {
 		Book();
 		~Book();
 		char Type()const;
-		std::ostream& write(std::ostream& os)const;
 		operator bool()const;
+		std::ostream& write(std::ostream& os)const;
+		std::istream& read(std::istream& istr);
 	};
 }
 

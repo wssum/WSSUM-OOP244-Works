@@ -17,11 +17,12 @@
 
 using namespace std;
 using namespace sdds;
-/*Book readBook(istream& istr) {
+Book readBook(istream& istr) {
     Book P;
     istr >> P;
     return P;
 }
+/*
 Book getNextRec(ifstream& ifstr) {
     Book P;
     ifstr >> P;
@@ -37,10 +38,7 @@ int main() {
     cout << endl << "Enter the following: " << endl
         << "P1234" << endl
         << "------------------------------" << endl;
-
-    return 0;
-}
-/* pd = readBook(cin);
+    pd = readBook(cin);
     if (!cin) {
         cin.clear();
         cin.ignore(1000, '\n');
@@ -75,7 +73,12 @@ int main() {
     cout << "You entered:" << endl;
     cout << pd << endl;
     cout << "And the title is agian: \"" << (const char*)pd << "\"" << endl;
-    pd.set(12345);
+    return 0;
+}
+
+
+
+    /*pd.set(12345);
     if (pd.onLoan()) {
         cout << "Now this publication is on loan to a member with the id: 12345" << endl;
         cout << "The checkout date is: " << pd.checkoutDate() << endl;

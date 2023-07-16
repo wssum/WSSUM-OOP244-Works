@@ -100,5 +100,47 @@ namespace sdds {
 		return os;
 	}
 
+	std::istream& Book::read(std::istream& istr)
+	{
+		char author[256] = " ";
+		bool passed{};
+		if (Publication::read(istr))
+		{
+			passed = true;
+		}
+		
+		istr.clear();
+		istr.ignore(1,'\n');
+
+		if (!m_authorName)
+		{
+			delete[] m_authorName;
+			m_authorName = nullptr;
+		}	
+
+		if (conIO(istr))
+		{
+			cout << "Author: ";
+			istr >> author;
+			
+		}
+		else
+		{
+			istr.ignore('\t');
+			istr.getline(author, 256);
+		}
+
+		if ((passed == true)&& istr)
+		{
+			m_authorName = new char[strlen(author) + 1];
+			strcpy(m_authorName, author);
+		}
+		else
+		{
+			istr.setstate(std::ios::failbit);
+		}
+
+		return istr;
+	}
 
 }

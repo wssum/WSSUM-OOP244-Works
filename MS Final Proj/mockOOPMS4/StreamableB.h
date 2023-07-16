@@ -49,5 +49,7 @@ namespace sdds {
 		virtual std::istream& read(std::istream& os) = 0;
 		virtual ~Streamable();
 	};
+	std::ostream& operator<<(std::ostream& os, const Streamable& obj);
+	std::istream& operator>>(std::istream& is, Streamable& obj);
 
 }
