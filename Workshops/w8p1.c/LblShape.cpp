@@ -50,6 +50,7 @@ namespace sdds
 
 	LblShape::~LblShape()
 	{
+		cout << "Deleted" << endl;
 		delete[]m_label;
 	}
 
