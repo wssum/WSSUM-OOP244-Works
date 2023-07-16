@@ -244,20 +244,4 @@ namespace sdds {
 	}
 
 
-	std::ostream& operator<<(std::ostream& os, const Streamable& obj)//Tested good
-	{
-		if (obj)
-		{
-			obj.write(os);
-		}
-		return os;
-	}
-
-	std::istream& operator>>(std::istream& is, Streamable& obj)//Untested
-	{
-			obj.read(is);
-		
-		return is;
-	}
-	
 }

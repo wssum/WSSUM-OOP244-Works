@@ -40,24 +40,20 @@ piece of work is entirely of my own creation.
 
 
 namespace sdds {
-/*
-	class Streamable
-	{
-	public:
-		virtual operator bool()const = 0;
-		virtual bool conIO(std::ios& io)const = 0;
-		virtual std::ostream& write(std::ostream& os)const = 0;
-		//virtual std::istream& read(std::istream& os) = 0;
-		virtual ~Streamable()
-		{}
-	};*/
-
-
-	/*
-		std::istream& operator>>(std::istream& is, Streamable& obj)
+	
+		class Streamable
 		{
-			obj.read(is);
-			return is;
-		}*/
+		public:
+			virtual operator bool()const = 0;
+			virtual bool conIO(std::ios& io)const = 0;
+			virtual std::ostream& write(std::ostream& os)const = 0;
+			virtual std::istream& read(std::istream& os) = 0;
+			virtual ~Streamable();
+		};
+		std::ostream& operator<<(std::ostream& os, const Streamable& obj);
+
+
+		std::istream& operator>>(std::istream& is, Streamable& obj);
+
 
 }

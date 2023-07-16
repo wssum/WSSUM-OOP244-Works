@@ -39,46 +39,9 @@ piece of work is entirely of my own creation.
 #include <iostream>
 #include "Streamable.h"
 
-using namespace std;
-using namespace sdds;
+namespace sdds
+{
 
-namespace sdds {
-
-/*	std::ostream& write(std::ostream& os)
-	{
-		
-	}
-		
-	//virtual std::istream& read(std::istream& os)*/
-		
-	bool Streamable::conIO(std::ios& io)
-	{
-		bool yesORno{};
-		if (&io == &cout)
-		{
-			yesORno = true;
-	    }
-
-		if (&io == &cin)
-		{
-			yesORno = true;
-		}
-
-		return yesORno;
-
-	}
-		
-	Streamable::operator bool()const
-	{
-		
-	}
-		
-	Streamable:: ~Streamable()
-	{
-
-	}
-
-	/*
 	std::ostream& operator<<(std::ostream& os, const Streamable& obj)
 	{
 		if (obj)
@@ -91,6 +54,12 @@ namespace sdds {
 	std::istream& operator>>(std::istream& is, Streamable& obj)
 	{
 		obj.read(is);
+
 		return is;
-	}*/
+	}
+
+	Streamable::~Streamable()
+	{
+
+	}
 }

@@ -27,6 +27,9 @@
     <ClInclude Include="Lib.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Streamable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Date.cpp">
@@ -39,6 +42,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ms3_tester.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Streamable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

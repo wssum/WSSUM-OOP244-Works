@@ -38,21 +38,11 @@ piece of work is entirely of my own creation.
 ***********************************************************************/
 #ifndef PUBLICATION_H
 #define PUBLICATION_H
-
+#include "Streamable.h"
 #include "Date.h"
 //Still need to implement 3 funcs
 namespace sdds {
 
-	class Streamable
-	{
-	public:
-		virtual operator bool()const = 0;
-		virtual bool conIO(std::ios& io)const = 0;
-		virtual std::ostream& write(std::ostream& os)const = 0;
-		virtual std::istream& read(std::istream& istr) = 0;
-		virtual ~Streamable()
-		{}
-	};
 
 	class Publication: public Streamable
 	{
@@ -79,8 +69,6 @@ namespace sdds {
 		std::istream& read(std::istream& istr);
 
 	};
-	std::ostream& operator<<(std::ostream& os, const Streamable& obj);
-	std::istream& operator>>(std::istream& is, Streamable& obj);
 	
 }
 #endif
