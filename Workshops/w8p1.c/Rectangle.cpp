@@ -23,6 +23,7 @@ piece of work is entirely of my own creation.
 /////////////////////////////////////////////////////////////////////////*/
 #define _CRT_SECURE_NO_WARNINGS
 #include<iostream>
+#include <cstring>
 #include <cstdio>
 #include <iomanip>
 #include "Rectangle.h"
@@ -35,9 +36,9 @@ namespace sdds
 	{
 		m_height = 0;
 		m_width = 0;
-    }
+	}
 
-	Rectangle::Rectangle(const char* string, int width, int height):LblShape(string)
+	Rectangle::Rectangle(const char* string, int width, int height) :LblShape(string)
 	{
 
 		if (height >= 3)
@@ -49,7 +50,7 @@ namespace sdds
 			m_height = 0;
 		}
 
-		if (width > (strlen(label()))+2)
+		if (width > (static_cast<int>(strlen(label())) + 2))
 		{
 			m_width = width;
 		}
@@ -71,13 +72,13 @@ namespace sdds
 				{
 					os << '-';
 				}
-				os << '+'<< endl;
+				os << '+' << endl;
 
 				os << '|';
 				os << setw(m_width - 2) << left << label();
-				os<< '|' << endl;
+				os << '|' << endl;
 
-				for (i = 0; i < m_height-3; i++)
+				for (i = 0; i < m_height - 3; i++)
 				{
 					os << '|';
 					for (int a = 0; a < m_width - 2; a++)
@@ -93,19 +94,19 @@ namespace sdds
 				{
 					os << '-';
 				}
-				os << '+' << endl;
+				os << '+';
 			}
 		}
 
 
 	}
 
-	void Rectangle:: getSpecs(istream& is)
+	void Rectangle::getSpecs(istream& is)
 	{
 		LblShape::getSpecs(is);
-		is  >> m_width;
+		is >> m_width;
 		is.ignore(1000, ',');
-		is  >> m_height;
+		is >> m_height;
 		is.ignore(1000, '\n');
 	}
 

@@ -35,8 +35,8 @@ namespace sdds
 	protected:
 		char* label()const;
 	public:
-		LblShape(const LblShape&) = delete;
-		LblShape operator = (const LblShape&) = delete;
+		//LblShape(const LblShape&) = delete;
+		//LblShape operator = (const LblShape&) = delete;
 		LblShape();
 		LblShape(const char* string);
 		~LblShape();

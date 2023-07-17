@@ -24,8 +24,10 @@ piece of work is entirely of my own creation.
 #define _CRT_SECURE_NO_WARNINGS
 #include<iostream>
 #include <cstdio>
-#include <string>
+#include <cstring>
 #include "LblShape.h"
+#include <string>
+
 
 using namespace std;
 
@@ -50,14 +52,14 @@ namespace sdds
 
 	LblShape::~LblShape()
 	{
-		cout << "Deleted" << endl;
+		cout << "deleted"<<endl;
 		delete[]m_label;
 	}
 
 	void LblShape::getSpecs(istream& is)
 	{
 		string label{};
-		getline(is, label,',');
+		getline(is, label, ',');
 		m_label = new char[strlen(label.c_str()) + 1];
 
 		strcpy(m_label, label.c_str());

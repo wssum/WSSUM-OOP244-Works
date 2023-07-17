@@ -30,7 +30,7 @@ piece of work is entirely of my own creation.
 namespace sdds
 {
 
-	class Line:public LblShape
+	class Line :public LblShape
 	{
 		int m_length;
 	public:

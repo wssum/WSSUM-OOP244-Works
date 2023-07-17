@@ -41,7 +41,7 @@ namespace sdds
 
 		return os;
 	}
-    
+
 	istream& operator>>(istream& is, Shape& shp)
 	{
 		shp.getSpecs(is);

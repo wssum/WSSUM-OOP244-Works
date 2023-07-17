@@ -23,6 +23,7 @@ piece of work is entirely of my own creation.
 /////////////////////////////////////////////////////////////////////////*/
 #define _CRT_SECURE_NO_WARNINGS
 #include<iostream>
+#include <cstring>
 #include <cstdio>
 #include "Line.h"
 
@@ -30,7 +31,7 @@ using namespace std;
 
 namespace sdds
 {
-	Line::Line():LblShape()
+	Line::Line() :LblShape()
 	{
 		m_length = 0;
 	}
@@ -39,7 +40,7 @@ namespace sdds
 	{
 		m_length = length;
 	}
-	
+
 	void Line::getSpecs(std::istream& is)
 	{
 		LblShape::getSpecs(is);
@@ -53,7 +54,7 @@ namespace sdds
 		{
 			if (label() != nullptr)
 			{
-				os << label()<<endl;
+				os << label() << endl;
 				for (int i = 0; i < m_length; i++)
 				{
 					os << '=';

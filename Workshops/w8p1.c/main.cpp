@@ -21,12 +21,12 @@ using namespace std;
 int main() {
     cout << "Nothing should be printed between these two lines" << endl;
     cout << "------------------------------------" << endl;
-       Line BadOne;
+    Line BadOne;
     Rectangle BadRectangle("Bad one", 1, 1);
     cout << "------------------------------------" << endl;
     Line* L = new Line("Separator", 50);
     Rectangle* R = new Rectangle("Container", 30, 5);
-    Shape* S[2] = {L, R};
+    Shape* S[2] = { L, R };
     cout << BadOne << BadRectangle;
     cout << *L << endl;
     cout << *R << endl;

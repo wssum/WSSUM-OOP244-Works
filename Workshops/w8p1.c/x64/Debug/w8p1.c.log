@@ -1,7 +1,9 @@
-﻿  LblShape.cpp
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets(5652,5): warning MSB3061: Unable to delete file "C:\Users\netsa\source\repos\w8p1.c\x64\Debug\w8p1.c.exe". Access to the path 'C:\Users\netsa\source\repos\w8p1.c\x64\Debug\w8p1.c.exe' is denied.
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppClean.targets(77,5): warning : Access to the path 'c:\users\netsa\source\repos\w8p1.c\x64\debug\w8p1.c.exe' is denied.
+  LblShape.cpp
   Line.cpp
   main.cpp
   Rectangle.cpp
   Shape.cpp
   Generating Code...
-  w8p1.c.vcxproj -> C:\Users\netsa\source\repos\w8p1.c\x64\Debug\w8p1.c.exe
+LINK : fatal error LNK1104: cannot open file 'C:\Users\netsa\source\repos\w8p1.c\x64\Debug\w8p1.c.exe'
