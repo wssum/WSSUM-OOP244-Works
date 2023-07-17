@@ -132,7 +132,7 @@ namespace sdds {
 
 		if ((passed == true)&& istr)
 		{
-			m_authorName = new char[strlen(author) + 1];
+			m_authorName = new char[strlen(author) + 1];//This part for some odd reason is not copying the authors name correctly.
 			strcpy(m_authorName, author);
 		}
 		else

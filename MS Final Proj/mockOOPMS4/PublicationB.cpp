@@ -39,10 +39,11 @@ piece of work is entirely of my own creation.
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <string>
+#include <cstring>
 #include <ctype.h>
 #include <ctime>
-#include <iomanip>
 #include "UtilsB.h"
+#include <iomanip>
 #include "PublicationB.h"
 #include "DateB.h"
 #include "LibB.h"
@@ -94,14 +95,14 @@ namespace sdds {
 
 	void Publication::resetDate()//Tested odd its returning the worng date.
 	{
-		int day = currentDD();
-		int mon = currentMM();
-		int year = currentYYYY();
+		//int day = currentDD();
+		//int mon = currentMM();
+		//int year = currentYYYY();
 
-		m_date = Date(year, mon, day);
+		m_date = Date(sdds_year, sdds_mon, sdds_day);
 	}
 
-	Publication::Publication() :m_date(currentYYYY(), currentMM(), currentDD())
+	Publication::Publication() :m_date(sdds_year, sdds_mon, sdds_day)
 	{
 		strcpy(m_title, "");
 		strcpy(m_shelfId, "");
@@ -168,18 +169,25 @@ namespace sdds {
 		resetDate();
 		char id[100] = " ";
 		string title{};
-		bool test{};
 
 		if (conIO(istr))
 		{
 			cout << "Shelf No: ";
 			istr >> id;
-			istr.clear();
-			istr.ignore(1000, '\n');
+			if (strlen(id) > SDDS_SHELF_ID_LEN)
+			{
+				istr.setstate(std::ios::failbit);
+			}
+			else
+			{
+				istr.clear();
+				istr.ignore(1000, '\n');
+			}
 			cout << "Title: ";
 			getline(istr, title);
 			cout << "Date: ";
 			m_date.read(istr);
+
 		}
 		else
 		{
@@ -190,18 +198,17 @@ namespace sdds {
 			istr.ignore();
 
 			getline(istr, title, '\t');
-			istr.ignore();
+
 
 			istr >> m_membership;
 			istr.ignore();
 
+
 			m_date.read(istr);
+
 		}
 
-		if (strlen(id) > SDDS_SHELF_ID_LEN)
-		{
-			istr.setstate(std::ios::failbit);
-		}
+
 
 		if (m_date.errCode() != 0)
 		{
@@ -211,7 +218,7 @@ namespace sdds {
 		if (istr)
 		{
 			strcpy(m_shelfId, id);
-			strcpy(m_title, title.c_str());
+			strcpy(m_title, title.c_str());//
 		}
 
 		return istr;
@@ -223,22 +230,21 @@ namespace sdds {
 
 		if (conIO(os))
 		{
-			os << "1234567890123456789012345678901234567890123456789012345678901234567890" << endl;
 			os << "| " << m_shelfId << " | ";
 			os << left << setw(SDDS_TITLE_WIDTH) << setfill('.') << m_title;
 			if ((m_membership >= 10000) && (m_membership <= 99999))
 			{
-				os << " | " << m_membership << " | " << m_date << " |" << endl;
+				os << " | " << m_membership << " | " << m_date << " |";
 			}
 			else
 			{
-				os << " |" << "  N/A  " << "| " << m_date << " |" << endl;
+				os << " |" << "  N/A  " << "| " << m_date << " |";
 			}
 
 		}
 		else
 		{
-			os << type() << "\t\t" << m_libRef << "\t" << m_shelfId << "\t" << m_title << "\t\t" << m_membership << "\t" << m_date;
+			os << endl << type() << "\t" << m_libRef << "\t" << m_shelfId << "\t" << m_title << "\t" << m_membership << "\t" << m_date;
 		}
 		return os;
 	}

@@ -33,8 +33,8 @@ piece of work is entirely of my own creation.
 // Name               Date                 Reason
 // 
 /////////////////////////////////////////////////////////////////
-#ifndef SDDS_DATEB_H__
-#define SDDS_DATEB_H__
+#ifndef SDDS_DATE_H__
+#define SDDS_DATE_H__
 #include <iostream>
 namespace sdds {
     const int NO_ERROR = 0;
@@ -92,5 +92,8 @@ namespace sdds {
     std::istream& operator>>(std::istream& is, Date& RO);
 
     extern bool sdds_test;
+    extern int sdds_year;
+    extern int sdds_mon;
+    extern int sdds_day;
 }
 #endif
