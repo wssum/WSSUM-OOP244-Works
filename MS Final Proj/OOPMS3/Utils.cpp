@@ -146,9 +146,9 @@ namespace sdds {
 
 	int currentMM()
 	{
-        time_t t = time(NULL);
+		time_t t = time(NULL);
 		tm lt = *localtime(&t);
-	    int month = lt.tm_mon + 1;
+		int month = lt.tm_mon + 1;
 
 		return month;
 	}

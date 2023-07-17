@@ -44,7 +44,7 @@ piece of work is entirely of my own creation.
 namespace sdds {
 
 
-	class Publication: public Streamable
+	class Publication : public Streamable
 	{
 		char m_title[255];
 		char m_shelfId[4 + 1];
@@ -69,9 +69,8 @@ namespace sdds {
 		std::istream& read(std::istream& istr);
 
 	};
-	
+
 }
 #endif
-
 
 

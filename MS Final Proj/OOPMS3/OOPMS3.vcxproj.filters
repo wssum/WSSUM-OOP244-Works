@@ -15,36 +15,36 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Date.h">
+    <ClInclude Include="Streamable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Utils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Publication.h">
+    <ClInclude Include="Date.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Lib.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Streamable.h">
+    <ClInclude Include="Publication.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Date.cpp">
+    <ClCompile Include="Utils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Publication.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Utils.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ms3_tester.cpp">
+    <ClCompile Include="Date.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Streamable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ms3_tester.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

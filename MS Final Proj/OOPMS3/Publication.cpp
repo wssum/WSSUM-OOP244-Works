@@ -88,7 +88,7 @@ namespace sdds {
 		{
 			yesORno = true;
 		}
-	
+
 		return yesORno;
 	}
 
@@ -101,7 +101,7 @@ namespace sdds {
 		m_date = Date(year, mon, day);
 	}
 
-	Publication::Publication():m_date(currentYYYY(), currentMM(), currentDD())
+	Publication::Publication() :m_date(currentYYYY(), currentMM(), currentDD())
 	{
 		strcpy(m_title, "");
 		strcpy(m_shelfId, "");
@@ -110,7 +110,7 @@ namespace sdds {
 		resetDate();
 	}
 
-	
+
 	bool Publication:: operator==(const char* title)const
 	{
 		bool yesORno{};
@@ -161,7 +161,7 @@ namespace sdds {
 
 	}
 
-	std::istream& Publication:: read(std::istream& istr)//Unfinished
+	std::istream& Publication::read(std::istream& istr)//Unfinished
 	{
 		strcpy(m_title, "");
 		strcpy(m_shelfId, "");
@@ -169,7 +169,7 @@ namespace sdds {
 		char id[100] = " ";
 		string title{};
 		bool test{};
-		
+
 		if (conIO(istr))
 		{
 			cout << "Shelf No: ";
@@ -183,7 +183,7 @@ namespace sdds {
 				istr.clear();
 				istr.ignore(1000, '\n');
 			}
-			cout << "Title: ";		
+			cout << "Title: ";
 			getline(istr, title);
 			cout << "Date: ";
 			m_date.read(istr);
@@ -198,15 +198,17 @@ namespace sdds {
 			istr.ignore();
 
 			getline(istr, title, '\t');
-			istr.ignore();
+
 
 			istr >> m_membership;
 			istr.ignore();
 
+
 			m_date.read(istr);
+
 		}
 
-		
+
 
 		if (m_date.errCode() != 0)
 		{
@@ -223,26 +225,26 @@ namespace sdds {
 
 	}
 
-	std::ostream& Publication:: write(std::ostream& os)const//Tested good
+	std::ostream& Publication::write(std::ostream& os)const//Tested good
 	{
 
 		if (conIO(os))
 		{
 			os << "| " << m_shelfId << " | ";
-			os << left << setw(SDDS_TITLE_WIDTH)<< setfill('.') << m_title;
+			os << left << setw(SDDS_TITLE_WIDTH) << setfill('.') << m_title;
 			if ((m_membership >= 10000) && (m_membership <= 99999))
 			{
-				os << " | " << m_membership << " | " << m_date << " |"<< endl;
+				os << " | " << m_membership << " | " << m_date << " |";
 			}
 			else
 			{
 				os << " |" << "  N/A  " << "| " << m_date << " |";
 			}
-			
+
 		}
 		else
 		{
-			os << type() << "\t\t" << m_libRef << "\t" << m_shelfId << "\t" << m_title << "\t\t" << m_membership << "\t" << m_date;
+			os << endl << type() << "\t" << m_libRef << "\t" << m_shelfId << "\t" << m_title << "\t" << m_membership << "\t" << m_date;
 		}
 		return os;
 	}
