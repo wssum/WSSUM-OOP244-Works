@@ -39,6 +39,7 @@ piece of work is entirely of my own creation.
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <string>
+#include <cstring>
 #include <ctype.h>
 #include <ctime>
 #include "Utils.h"
@@ -94,14 +95,14 @@ namespace sdds {
 
 	void Publication::resetDate()//Tested odd its returning the worng date.
 	{
-		int day = currentDD();
-		int mon = currentMM();
-		int year = currentYYYY();
+		//int day = currentDD();
+		//int mon = currentMM();
+		//int year = currentYYYY();
 
-		m_date = Date(year, mon, day);
+		m_date = Date(sdds_year, sdds_mon, sdds_day);
 	}
 
-	Publication::Publication() :m_date(currentYYYY(), currentMM(), currentDD())
+	Publication::Publication() :m_date(sdds_year, sdds_mon, sdds_day)
 	{
 		strcpy(m_title, "");
 		strcpy(m_shelfId, "");
@@ -168,7 +169,6 @@ namespace sdds {
 		resetDate();
 		char id[100] = " ";
 		string title{};
-		bool test{};
 
 		if (conIO(istr))
 		{
