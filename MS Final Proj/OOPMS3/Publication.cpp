@@ -95,20 +95,16 @@ namespace sdds {
 
 	void Publication::resetDate()//Tested odd its returning the worng date.
 	{
-		//int day = currentDD();
-		//int mon = currentMM();
-		//int year = currentYYYY();
-
-		m_date = Date(sdds_year, sdds_mon, sdds_day);
+		m_date = Date();
 	}
 
-	Publication::Publication() :m_date(sdds_year, sdds_mon, sdds_day)
+	Publication::Publication() :m_date()
 	{
 		strcpy(m_title, "");
 		strcpy(m_shelfId, "");
 		set(0);
 		setRef(-1);
-		resetDate();
+
 	}
 
 
