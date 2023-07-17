@@ -38,7 +38,7 @@ namespace sdds
 		//LblShape(const LblShape&) = delete;
 		//LblShape operator = (const LblShape&) = delete;
 		LblShape();
-		LblShape(const char* string);
+		LblShape(const char* cstr);
 		~LblShape();
 		void getSpecs(std::istream& is);
 	};

@@ -38,7 +38,7 @@ namespace sdds
 		m_width = 0;
 	}
 
-	Rectangle::Rectangle(const char* string, int width, int height) :LblShape(string)
+	Rectangle::Rectangle(const char* cstr, int width, int height) :LblShape(cstr)
 	{
 
 		if (height >= 3)

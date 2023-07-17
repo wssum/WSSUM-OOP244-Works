@@ -35,7 +35,7 @@ namespace sdds
 		int m_height;
 	public:
 		Rectangle();
-		Rectangle(const char* string, int width, int height);
+		Rectangle(const char* cstr, int width, int height);
 		void draw(std::ostream& os)const;
 		void getSpecs(std::istream& is);
 

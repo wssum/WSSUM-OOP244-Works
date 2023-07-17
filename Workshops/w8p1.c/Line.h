@@ -35,7 +35,7 @@ namespace sdds
 		int m_length;
 	public:
 		Line();
-		Line(const char* string, int length);
+		Line(const char* cstr, int length);
 		void getSpecs(std::istream& is);
 		void draw(std::ostream& os)const;
 

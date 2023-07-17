@@ -43,16 +43,16 @@ namespace sdds
 
 	}
 
-	LblShape::LblShape(const char* string)
+	LblShape::LblShape(const char* cstr)
 	{
-		m_label = new char[strlen(string) + 1];
+		m_label = new char[strlen(cstr) + 1];
 
-		strcpy(m_label, string);
+		strcpy(m_label, cstr);
 	}
 
 	LblShape::~LblShape()
 	{
-		cout << "deleted"<<endl;
+		//cout << "deleted"<<endl;
 		delete[]m_label;
 	}
 
@@ -60,6 +60,7 @@ namespace sdds
 	{
 		string label{};
 		getline(is, label, ',');
+		delete[] m_label;
 		m_label = new char[strlen(label.c_str()) + 1];
 
 		strcpy(m_label, label.c_str());

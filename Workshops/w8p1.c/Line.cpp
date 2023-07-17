@@ -36,7 +36,7 @@ namespace sdds
 		m_length = 0;
 	}
 
-	Line::Line(const char* string, int length) :LblShape(string)
+	Line::Line(const char* cstr, int length) :LblShape(cstr)
 	{
 		m_length = length;
 	}
