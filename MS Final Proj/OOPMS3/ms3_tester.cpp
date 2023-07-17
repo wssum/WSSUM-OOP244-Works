@@ -1,12 +1,9 @@
 // Final Project Milestone 3
 // Periodical Publication 
-// File	ms3_tester.cpp
-// Version 1.0
 // Author	Fardad Soleimanloo
 // Revision History
 // -----------------------------------------------------------
 // Name               Date                 Reason
-// Fardad             2021/11/15		       Preliminary release
 /////////////////////////////////////////////////////////////////
 #include <iostream>
 #include <fstream>
@@ -17,9 +14,17 @@
 
 using namespace std;
 using namespace sdds;
+
+void fcopy(const char* dest, const char* source) {
+    ifstream fin(source);
+    ofstream fout(dest);
+    char ch;
+    while (fin.get(ch)) fout << ch;
+}
+
 Publication readPublication(istream& istr) {
     Publication P;
-    cin >> P;
+    istr >> P;
     return P;
 }
 Publication getNextRec(ifstream& ifstr) {
@@ -32,6 +37,7 @@ Publication getNextRec(ifstream& ifstr) {
 int main() {
     sdds::sdds_test = true;
     Publication pd;
+    fcopy("Periodicals.txt", "PeriodicalsOriginal.txt");
     cout << "An Invalid publication printout:" << endl;
     cout << ">" << pd << "<" << endl;
     cout << "Enter the following: " << endl
@@ -50,7 +56,7 @@ int main() {
     cout << "Enter the following: " << endl
         << "P123" << endl
         << "Seneca Weekly" << endl
-        << "2021/13/17" << endl
+        << "2023/13/17" << endl
         << "------------------------------" << endl;
     pd = readPublication(cin);
     if (!cin) {
@@ -65,7 +71,7 @@ int main() {
     cout << "Enter the following: " << endl
         << "P123" << endl
         << "Seneca Weekly" << endl
-        << "2021/11/17" << endl
+        << "2023/11/17" << endl
         << "------------------------------" << endl;
     pd = readPublication(cin);
     cout << "You entered:" << endl;

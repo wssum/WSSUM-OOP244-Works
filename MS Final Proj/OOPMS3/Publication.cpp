@@ -174,12 +174,20 @@ namespace sdds {
 		{
 			cout << "Shelf No: ";
 			istr >> id;
-			istr.clear();
-			istr.ignore(1000, '\n');
-			cout << "Title: ";
+			if (strlen(id) > SDDS_SHELF_ID_LEN)
+			{
+				istr.setstate(std::ios::failbit);
+			}
+			else
+			{
+				istr.clear();
+				istr.ignore(1000, '\n');
+			}
+			cout << "Title: ";		
 			getline(istr, title);
 			cout << "Date: ";
 			m_date.read(istr);
+
 		}
 		else
 		{
@@ -198,10 +206,7 @@ namespace sdds {
 			m_date.read(istr);
 		}
 
-		if (strlen(id) > SDDS_SHELF_ID_LEN)
-		{
-			istr.setstate(std::ios::failbit);
-		}
+		
 
 		if (m_date.errCode() != 0)
 		{
@@ -223,7 +228,6 @@ namespace sdds {
 
 		if (conIO(os))
 		{
-			os << "1234567890123456789012345678901234567890123456789012345678901234567890" << endl;
 			os << "| " << m_shelfId << " | ";
 			os << left << setw(SDDS_TITLE_WIDTH)<< setfill('.') << m_title;
 			if ((m_membership >= 10000) && (m_membership <= 99999))
@@ -232,7 +236,7 @@ namespace sdds {
 			}
 			else
 			{
-				os << " |" << "  N/A  " << "| " << m_date << " |" << endl;
+				os << " |" << "  N/A  " << "| " << m_date << " |";
 			}
 			
 		}

@@ -92,5 +92,8 @@ namespace sdds {
     std::istream& operator>>(std::istream& is, Date& RO);
 
     extern bool sdds_test;
+    extern int sdds_year;
+    extern int sdds_mon;
+    extern int sdds_day;
 }
 #endif
