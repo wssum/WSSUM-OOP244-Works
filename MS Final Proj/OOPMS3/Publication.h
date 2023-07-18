@@ -67,7 +67,8 @@ namespace sdds {
 		bool conIO(std::ios& io)const;
 		std::ostream& write(std::ostream& os)const;
 		std::istream& read(std::istream& istr);
-                Publication& operator=(const Publication& arg);
+        Publication& operator=(const Publication& arg);
+		Publication(const Publication& arg);
 	};
 
 }

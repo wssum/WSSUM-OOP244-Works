@@ -285,5 +285,19 @@ namespace sdds {
 		return *this;
 	}
 
+		Publication::Publication(const Publication& arg)
+		{
+			m_title = new char[strlen(arg.m_title) + 1];
+
+			strcpy(m_title, arg.m_title);
+			strcpy(m_shelfId, arg.m_shelfId);
+
+			m_date = arg.m_date;
+
+			m_membership = arg.m_membership;
+
+			m_libRef = arg.m_libRef;
+		}
+
 
  }
