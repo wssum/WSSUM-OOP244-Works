@@ -40,7 +40,7 @@ piece of work is entirely of my own creation.
 #define PUBLICATION_H
 #include "Streamable.h"
 #include "Date.h"
-
+//Still need to implement 3 funcs
 namespace sdds {
 
 
@@ -67,7 +67,7 @@ namespace sdds {
 		bool conIO(std::ios& io)const;
 		std::ostream& write(std::ostream& os)const;
 		std::istream& read(std::istream& istr);
-
+                Publication& operator=(const Publication& arg);
 	};
 
 }

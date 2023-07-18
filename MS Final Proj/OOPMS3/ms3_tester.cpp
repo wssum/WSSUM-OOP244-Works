@@ -8,7 +8,6 @@
 #include <iostream>
 #include <fstream>
 #include "Publication.h"
-#include <crtdbg.h>
 #include "Utils.h"
 #include "Date.h"
 
@@ -116,6 +115,5 @@ int main() {
             cout << pd << (pd == "Star" ? "<<<" : "") << endl;
         }
     }
-    _CrtDumpMemoryLeaks();
     return 0;
 }

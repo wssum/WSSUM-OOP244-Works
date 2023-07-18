@@ -101,6 +101,7 @@ namespace sdds {
 	Publication::Publication() :m_date()
 	{
 		m_title = new char[255];
+                strcpy(m_title,"");
 		strcpy(m_shelfId, "");
 		set(0);
 		setRef(-1);
@@ -122,9 +123,7 @@ namespace sdds {
 			{
 				yesORno = false;
 			}
-		}
-	
-		return yesORno;
+		}		return yesORno;
 	}
 
 	Date Publication::checkoutDate()const
@@ -134,10 +133,12 @@ namespace sdds {
 
 	Publication::~Publication()
 	{
-		cout << "deconstructed" << endl;
+             if(m_title)
+	     {
 		delete[] m_title;
 		m_title = nullptr;
-	}
+	     }	
+        }
 
 	Publication::operator bool()const//Tested good
 	{
@@ -174,7 +175,6 @@ namespace sdds {
 
 	std::istream& Publication::read(std::istream& istr)//Unfinished
 	{
-		
 		strcpy(m_shelfId, "");
 		resetDate();
 		char id[100] = " ";
@@ -227,14 +227,14 @@ namespace sdds {
 
 		if (istr)
 		{
-			if (m_title != nullptr)
-			{
-				cout << "deleted from read func" << endl;
-				delete[] m_title;
-				m_title = nullptr;
-			}
+                        if(m_title != nullptr)
+                        {
+                       // cout << "deleted from read" << endl;
+                        delete[] m_title;
+			m_title = nullptr;
+                         m_title = new char[strlen(title.c_str()) + 1];
+                        }
 			
-			m_title = new char[strlen(title.c_str()) + 1];
 			strcpy(m_shelfId, id);
 			strcpy(m_title, title.c_str());
 		}
@@ -266,6 +266,24 @@ namespace sdds {
 		}
 		return os;
 	}
+    	Publication& Publication:: operator=(const Publication& arg)
+	{
+		if (this != &arg)
+		{
+			delete[] m_title;
+			m_title = new char[strlen(arg.m_title) + 1];
+
+			strcpy(m_title, arg.m_title);
+			strcpy(m_shelfId, arg.m_shelfId);
+
+			m_date = arg.m_date;
+
+			m_membership = arg.m_membership;
+
+			m_libRef = arg.m_libRef;
+		}
+		return *this;
+	}
 
 
-}
+ }
