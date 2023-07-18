@@ -95,20 +95,17 @@ namespace sdds {
 
 	void Publication::resetDate()//Tested odd its returning the worng date.
 	{
-		//int day = currentDD();
-		//int mon = currentMM();
-		//int year = currentYYYY();
-
-		m_date = Date(sdds_year, sdds_mon, sdds_day);
+		m_date = Date();
 	}
 
-	Publication::Publication() :m_date(sdds_year, sdds_mon, sdds_day)
+	Publication::Publication() :m_date()
 	{
+		m_title = new char[255];
 		strcpy(m_title, "");
 		strcpy(m_shelfId, "");
 		set(0);
 		setRef(-1);
-		resetDate();
+
 	}
 
 
@@ -116,15 +113,17 @@ namespace sdds {
 	{
 		bool yesORno{};
 
-		if (strstr(m_title, title))
+		if (m_title != nullptr)
 		{
-			yesORno = true;
-		}
-		else
-		{
-			yesORno = false;
-		}
-		return yesORno;
+			if (strstr(m_title, title))
+			{
+				yesORno = true;
+			}
+			else
+			{
+				yesORno = false;
+			}
+		}		return yesORno;
 	}
 
 	Date Publication::checkoutDate()const
@@ -134,12 +133,24 @@ namespace sdds {
 
 	Publication::~Publication()
 	{
+		if (m_title)
+		{
+			delete[] m_title;
+			m_title = nullptr;
+		}
 	}
 
 	Publication::operator bool()const//Tested good
 	{
 		bool yesORno{};
-		yesORno = strcmp(m_title, "");
+		if (m_title == nullptr)
+		{
+			yesORno = false;
+		}
+		else
+		{
+			yesORno = true;
+		}
 		yesORno = strcmp(m_shelfId, "");
 
 		return yesORno;
@@ -164,7 +175,6 @@ namespace sdds {
 
 	std::istream& Publication::read(std::istream& istr)//Unfinished
 	{
-		strcpy(m_title, "");
 		strcpy(m_shelfId, "");
 		resetDate();
 		char id[100] = " ";
@@ -217,8 +227,16 @@ namespace sdds {
 
 		if (istr)
 		{
+			if (m_title != nullptr)
+			{
+				// cout << "deleted from read" << endl;
+				delete[] m_title;
+				m_title = nullptr;
+				m_title = new char[strlen(title.c_str()) + 1];
+			}
+
 			strcpy(m_shelfId, id);
-			strcpy(m_title, title.c_str());//
+			strcpy(m_title, title.c_str());
 		}
 
 		return istr;
@@ -247,6 +265,37 @@ namespace sdds {
 			os << endl << type() << "\t" << m_libRef << "\t" << m_shelfId << "\t" << m_title << "\t" << m_membership << "\t" << m_date;
 		}
 		return os;
+	}
+	Publication& Publication:: operator=(const Publication& arg)
+	{
+		if (this != &arg)
+		{
+			delete[] m_title;
+			m_title = new char[strlen(arg.m_title) + 1];
+
+			strcpy(m_title, arg.m_title);
+			strcpy(m_shelfId, arg.m_shelfId);
+
+			m_date = arg.m_date;
+
+			m_membership = arg.m_membership;
+
+			m_libRef = arg.m_libRef;
+		}
+		return *this;
+	}
+	Publication::Publication(const Publication& arg)
+	{
+		m_title = new char[strlen(arg.m_title) + 1];
+
+		strcpy(m_title, arg.m_title);
+		strcpy(m_shelfId, arg.m_shelfId);
+
+		m_date = arg.m_date;
+
+		m_membership = arg.m_membership;
+
+		m_libRef = arg.m_libRef;
 	}
 
 

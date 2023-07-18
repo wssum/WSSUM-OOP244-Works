@@ -36,17 +36,17 @@ piece of work is entirely of my own creation.
 //
 /////////////////////////////////////////////////////////////////
 ***********************************************************************/
-#ifndef PUBLICATION_H
-#define PUBLICATION_H
-
-#include "DateB.h"
+#ifndef PUBLICATIONB_H
+#define PUBLICATIONB_H
 #include "StreamableB.h"
-
+#include "DateB.h"
+//Still need to implement 3 funcs
 namespace sdds {
+
 
 	class Publication : public Streamable
 	{
-		char m_title[255];
+		char* m_title{};
 		char m_shelfId[4 + 1];
 		int m_membership;
 		int m_libRef;
@@ -63,13 +63,15 @@ namespace sdds {
 		operator const char* ()const;
 		Publication();
 		virtual ~Publication();
-		virtual operator bool()const;
+		operator bool()const;
 		bool conIO(std::ios& io)const;
 		std::ostream& write(std::ostream& os)const;
 		std::istream& read(std::istream& istr);
-
+		Publication& operator=(const Publication& arg);
+		Publication(const Publication& arg);
 	};
 
 }
 #endif
+
 
