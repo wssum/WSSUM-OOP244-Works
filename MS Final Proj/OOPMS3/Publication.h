@@ -40,13 +40,13 @@ piece of work is entirely of my own creation.
 #define PUBLICATION_H
 #include "Streamable.h"
 #include "Date.h"
-//Still need to implement 3 funcs
+
 namespace sdds {
 
 
 	class Publication : public Streamable
 	{
-		char m_title[255];
+		char* m_title{};
 		char m_shelfId[4 + 1];
 		int m_membership;
 		int m_libRef;

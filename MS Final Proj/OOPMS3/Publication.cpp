@@ -100,7 +100,7 @@ namespace sdds {
 
 	Publication::Publication() :m_date()
 	{
-		strcpy(m_title, "");
+		m_title = new char[255];
 		strcpy(m_shelfId, "");
 		set(0);
 		setRef(-1);
@@ -112,14 +112,18 @@ namespace sdds {
 	{
 		bool yesORno{};
 
-		if (strstr(m_title, title))
+		if (m_title != nullptr)
 		{
-			yesORno = true;
+			if (strstr(m_title, title))
+			{
+				yesORno = true;
+			}
+			else
+			{
+				yesORno = false;
+			}
 		}
-		else
-		{
-			yesORno = false;
-		}
+	
 		return yesORno;
 	}
 
@@ -130,12 +134,22 @@ namespace sdds {
 
 	Publication::~Publication()
 	{
+		cout << "deconstructed" << endl;
+		delete[] m_title;
+		m_title = nullptr;
 	}
 
 	Publication::operator bool()const//Tested good
 	{
 		bool yesORno{};
-		yesORno = strcmp(m_title, "");
+		if (m_title == nullptr)
+		{
+			yesORno = false;
+		}
+		else
+		{
+			yesORno = true;
+		}
 		yesORno = strcmp(m_shelfId, "");
 
 		return yesORno;
@@ -160,7 +174,7 @@ namespace sdds {
 
 	std::istream& Publication::read(std::istream& istr)//Unfinished
 	{
-		strcpy(m_title, "");
+		
 		strcpy(m_shelfId, "");
 		resetDate();
 		char id[100] = " ";
@@ -213,8 +227,16 @@ namespace sdds {
 
 		if (istr)
 		{
+			if (m_title != nullptr)
+			{
+				cout << "deleted from read func" << endl;
+				delete[] m_title;
+				m_title = nullptr;
+			}
+			
+			m_title = new char[strlen(title.c_str()) + 1];
 			strcpy(m_shelfId, id);
-			strcpy(m_title, title.c_str());//
+			strcpy(m_title, title.c_str());
 		}
 
 		return istr;
