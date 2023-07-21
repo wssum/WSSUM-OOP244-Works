@@ -1,12 +1,10 @@
 // Final Project Milestone 4
 // Book 
 // File	ms4_tester.cpp
-// Version 1.0
 // Author	Fardad Soleimanloo
 // Revision History
 // -----------------------------------------------------------
 // Name               Date                 Reason
-//                    This will not change the output
 /////////////////////////////////////////////////////////////////
 #include <iostream>
 #include <fstream>
@@ -17,29 +15,37 @@
 
 using namespace std;
 using namespace sdds;
+
+void fcopy(const char* dest, const char* source) {
+    ifstream fin(source);
+    ofstream fout(dest);
+    char ch;
+    while (fin.get(ch)) fout << ch;
+}
+
 Book readBook(istream& istr) {
     Book P;
     istr >> P;
     return P;
 }
-/*
 Book getNextRec(ifstream& ifstr) {
     Book P;
     ifstr >> P;
     ifstr.ignore(1000, '\n');
     return P;
-}*/
+}
 
 int main() {
     sdds::sdds_test = true;
     Book pd;
-  /*  cout << "An Invalid Book printout:" << endl;
+    fcopy("Books.txt", "BooksOriginal.txt");
+/*    cout << "An Invalid Book printout:" << endl;
     cout << ">" << pd << "<" << endl;
     cout << endl << "Enter the following: " << endl
         << "P1234" << endl
         << "------------------------------" << endl;
     pd = readBook(cin);
-   if (!cin) {
+    if (!cin) {
         cin.clear();
         cin.ignore(1000, '\n');
     }
@@ -51,7 +57,7 @@ int main() {
     cout << endl << "Enter the following: " << endl
         << "P123" << endl
         << "Seneca Handbook" << endl
-        << "2021/13/17" << endl
+        << "2023/13/17" << endl
         << "------------------------------" << endl;
     pd = readBook(cin);
     if (!cin) {
@@ -63,22 +69,17 @@ int main() {
     }
     cout << "You entered:" << endl;
     cout << ">" << pd << "<" << endl;*/
-   cout << endl << "Enter the following: " << endl
+    cout << endl << "Enter the following: " << endl
         << "P123" << endl
         << "The Story of My Experiments with Truth" << endl
-        << "2021/11/17" << endl
+        << "2023/11/17" << endl
         << "Mohandas Karamchand Gandhi" << endl
         << "------------------------------" << endl;
     pd = readBook(cin);
     cout << "You entered:" << endl;
     cout << pd << endl;
     cout << "And the title is agian: \"" << (const char*)pd << "\"" << endl;
-    return 0;
-}
-
-
-
-    /*pd.set(12345);
+    pd.set(12345);
     if (pd.onLoan()) {
         cout << "Now this publication is on loan to a member with the id: 12345" << endl;
         cout << "The checkout date is: " << pd.checkoutDate() << endl;
@@ -114,4 +115,6 @@ int main() {
             cout.unsetf(ios::right);
             cout << pd << (pd == "Star" ? "<<<" : "") << endl;
         }
-    }*/
+    }
+    return 0;
+}

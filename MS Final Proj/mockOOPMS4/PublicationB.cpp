@@ -229,7 +229,6 @@ namespace sdds {
 		{
 			if (m_title != nullptr)
 			{
-				// cout << "deleted from read" << endl;
 				delete[] m_title;
 				m_title = nullptr;
 				m_title = new char[strlen(title.c_str()) + 1];
@@ -249,7 +248,18 @@ namespace sdds {
 		if (conIO(os))
 		{
 			os << "| " << m_shelfId << " | ";
-			os << left << setw(SDDS_TITLE_WIDTH) << setfill('.') << m_title;
+			if (static_cast<int>(strlen(m_title)) < SDDS_TITLE_WIDTH)
+			{
+				os << left << setw(SDDS_TITLE_WIDTH) << setfill('.') << m_title;
+			}
+			else 
+			{
+				for (int i = 0; i < SDDS_TITLE_WIDTH; i++)
+				{
+					os << m_title[i];
+				}
+			}
+			
 			if ((m_membership >= 10000) && (m_membership <= 99999))
 			{
 				os << " | " << m_membership << " | " << m_date << " |";

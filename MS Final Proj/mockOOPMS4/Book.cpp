@@ -50,7 +50,8 @@ using namespace std;
 namespace sdds {
 	Book::Book()
 	{
-
+		m_authorName = new char[255];
+		strcpy(m_authorName, "");
 	}
 
 	Book:: ~Book()
@@ -84,15 +85,32 @@ namespace sdds {
 
 		if (conIO(os))
 		{
-			os << ' ';
-			os << setw(SDDS_AUTHOR_WIDTH) << m_authorName;
-			os << " |";
+			if (static_cast<int>(strlen(m_authorName)) == SDDS_AUTHOR_WIDTH)
+			{
+				os << " ";
+				os << m_authorName;
+				os << " |";
+			}
+			else if(static_cast<int>(strlen(m_authorName)) > SDDS_AUTHOR_WIDTH)
+			{
+				os << " ";
+				for (int i = 0; i < SDDS_AUTHOR_WIDTH; i++)
+				{
+					os << m_authorName[i];
+				}
+				os << " |";
+			}
+			else
+			{
+				os << " ";
+				os << left << setw(SDDS_AUTHOR_WIDTH) << setfill(' ') << m_authorName;
+				os << " |";
+			}
+		
 		}
 		else
 		{
-
 			os << "\t" << m_authorName;
-
 
 		}
 
@@ -108,16 +126,9 @@ namespace sdds {
 	{
 		string author{};
 		bool passed{};
-		if (Publication::read(istr))
-		{
-			passed = true;
-			istr.clear();
-			istr.ignore(1, '\n');
-		}
+		Publication::read(istr);
 		
-		
-
-		if (!m_authorName)
+		if (m_authorName != nullptr)
 		{
 			delete[] m_authorName;
 			m_authorName = nullptr;
@@ -125,21 +136,27 @@ namespace sdds {
 
 		if (conIO(istr))
 		{
+			istr.clear();
 			cout << "Author: ";
-			if (passed)
+			if (istr)
 			{
+				istr.clear();
+				istr.ignore(1, '\n');
 				getline(istr, author);
 			}		
 		}
 		else
 		{
-			istr.ignore('\t');
+			istr.clear();
+			istr.ignore(1, '\t');
 			getline(istr, author);
+			istr.clear();
+			istr.ignore(1000, '\n');
 		}
 
-		if ((passed == true)&& istr)
+		if (istr)
 		{
-			m_authorName = new char[strlen(author.c_str()) + 1];//This part for some odd reason is not copying the authors name correctly.
+			m_authorName = new char[strlen(author.c_str()) + 1];
 			strcpy(m_authorName, author.c_str());
 		}
 		else
