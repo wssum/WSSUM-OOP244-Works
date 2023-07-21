@@ -52,6 +52,9 @@ namespace sdds {
 		operator bool()const;
 		std::ostream& write(std::ostream& os)const;
 		std::istream& read(std::istream& istr);
+		Book& operator=(const Book& arg);
+		Book(const Book& arg);
+		void displayAuthorName();//This is a dummy function im using to test if the authorname has been successfully copied please ignore it thankyou.
 	};
 }
 

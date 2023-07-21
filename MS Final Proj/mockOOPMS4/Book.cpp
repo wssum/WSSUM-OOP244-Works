@@ -84,7 +84,6 @@ namespace sdds {
 
 		if (conIO(os))
 		{
-
 			os << ' ';
 			os << setw(SDDS_AUTHOR_WIDTH) << m_authorName;
 			os << " |";
@@ -100,17 +99,23 @@ namespace sdds {
 		return os;
 	}
 
+	void Book::displayAuthorName()
+	{
+		cout << m_authorName << endl;
+	}
+
 	std::istream& Book::read(std::istream& istr)
 	{
-		char author[256] = " ";
+		string author{};
 		bool passed{};
 		if (Publication::read(istr))
 		{
 			passed = true;
+			istr.clear();
+			istr.ignore(1, '\n');
 		}
 		
-		istr.clear();
-		istr.ignore(1,'\n');
+		
 
 		if (!m_authorName)
 		{
@@ -121,26 +126,57 @@ namespace sdds {
 		if (conIO(istr))
 		{
 			cout << "Author: ";
-			istr >> author;
-			
+			if (passed)
+			{
+				getline(istr, author);
+			}		
 		}
 		else
 		{
 			istr.ignore('\t');
-			istr.getline(author, 256);
+			getline(istr, author);
 		}
 
 		if ((passed == true)&& istr)
 		{
-			m_authorName = new char[strlen(author) + 1];//This part for some odd reason is not copying the authors name correctly.
-			strcpy(m_authorName, author);
+			m_authorName = new char[strlen(author.c_str()) + 1];//This part for some odd reason is not copying the authors name correctly.
+			strcpy(m_authorName, author.c_str());
 		}
 		else
 		{
 			istr.setstate(std::ios::failbit);
 		}
-
+		
 		return istr;
 	}
 
+	Book::Book(const Book& arg):Publication(arg)
+	{
+		m_authorName = new char[strlen(arg.m_authorName) + 1];
+
+		strcpy(m_authorName, arg.m_authorName);
+	}
+
+	Book& Book::operator=(const Book& arg)
+	{
+		if (this != &arg)
+		{
+			Publication::operator=(arg);
+			if (arg.m_authorName != nullptr)
+			{
+				if (this->m_authorName != NULL)
+				{
+					delete[] this->m_authorName;
+					this->m_authorName = nullptr;
+				}
+				this->m_authorName = new char[strlen(arg.m_authorName) + 1];
+
+				strcpy(this->m_authorName, arg.m_authorName);
+			}
+		}
+
+		return *this;
+	}
+
+	
 }

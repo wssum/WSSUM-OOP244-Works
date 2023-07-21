@@ -298,5 +298,8 @@ namespace sdds {
 		m_libRef = arg.m_libRef;
 	}
 
-
+	void Publication::display()
+	{
+		cout << m_title << " " << m_shelfId << " " << m_date<<endl;
+	}
 }
