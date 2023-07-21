@@ -63,7 +63,7 @@ namespace sdds {
 		operator const char* ()const;
 		Publication();
 		virtual ~Publication();
-		operator bool()const;
+		virtual operator bool()const;
 		bool conIO(std::ios& io)const;
 		std::ostream& write(std::ostream& os)const;
 		std::istream& read(std::istream& istr);

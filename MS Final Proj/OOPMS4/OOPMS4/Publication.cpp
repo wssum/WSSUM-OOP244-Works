@@ -201,6 +201,7 @@ namespace sdds {
 		}
 		else
 		{
+			istr.clear();
 			istr >> m_libRef;
 			istr.ignore();
 

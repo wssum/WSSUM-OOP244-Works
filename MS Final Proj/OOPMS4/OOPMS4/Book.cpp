@@ -136,11 +136,9 @@ namespace sdds {
 
 		if (conIO(istr))
 		{
-			istr.clear();
 			cout << "Author: ";
 			if (istr)
 			{
-				istr.clear();
 				istr.ignore(1, '\n');
 				getline(istr, author);
 			}
@@ -149,9 +147,8 @@ namespace sdds {
 		{
 			istr.clear();
 			istr.ignore(1, '\t');
-			getline(istr, author);
-			istr.clear();
-			istr.ignore(1000, '\n');
+			istr >> noskipws >> author;
+			istr >> skipws;
 		}
 
 		if (istr)
