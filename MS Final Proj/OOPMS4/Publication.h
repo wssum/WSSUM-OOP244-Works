@@ -52,12 +52,12 @@ namespace sdds {
 		int m_libRef;
 		Date m_date;
 	public:
+                void resetDate();
 		bool operator==(const char* title)const;
 		Date checkoutDate()const;
 		virtual char type()const;
 		virtual void set(int member_id);
 		void setRef(int value);
-		void resetDate();
 		bool onLoan()const;
 		int getRef()const;
 		operator const char* ()const;

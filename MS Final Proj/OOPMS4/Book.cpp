@@ -39,6 +39,7 @@ piece of work is entirely of my own creation.
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <string>
+#include <cstring>
 #include <ctype.h>
 #include <ctime>
 #include <iomanip>
@@ -126,7 +127,7 @@ namespace sdds {
 	std::istream& Book::read(std::istream& istr)
 	{
 		char author[256];
-		bool passed{};
+	
 
 		Publication::read(istr);
 

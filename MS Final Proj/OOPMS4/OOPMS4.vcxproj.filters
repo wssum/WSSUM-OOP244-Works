@@ -15,42 +15,42 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Book.h">
+    <ClInclude Include="..\..\..\Downloads\Publication.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Utils.h">
+    <ClInclude Include="..\..\..\Downloads\Streamable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Lib.h">
+    <ClInclude Include="..\..\..\Downloads\Date.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Publication.h">
+    <ClInclude Include="..\..\..\Downloads\Utils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Streamable.h">
+    <ClInclude Include="..\..\..\Downloads\Lib.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Date.h">
+    <ClInclude Include="..\..\..\Downloads\Book.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Date.cpp">
+    <ClCompile Include="..\..\..\Downloads\Streamable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Book.cpp">
+    <ClCompile Include="..\..\..\Downloads\Publication.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Streamable.cpp">
+    <ClCompile Include="..\..\..\Downloads\Utils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Publication.cpp">
+    <ClCompile Include="..\..\..\Downloads\Date.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Utils.cpp">
+    <ClCompile Include="..\..\..\Downloads\ms4_tester.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ms4_tester.cpp">
+    <ClCompile Include="..\..\..\Downloads\Book.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

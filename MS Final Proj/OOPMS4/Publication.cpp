@@ -78,6 +78,7 @@ namespace sdds {
 	}
 	void Publication::setRef(int value)//Tested good
 	{
+                resetDate();
 		m_libRef = value;
 	}
 
@@ -128,7 +129,7 @@ namespace sdds {
 
 	Date Publication::checkoutDate()const
 	{
-		return m_date;
+		return Date();
 	}
 
 	Publication::~Publication()
