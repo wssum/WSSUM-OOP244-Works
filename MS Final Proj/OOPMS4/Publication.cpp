@@ -205,7 +205,7 @@ namespace sdds {
 			istr >> m_libRef;
 			istr.ignore();
 
-			istr>>id;
+			istr >> id;
 			istr.ignore();
 
 			getline(istr, title, '\t');
@@ -214,7 +214,6 @@ namespace sdds {
 			istr.ignore();
 
 			m_date.read(istr);
-
 		}
 
 
@@ -271,7 +270,7 @@ namespace sdds {
 		}
 		else
 		{
-			os << endl << type() << "\t" << m_libRef << "\t" << m_shelfId << "\t" << m_title << "\t" << m_membership << "\t" << m_date;
+			os << type() << "\t" << m_libRef << "\t" << m_shelfId << "\t" << m_title << "\t" << m_membership << "\t" << m_date;
 		}
 		return os;
 	}

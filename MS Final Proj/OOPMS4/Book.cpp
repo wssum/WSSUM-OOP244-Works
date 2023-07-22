@@ -42,6 +42,7 @@ piece of work is entirely of my own creation.
 #include <ctype.h>
 #include <ctime>
 #include <iomanip>
+#include <fstream>
 #include "Book.h"
 #include "Lib.h"
 
@@ -81,8 +82,10 @@ namespace sdds {
 
 	std::ostream& Book::write(std::ostream& os)const
 	{
+		if (conIO(os))
+		{
 			Publication::write(os);
-
+		}
 
 		if (conIO(os))
 		{
@@ -111,30 +114,21 @@ namespace sdds {
 		}
 		else
 		{
-
+			Publication::write(os<< endl<<Type());
 			os << "\t" << m_authorName;
-
+			
 		}
 
 		return os;
 	}
 
-	void Book::displayAuthorName()
-	{
-		cout << m_authorName << endl;
-	}
 
 	std::istream& Book::read(std::istream& istr)
 	{
-		string author{};
+		char author[256];
 		bool passed{};
-	
+
 		Publication::read(istr);
-		if (!conIO(istr))
-		{
-			istr.clear();
-			istr.ignore(1, '\t');
-		}
 
 		if (m_authorName != nullptr)
 		{
@@ -148,27 +142,27 @@ namespace sdds {
 			if (istr)
 			{
 				istr.ignore(1, '\n');
-				getline(istr, author);
+				istr.get(author,256);
 
 			}
 		}
 		else
 		{
-			getline(istr, author);
-			
-			
+			istr.clear();
+			istr.ignore(1, '\t');
+			istr.get(author, 256);
 		}
 
 		if (istr)
 		{
-			m_authorName = new char[strlen(author.c_str()) + 1];
-			strcpy(m_authorName, author.c_str());
+			m_authorName = new char[strlen(author) + 1];
+			strcpy(m_authorName, author);
 		}
 		else
 		{
 			istr.setstate(std::ios::failbit);
 		}
-
+	
 		return istr;
 	}
 
@@ -200,5 +194,9 @@ namespace sdds {
 		return *this;
 	}
 
+	void Book::displayAuthorName()
+	{
+		cout << m_authorName << endl;
+	}
 
 }

@@ -15,42 +15,42 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\WSSUM-OOP244-Works\MS Final Proj\OOPMS4\OOPMS4\Book.h">
+    <ClInclude Include="Book.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\WSSUM-OOP244-Works\MS Final Proj\OOPMS4\OOPMS4\Date.h">
+    <ClInclude Include="Utils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\WSSUM-OOP244-Works\MS Final Proj\OOPMS4\OOPMS4\Lib.h">
+    <ClInclude Include="Lib.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\WSSUM-OOP244-Works\MS Final Proj\OOPMS4\OOPMS4\Publication.h">
+    <ClInclude Include="Publication.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\WSSUM-OOP244-Works\MS Final Proj\OOPMS4\OOPMS4\Streamable.h">
+    <ClInclude Include="Streamable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\WSSUM-OOP244-Works\MS Final Proj\OOPMS4\OOPMS4\Utils.h">
+    <ClInclude Include="Date.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\WSSUM-OOP244-Works\MS Final Proj\OOPMS4\OOPMS4\Book.cpp">
+    <ClCompile Include="Date.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\WSSUM-OOP244-Works\MS Final Proj\OOPMS4\OOPMS4\Date.cpp">
+    <ClCompile Include="Book.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\WSSUM-OOP244-Works\MS Final Proj\OOPMS4\OOPMS4\ms4_tester.cpp">
+    <ClCompile Include="Streamable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\WSSUM-OOP244-Works\MS Final Proj\OOPMS4\OOPMS4\Publication.cpp">
+    <ClCompile Include="Publication.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\WSSUM-OOP244-Works\MS Final Proj\OOPMS4\OOPMS4\Streamable.cpp">
+    <ClCompile Include="Utils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\WSSUM-OOP244-Works\MS Final Proj\OOPMS4\OOPMS4\Utils.cpp">
+    <ClCompile Include="ms4_tester.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
