@@ -40,6 +40,7 @@ piece of work is entirely of my own creation.
 #include <iomanip>
 #include <iostream>
 #include <ctype.h>
+#include <cstring>
 using namespace std;
 #include "Utils.h"
 #include "LibApp.h"
@@ -48,16 +49,31 @@ namespace sdds {
 	//With this method the one arg constructor from menu class is called multiple times to initialize the titles of the Menu type objects within the LibApp Object.
 	LibApp::LibApp() : m_mainMenu("Seneca Library Application"), m_exitMenu("Changes have been made to the data, what would you like to do?")//<<<<(This Method)
 	{
-		m_changed = false;
+		
 		/*Using the << overload operator the Items from the Menu class is initialized with multiple strings.*/
 		m_mainMenu << "Add New Publication" << "Remove Publication" << "Checkout publication from library" << "Return publication to library";
 		/*Same as above.*/
 		m_exitMenu << "Save changes and exit" << "Cancel and go back to the main menu";
 	}
 
+	LibApp::LibApp(const char* fileName)
+	{
+		if (fileName != nullptr)
+		{
+			strcpy(m_fileName, fileName);
+		}
+		publicationMenu << "Book" << "Publication";
+		m_mainMenu << "Add New Publication" << "Remove Publication" << "Checkout publication from library" << "Return publication to library";
+		
+		m_exitMenu << "Save changes and exit" << "Cancel and go back to the main menu";
+	}
+
 	LibApp::~LibApp()
 	{
-
+		for (int i = 0; i < SDDS_LIBRARY_CAPACITY; i++)
+		{
+			delete PPA[i];
+		}
 	}
 
 	void LibApp::load()

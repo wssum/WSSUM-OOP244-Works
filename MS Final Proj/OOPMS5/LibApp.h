@@ -25,9 +25,17 @@ piece of work is entirely of my own creation.
 #ifndef SDDS_LIBAPP_H
 #define SDDS_LIBAPP_H
 #include "Menu.h"
+#include "Publication.h"
+#include "Lib.h"
 namespace sdds {
+	
 	class LibApp {
-		bool m_changed;
+		char m_fileName[256]{};
+		Publication PPA[SDDS_LIBRARY_CAPACITY]{};
+		int NOLP{};
+		int LLRN{};
+		bool m_changed{};
+		Menu publicationMenu;
 		Menu m_mainMenu;
 		Menu m_exitMenu;
 		bool confirm(const char* message);
@@ -45,6 +53,7 @@ namespace sdds {
 		void removePublication();
 		void checkOutPub();
 		void run();
+		LibApp(const char* fileName);
 		LibApp();
 		~LibApp();
 	};
