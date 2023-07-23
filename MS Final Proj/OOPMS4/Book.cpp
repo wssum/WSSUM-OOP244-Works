@@ -76,7 +76,7 @@ namespace sdds {
 		return yesOrNo;
 	}
 
-	char Book::Type()const
+	char Book::type()const
 	{
 		return 'B';
 	}
