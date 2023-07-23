@@ -69,8 +69,7 @@ namespace sdds {
 		std::istream& read(std::istream& istr);
 		virtual Publication& operator=(const Publication& arg);
 		Publication(const Publication& arg);
-		void display();
+		//void display();
 	};
-
 }
 #endif

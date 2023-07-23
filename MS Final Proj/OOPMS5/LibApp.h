@@ -55,7 +55,7 @@ namespace sdds {
 		void run();
 		LibApp(const char* fileName);
 		LibApp();
-		~LibApp();
+		virtual ~LibApp();
 	};
 }
 #endif // !SDDS_LIBAPP_H

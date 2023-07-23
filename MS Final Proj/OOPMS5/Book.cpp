@@ -197,9 +197,9 @@ namespace sdds {
 		Publication::resetDate();
 	}
 
-	void Book::displayAuthorName()
+	/*void Book::displayAuthorName()
 	{
 		cout << m_authorName << endl;
-	}
+	}*/
 
 }

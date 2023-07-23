@@ -47,7 +47,7 @@ namespace sdds {
 		char* m_authorName{};
 	public:
 		Book();
-		~Book();
+		virtual ~Book();
 		char type()const;
 		operator bool()const;
 		std::ostream& write(std::ostream& os)const;
@@ -55,7 +55,7 @@ namespace sdds {
 		Book& operator=(const Book& arg);
 		Book(const Book& arg);
 		void set(int);
-		void displayAuthorName();//This is a dummy function im using to test if the authorname has been successfully copied please ignore it thankyou.
+		//void displayAuthorName();//This is a dummy function im using to test if the authorname has been successfully copied please ignore it thankyou.
 	};
 }
 
