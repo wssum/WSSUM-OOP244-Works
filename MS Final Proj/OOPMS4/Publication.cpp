@@ -56,10 +56,7 @@ namespace sdds {
 	{
 		return m_title;
 	}
-	char Publication::type()const
-	{
-		return 'P';
-	}
+	
 
 	int Publication::getRef()const//Tested good
 	{
@@ -78,8 +75,7 @@ namespace sdds {
 	}
 	void Publication::setRef(int value)//Tested good
 	{
-                resetDate();
-		m_libRef = value;
+ 		m_libRef = value;
 	}
 
 	bool Publication::onLoan()const//Tested good
@@ -241,6 +237,11 @@ namespace sdds {
 
 	}
 
+	char Publication::type()const
+	{
+		return 'P';
+	}
+
 	std::ostream& Publication::write(std::ostream& os)const//Tested good
 	{
 
@@ -271,7 +272,7 @@ namespace sdds {
 		}
 		else
 		{
-			os << type() << "\t" << m_libRef << "\t" << m_shelfId << "\t" << m_title << "\t" << m_membership << "\t" << m_date;
+			os << endl << type() << "\t" << m_libRef << "\t" << m_shelfId << "\t" << m_title << "\t" << m_membership << "\t" << m_date;
 		}
 		return os;
 	}
