@@ -83,10 +83,7 @@ namespace sdds {
 
 	std::ostream& Book::write(std::ostream& os)const
 	{
-		if (conIO(os))
-		{
-			Publication::write(os);
-		}
+		Publication::write(os);
 
 		if (conIO(os))
 		{
@@ -115,9 +112,8 @@ namespace sdds {
 		}
 		else
 		{
-			Publication::write(os<< endl<<Type());
 			os << "\t" << m_authorName;
-			
+
 		}
 
 		return os;
@@ -127,7 +123,7 @@ namespace sdds {
 	std::istream& Book::read(std::istream& istr)
 	{
 		char author[256];
-	
+
 
 		Publication::read(istr);
 
@@ -143,7 +139,7 @@ namespace sdds {
 			if (istr)
 			{
 				istr.ignore(1, '\n');
-				istr.get(author,256);
+				istr.get(author, 256);
 
 			}
 		}
@@ -163,7 +159,7 @@ namespace sdds {
 		{
 			istr.setstate(std::ios::failbit);
 		}
-	
+
 		return istr;
 	}
 
@@ -193,6 +189,12 @@ namespace sdds {
 		}
 
 		return *this;
+	}
+
+	void Book::set(int id)
+	{
+		Publication::set(id);
+		Publication::resetDate();
 	}
 
 	void Book::displayAuthorName()
