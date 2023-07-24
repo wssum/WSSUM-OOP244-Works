@@ -148,6 +148,20 @@ namespace sdds {
 		return yeOrNo;
 	}
 
+	Publication* LibApp::getPub(int libRef)
+	{
+		int k = 0, i = 0;
+		for (i = 0; i < NOLP; i++)
+		{
+			if (PPA[i]->getRef() == libRef)
+			{
+				k = i;
+			}
+		}
+
+		return PPA[k];
+	}
+
 	void LibApp::newPublication()
 	{
 		bool decider{};

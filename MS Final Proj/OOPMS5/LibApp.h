@@ -48,6 +48,7 @@ namespace sdds {
 		void removePublication();//To Do
 		void checkOutPub();//To Do
 		void run();
+		Publication* getPub(int libRef);
 		LibApp(const char* fileName);
 		LibApp();
 		virtual ~LibApp();
