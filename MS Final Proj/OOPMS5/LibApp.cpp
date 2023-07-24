@@ -61,14 +61,15 @@ namespace sdds {
 
 	LibApp::LibApp(const char* fileName)
 	{
-		load();
+		
 		if (fileName != nullptr)
 		{
-			strcpy(m_fileName, fileName);
+		strcpy(m_fileName, fileName);
 		}
+		load();
 		publicationMenu << "Book" << "Publication";
 		m_mainMenu << "Add New Publication" << "Remove Publication" << "Checkout publication from library" << "Return publication to library";
-		
+
 		m_exitMenu << "Save changes and exit" << "Cancel and go back to the main menu";
 	}
 
@@ -79,41 +80,28 @@ namespace sdds {
 			delete PPA[i];
 		}
 	}
-
 	void LibApp::load()
 	{
 		ifstream istr(m_fileName);
 		cout << "Loading Data" << endl;
-		if (m_fileName != nullptr)
+
+		char pType;
+		while (istr)
 		{
-			cout << m_fileName;
-			while (istr.is_open())
+			istr >> pType;
+			if (pType == 'P')
 			{
-				cout << "working";
-				char pType;
-				for (int row = 1; istr; row++)
-				{
-					cout << "pType check ok" << endl;
-					istr >> pType;
-				}
-
-				if (pType == 'P')
-				{
-					PPA[NOLP] = new Publication;
-					istr >> *PPA[NOLP];
-					NOLP++;
-					cout << *PPA[NOLP];
-				}
-				else if (pType == 'B')
-				{
-					PPA[NOLP] = new Book;
-					istr >> *PPA[NOLP];
-					NOLP++;
-					cout << *PPA[NOLP];
-				}
-
+				PPA[NOLP] = new Publication;
+				istr >> *PPA[NOLP];
+				NOLP++;
 			}
-
+			else if (pType == 'B')
+			{
+				PPA[NOLP] = new Book;
+				istr >> *PPA[NOLP];
+				NOLP++;
+			}
+			
 		}
 	}
 
@@ -153,7 +141,7 @@ namespace sdds {
 		bool decider{};//Bool variable to hold decision of confirm.
 		int bOrP = 0;
 		cout << "Adding new publication to library" << endl;
-		cout << "Choose the type of publication:"<<endl;
+		cout << "Choose the type of publication:" << endl;
 		bOrP = publicationMenu.run();
 		/*note to self for this part using bOrP use the inte result to
 		see whether to allocate for a book or a publication then call

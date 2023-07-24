@@ -28,7 +28,7 @@ piece of work is entirely of my own creation.
 #include "Publication.h"
 #include "Lib.h"
 namespace sdds {
-	
+
 	class LibApp {
 		char m_fileName[256]{};
 		Publication* PPA[SDDS_LIBRARY_CAPACITY]{};
@@ -59,5 +59,4 @@ namespace sdds {
 	};
 }
 #endif // !SDDS_LIBAPP_H
-
 
