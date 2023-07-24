@@ -150,7 +150,7 @@ namespace sdds {
 
 	void LibApp::newPublication()
 	{
-		bool decider{};//Bool variable to hold decision of confirm.
+		bool decider{};
 		int bOrP = 0;
 		if (NOLP != SDDS_LIBRARY_CAPACITY)
 		{
@@ -186,15 +186,8 @@ namespace sdds {
 					cout << "Aborted!" << endl;
 				}
 			}
-			/*note to self for this part using bOrP use the inte result to
-			see whether to allocate for a book or a publication then call
-			appropriate read or >> we'll have to test that out. Allocate the
-			memory and work your magic and using decide which will be true
-			or false either let the memory slide or delete.
-			*/
-			//Calling confirm function to decide whether or not to add a item to publication and assigning the bool result to decider.
 
-			if (decider == true)//If decider is true then the value of m_changed will become true to signify change.
+			if (decider == true)
 			{
 				m_changed = true;
 				cout << "Publication added" << endl << endl;

@@ -41,17 +41,12 @@ namespace sdds {
 		bool confirm(const char* message);
 		void load();  //proto Done
 		void save(); //proto Done
-		void search();  // prints: "Searching for publication"<NEWLINE>
-
-		void returnPub();  /*  Calls the search() method.
-							   prints "Returning publication"<NEWLINE>
-							   prints "Publication returned"<NEWLINE>
-							   sets m_changed to true;
-						   */
+		void search();  //To Do
+		void returnPub();  //To Do
 	public:
-		void newPublication();
-		void removePublication();
-		void checkOutPub();
+		void newPublication();//proto Done
+		void removePublication();//To Do
+		void checkOutPub();//To Do
 		void run();
 		LibApp(const char* fileName);
 		LibApp();
