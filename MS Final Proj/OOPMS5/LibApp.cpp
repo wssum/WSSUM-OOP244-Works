@@ -41,9 +41,12 @@ piece of work is entirely of my own creation.
 #include <iostream>
 #include <ctype.h>
 #include <cstring>
-using namespace std;
+#include <fstream>
 #include "Utils.h"
 #include "LibApp.h"
+#include "Book.h"
+
+using namespace std;
 
 namespace sdds {
 	//With this method the one arg constructor from menu class is called multiple times to initialize the titles of the Menu type objects within the LibApp Object.
@@ -79,8 +82,39 @@ namespace sdds {
 
 	void LibApp::load()
 	{
+		ifstream istr(m_fileName);
 		cout << "Loading Data" << endl;
+		if (m_fileName != nullptr)
+		{
+			cout << m_fileName;
+			while (istr.is_open())
+			{
+				cout << "working";
+				char pType;
+				for (int row = 1; istr; row++)
+				{
+					cout << "pType check ok" << endl;
+					istr >> pType;
+				}
 
+				if (pType == 'P')
+				{
+					PPA[NOLP] = new Publication;
+					istr >> *PPA[NOLP];
+					NOLP++;
+					cout << *PPA[NOLP];
+				}
+				else if (pType == 'B')
+				{
+					PPA[NOLP] = new Book;
+					istr >> *PPA[NOLP];
+					NOLP++;
+					cout << *PPA[NOLP];
+				}
+
+			}
+
+		}
 	}
 
 	void LibApp::save()

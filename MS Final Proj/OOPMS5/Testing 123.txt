@@ -1,0 +1,6 @@
+B	1001	C544	The Hobbit	35277	2023/11/14	J. R. R. Tolkien
+B	1002	D208	Harry Potter and the Philosopher's Stone	72685	2023/11/19	J. K. Rowling
+B	1003	N576	The Little Prince	96745	2023/11/19	Antoine de Saint/Exupry
+P	1004	R420	Dream of the Red Chamber	87691	2023/11/24	Cao Xueqin
+P	1005	R393	And Then There Were None	35526	2023/11/12	Agatha Christie
+P	1006	P380	The Lion/ the Witch and the Wardrobe	0	2023/11/18	C. S. Lewis

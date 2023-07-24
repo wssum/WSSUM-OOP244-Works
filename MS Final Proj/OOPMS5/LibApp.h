@@ -31,7 +31,7 @@ namespace sdds {
 	
 	class LibApp {
 		char m_fileName[256]{};
-		Publication PPA[SDDS_LIBRARY_CAPACITY]{};
+		Publication* PPA[SDDS_LIBRARY_CAPACITY]{};
 		int NOLP{};
 		int LLRN{};
 		bool m_changed{};
