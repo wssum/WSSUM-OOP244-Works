@@ -107,7 +107,17 @@ namespace sdds {
 
 	void LibApp::save()
 	{
+		int i = 0;
+		ofstream ostr(m_fileName);
 		cout << "Saving Data" << endl;
+		for (i = 0; i < NOLP; i++)
+		{
+			if (PPA[i]->getRef() != 0)
+			{
+				cout << PPA[i]->getRef()<<endl;
+				ostr << *PPA[i];
+			}
+		}
 	}
 
 	void LibApp::search()
