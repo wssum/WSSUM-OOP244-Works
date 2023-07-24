@@ -49,7 +49,7 @@ namespace sdds {
 	//With this method the one arg constructor from menu class is called multiple times to initialize the titles of the Menu type objects within the LibApp Object.
 	LibApp::LibApp() : m_mainMenu("Seneca Library Application"), m_exitMenu("Changes have been made to the data, what would you like to do?")//<<<<(This Method)
 	{
-		
+		load();
 		/*Using the << overload operator the Items from the Menu class is initialized with multiple strings.*/
 		m_mainMenu << "Add New Publication" << "Remove Publication" << "Checkout publication from library" << "Return publication to library";
 		/*Same as above.*/
@@ -58,6 +58,7 @@ namespace sdds {
 
 	LibApp::LibApp(const char* fileName)
 	{
+		load();
 		if (fileName != nullptr)
 		{
 			strcpy(m_fileName, fileName);
@@ -89,7 +90,10 @@ namespace sdds {
 
 	void LibApp::search()
 	{
-		cout << "Searching for publication" << endl;
+		int bOrP = -1;
+		cout << "Choose the type of publication:" << endl;
+		bOrP = publicationMenu.run();
+		//cout << "Searching for publication" << endl;
 	}
 
 	bool LibApp::confirm(const char* message)
@@ -140,10 +144,8 @@ namespace sdds {
 
 	void LibApp::removePublication()
 	{
-		bool decider = false;//Bool variable to hold decision of confirm.
-
+		bool decider = false;//Bool variable to hold decision of confirm
 		cout << "Removing publication from library" << endl;
-
 		search();
 
 		decider = confirm("Remove this publication from the library?");//Calling confirm function to decide whether or not to remove a item to publication and assigning the bool result to decider.
@@ -159,7 +161,7 @@ namespace sdds {
 	void LibApp::checkOutPub()
 	{
 		bool decider = false;//Bool variable to hold decision of confirm.
-
+		cout << "Checkout publication from the library" << endl;
 		search();
 
 		decider = confirm("Check out publication?");//Calling confirm function to decide whether or not to checkout a item to publication and assigning the bool result to decider.
@@ -178,8 +180,10 @@ namespace sdds {
 
 	void LibApp::returnPub()
 	{
+		cout << "Return publication to the library" << endl;
 		search();
 		cout << "Returning publication" << endl;
+
 		cout << "Publication returned" << endl << endl;
 		m_changed = true;
 	}
