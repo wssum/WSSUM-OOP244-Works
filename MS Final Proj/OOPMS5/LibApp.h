@@ -35,12 +35,12 @@ namespace sdds {
 		int NOLP{};
 		int LLRN{};
 		bool m_changed{};
-		Menu publicationMenu;
+		Menu publicationMenu;//proto Done
 		Menu m_mainMenu;
 		Menu m_exitMenu;
 		bool confirm(const char* message);
-		void load();  // prints: "Loading Data"<NEWLINE>
-		void save();  // prints: "Saving Data"<NEWLINE>
+		void load();  //proto Done
+		void save(); //proto Done
 		void search();  // prints: "Searching for publication"<NEWLINE>
 
 		void returnPub();  /*  Calls the search() method.

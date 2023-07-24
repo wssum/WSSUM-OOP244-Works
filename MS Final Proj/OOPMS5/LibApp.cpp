@@ -86,22 +86,24 @@ namespace sdds {
 		cout << "Loading Data" << endl;
 
 		char pType;
-		while (istr)
+		while (istr >> pType)
 		{
-			istr >> pType;
 			if (pType == 'P')
 			{
 				PPA[NOLP] = new Publication;
 				istr >> *PPA[NOLP];
+				LLRN = PPA[NOLP]->getRef();
+				cout << LLRN << endl;
 				NOLP++;
 			}
 			else if (pType == 'B')
 			{
 				PPA[NOLP] = new Book;
 				istr >> *PPA[NOLP];
+				LLRN = PPA[NOLP]->getRef();
+				cout << LLRN<<endl;
 				NOLP++;
-			}
-			
+			}	
 		}
 	}
 
@@ -150,27 +152,69 @@ namespace sdds {
 	{
 		bool decider{};//Bool variable to hold decision of confirm.
 		int bOrP = 0;
-		cout << "Adding new publication to library" << endl;
-		cout << "Choose the type of publication:" << endl;
-		bOrP = publicationMenu.run();
-		/*note to self for this part using bOrP use the inte result to
-		see whether to allocate for a book or a publication then call
-		appropriate read or >> we'll have to test that out. Allocate the
-		memory and work your magic and using decide which will be true
-		or false either let the memory slide or delete.
-		*/
-		decider = confirm("Add this publication to library?");//Calling confirm function to decide whether or not to add a item to publication and assigning the bool result to decider.
-
-		if (decider == true)//If decider is true then the value of m_changed will become true to signify change.
+		if (NOLP != SDDS_LIBRARY_CAPACITY)
 		{
-			m_changed = true;
-			cout << "Publication added" << endl << endl;
+			cout << "Adding new publication to library" << endl;
+			cout << "Choose the type of publication:" << endl;
+			bOrP = publicationMenu.run();
+			if (bOrP == 1)
+			{
+				PPA[NOLP] = new Book;
+				if (cin >> *PPA[NOLP])
+				{
+					decider = confirm("Add this publication to library?");
+				}
+				else
+				{
+					cin.clear();
+					cin.ignore(1000, '\n');
+					cout << "Aborted!" << endl;
+				}
+				
+			}
+			else if (bOrP == 2)
+			{
+				PPA[NOLP] = new Publication;
+				if (cin >> *PPA[NOLP])
+				{
+					decider = confirm("Add this publication to library?");
+				}
+				else
+				{
+					cin.clear();
+					cin.ignore(1000, '\n');
+					cout << "Aborted!" << endl;
+				}
+			}
+			/*note to self for this part using bOrP use the inte result to
+			see whether to allocate for a book or a publication then call
+			appropriate read or >> we'll have to test that out. Allocate the
+			memory and work your magic and using decide which will be true
+			or false either let the memory slide or delete.
+			*/
+			//Calling confirm function to decide whether or not to add a item to publication and assigning the bool result to decider.
+
+			if (decider == true)//If decider is true then the value of m_changed will become true to signify change.
+			{
+				m_changed = true;
+				cout << "Publication added" << endl << endl;
+				LLRN++;
+				PPA[NOLP]->setRef(LLRN);
+				NOLP++;
+			}
+			else
+			{
+				delete PPA[NOLP];
+				PPA[NOLP] = nullptr;
+				cout << endl;
+			}
+
 		}
 		else
 		{
-			cout << endl;
+			cout << "Library is at its maximum capacity!" << endl;
 		}
-
+		
 	}
 
 
