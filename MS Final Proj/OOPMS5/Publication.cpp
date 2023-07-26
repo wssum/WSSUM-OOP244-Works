@@ -198,7 +198,6 @@ namespace sdds {
 		}
 		else
 		{
-			istr.clear();
 			istr >> m_libRef;
 			istr.ignore();
 
@@ -272,7 +271,13 @@ namespace sdds {
 		}
 		else
 		{
-			os << endl << type() << "\t" << m_libRef << "\t" << m_shelfId << "\t" << m_title << "\t" << m_membership << "\t" << m_date;
+			if (!os.tellp()) 
+			{
+			}
+			else {
+				os << '\n'; // Append a newline character to separate records
+			}
+			os<< type() << "\t" << m_libRef << "\t" << m_shelfId << "\t" << m_title << "\t" << m_membership << "\t" << m_date;
 		}
 		return os;
 	}
