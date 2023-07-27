@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{521e34a9-6d68-4a7c-a128-cb43ff71d21a}</ProjectGuid>
-    <RootNamespace>wssumsftMS5</RootNamespace>
+    <ProjectGuid>{fd0b02a0-ab4e-4b0f-a98a-9eba39840d9f}</ProjectGuid>
+    <RootNamespace>wssumSftMs5</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,10 +127,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="wssum-MS5.h" />
+    <ClInclude Include="wssumSftMs5.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="wssum-MS5.c" />
+    <ClCompile Include="wssumSftMs5.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

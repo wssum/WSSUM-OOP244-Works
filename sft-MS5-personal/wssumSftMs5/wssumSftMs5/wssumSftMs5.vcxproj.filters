@@ -15,12 +15,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="wssum-MS5.h">
+    <ClInclude Include="wssumSftMs5.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="wssum-MS5.c">
+    <ClCompile Include="wssumSftMs5.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

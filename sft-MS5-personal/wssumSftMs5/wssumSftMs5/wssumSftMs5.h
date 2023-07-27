@@ -1,6 +1,6 @@
 #pragma once
-#ifndef WSSUM_MS5_H
-#define WSSUM_MS5_H
+#ifndef WSSUMSFTMS5_H
+#define WSSUMSFTMS5_H
 
 #define NUM_TRUCKS 3
 
@@ -59,6 +59,7 @@ struct Route
 	char routeSymbol;
 };
 
+struct Map populateMap();
 
 struct Map addRoute(const struct Map* map, const struct Route* route);//combo B
 

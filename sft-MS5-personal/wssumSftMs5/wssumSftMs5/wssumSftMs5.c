@@ -1,7 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include "math.h"
-#include "wssum-MS5.h"
+#include "wssumSftMs5.h"
 
 double validSizes[3] = { QUARTER_CUBIC_METER, HALF_CUBIC_METER, ONE_CUBIC_METER };
 
@@ -13,12 +13,12 @@ struct Map populateMap()
 		{
 		{0, 0, 0, 0, 1},	//0
 		{0, 1, 1, 0, 1},	//1
-		{0, 1, 1, 0, 1},	//2
+		{0, 0, 1, 0, 1},	//2
 		{0, 0, 0, 0, 0},	//3
-		{0, 0, 0, 0, 0},	//4
-			//24
-		},
-		MAP_ROWS, MAP_COLS
+		{0, 1, 0, 1, 0},	//4
+		//24
+	},
+	MAP_ROWS, MAP_COLS
 	};
 	return result;
 }
@@ -135,6 +135,7 @@ void addPtToRoute(struct Route* route, struct Point pt)
 {
 	route->points[route->numPoints].col = pt.col;
 	route->points[route->numPoints].row = pt.row;
+	route->numPoints++;
 }
 
 /**
@@ -144,7 +145,6 @@ void addPtToRoute(struct Route* route, struct Point pt)
 */
 void addPointToRoute(struct Route* route, const int row, const int col)
 {
-
 	struct Point pt = { row, col };
 	if (((pt.row >= route->points[route->numPoints - 1].row + 2) || (pt.col >= route->points[route->numPoints - 1].col + 2)))
 	{
@@ -156,12 +156,8 @@ void addPointToRoute(struct Route* route, const int row, const int col)
 	}
 	else if ((pt.row == route->points[route->numPoints - 1].row + 1) || (pt.col == route->points[route->numPoints - 1].col + 1))
 	{
-		route->numPoints++;
 		addPtToRoute(route, pt);
-
 	}
-
-
 }
 
 /**
@@ -174,7 +170,11 @@ void addPointToRoute(struct Route* route, const int row, const int col)
 void addPointToRouteIfNot(struct Route* route, const int row, const int col, const struct Point notThis)
 {
 	struct Point pt = { row, col };
-	if (notThis.row != row || notThis.col != col) addPtToRoute(route, pt);
+	if (notThis.row != row && notThis.col != col)
+	{
+		addPtToRoute(route, pt);
+	}
+
 }
 
 /**
@@ -188,11 +188,54 @@ int eqPt(const struct Point p1, const struct Point p2)
 	return p1.row == p2.row && p1.col == p2.col;
 }
 
-
 int main(void)
 {
+	const struct Point testPoint = { 5,5 };
+	int tester = 0;
+	struct Route expectedRoute =
+	{
+			{
+			{0,0},
+			{1,0},
+			{2,0},{2,1},{2,2}
+
+			},
+				5, 2
+	};
+	struct Route testRoute =
+	{
+			{
+			{0,0},
+			{1,0},
+			{2,0}
+
+			},
+				3, 2
+	};
+	addPointToRoute(&testRoute, 2, 1);
+	addPointToRouteIfNot(&testRoute, 2, 2, testPoint);
 
 
+	for (int i = 0; i < expectedRoute.numPoints; i++)
+	{
+		printf("{%d,%d}\n", expectedRoute.points[i].row, expectedRoute.points[i].col);
+	}
+	printf("\n\n");
+	for (int i = 0; i < expectedRoute.numPoints; i++)
+	{
+		printf("{%d,%d}\n", testRoute.points[i].row, testRoute.points[i].col);
+	}
+
+	for (int i = 0; i < expectedRoute.numPoints; i++)
+	{
+		if (eqPt(testRoute.points[i], expectedRoute.points[i]))
+		{
+			tester++;
+		}
+	}
+	printf("\n\n");
+
+	printf("%d", tester);
 	return 0;
 }
 
