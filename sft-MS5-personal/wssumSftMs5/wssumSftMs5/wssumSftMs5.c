@@ -172,7 +172,18 @@ void addPointToRouteIfNot(struct Route* route, const int row, const int col, con
 	struct Point pt = { row, col };
 	if (notThis.row != row && notThis.col != col)
 	{
-		addPtToRoute(route, pt);
+		if (((pt.row >= route->points[route->numPoints - 1].row + 2) || (pt.col >= route->points[route->numPoints - 1].col + 2)))
+		{
+			printf("Invalid Coordinates. Not connected to current path.\n");
+		}
+		else if ((pt.row == route->points[route->numPoints - 1].row) && (pt.col == route->points[route->numPoints - 1].col))
+		{
+			printf("Invalid Coordinates. Already entered.\n");
+		}
+		else if ((pt.row == route->points[route->numPoints - 1].row + 1) || (pt.col == route->points[route->numPoints - 1].col + 1))
+		{
+			addPtToRoute(route, pt);
+		}
 	}
 
 }

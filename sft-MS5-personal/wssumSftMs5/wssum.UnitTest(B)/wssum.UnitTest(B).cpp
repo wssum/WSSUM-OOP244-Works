@@ -205,7 +205,8 @@ namespace wssumUnitTestB
 		TEST_METHOD(TBN002)
 		{
 			const struct Point testPoint = { 5,5 };
-			int tester = 0;
+			const struct Point testPointB = { 2,-2 };
+			int truth = 0;
 			struct Route expectedRoute =
 			{
 					{
@@ -226,19 +227,75 @@ namespace wssumUnitTestB
 					},
 						3, 2
 			};
-			addPointToRoute(&testRoute, 2, 1);
 			addPointToRouteIfNot(&testRoute, 2, -2, testPoint);
 
-
-			for (int i = 0; i < expectedRoute.numPoints; i++)
+			truth = eqPt(testRoute.points[3], testPointB);
+			Assert::IsFalse(truth == 1);
+			//Expected Result: True for being false
+			//Post Results:Passed
+		}
+		TEST_METHOD(TBN003)
+		{
+			const struct Point testPoint = { 5,5 };
+			const struct Point testPointB = { 2,500 };
+			int truth = 0;
+			struct Route expectedRoute =
 			{
-				if (eqPt(testRoute.points[i], expectedRoute.points[i]))
-				{
-					tester++;
-				}
-			}
+					{
+					{0,0},
+					{1,0},
+					{2,0},{2,1},{2,2}
 
-			Assert::IsFalse(tester == expectedRoute.numPoints);
+					},
+						5, 2
+			};
+			struct Route testRoute =
+			{
+					{
+					{0,0},
+					{1,0},
+					{2,0}
+
+					},
+						3, 2
+			};
+			addPointToRouteIfNot(&testRoute, 2, 500, testPoint);
+
+			truth = eqPt(testRoute.points[3], testPointB);
+			Assert::IsFalse(truth == 1);
+			//Expected Result: True for being false
+			//Post Results:Passed
+		}
+		TEST_METHOD(TBN004)
+		{
+			const struct Point testPoint = { 5,5 };
+			const struct Point testPointB = { 2,0 };
+			int truth = 0;
+			struct Route expectedRoute =
+			{
+					{
+					{0,0},
+					{1,0},
+					{2,0},{2,1},{2,2}
+
+					},
+						5, 2
+			};
+			struct Route testRoute =
+			{
+					{
+					{0,0},
+					{1,0},
+					{2,0}
+
+					},
+						3, 2
+			};
+			addPointToRouteIfNot(&testRoute, 2, 0, testPoint);
+
+			truth = eqPt(testRoute.points[3], testPointB);
+			Assert::IsFalse(truth  == 1);
+			//Expected Result: True for being false
 			//Post Results:Passed
 		}
 	};
