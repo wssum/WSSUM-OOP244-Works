@@ -52,17 +52,17 @@ using namespace sdds;
 using namespace std;
 
 namespace sdds {
-	Publication::operator const char* ()const//untested
+	Publication::operator const char* ()const
 	{
 		return m_title;
 	}
 
 
-	int Publication::getRef()const//Tested good
+	int Publication::getRef()const
 	{
 		return m_libRef;
 	}
-	void Publication::set(int member_id)//Tested good
+	void Publication::set(int member_id)
 	{
 		if ((member_id >= 10000) && (member_id <= 99999))
 		{
@@ -73,12 +73,12 @@ namespace sdds {
 			m_membership = 0;
 		}
 	}
-	void Publication::setRef(int value)//Tested good
+	void Publication::setRef(int value)
 	{
 		m_libRef = value;
 	}
 
-	bool Publication::onLoan()const//Tested good
+	bool Publication::onLoan()const
 	{
 		bool yesORno{};
 
@@ -90,7 +90,7 @@ namespace sdds {
 		return yesORno;
 	}
 
-	void Publication::resetDate()//Tested odd its returning the worng date.
+	void Publication::resetDate()
 	{
 		m_date = Date();
 	}
@@ -125,7 +125,7 @@ namespace sdds {
 
 	Date Publication::checkoutDate()const
 	{
-		return Date();
+		return m_date;
 	}
 
 	Publication::~Publication()

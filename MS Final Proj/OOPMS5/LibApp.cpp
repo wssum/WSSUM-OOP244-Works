@@ -190,9 +190,16 @@ namespace sdds {
 			{
 				filterMenu.sort();
 				choice = filterMenu.run();
+				for (int i = 0; i < NOLP; i++)
+				{
+					if (PPA[i]->getRef() == choice)
+					{
+						cout << *PPA[i]<<endl;
+					}
+				}
 				if (choice == 0)
 				{
-					cout << "Aborted!" << endl;
+					cout << "Aborted!";
 				}
 			}
 			else
@@ -370,12 +377,35 @@ namespace sdds {
 
 	void LibApp::returnPub()
 	{
+		int bookRef = -1, k = 0, daysGone = -1, daysLate = 0;
+		double owing{};
+		bool decider = false;
 		cout << "Return publication to the library" << endl;
-		search();
-		cout << "Returning publication" << endl;
+		bookRef = search(2);
+		if (bookRef > 0)
+		{
+			decider = confirm("Return Publication?");
 
-		cout << "Publication returned" << endl << endl;
-		m_changed = true;
+			for (int i = 0; i < NOLP; i++)
+			{
+				if (PPA[i]->getRef() == bookRef)
+				{
+					k = i;
+				}
+			}
+
+			daysGone = Date() - PPA[k]->checkoutDate();
+
+			if (daysGone > 15)
+			{
+				daysLate = daysGone - 15;
+				owing = daysLate * 0.50;
+				cout << "Please pay " << owing << " penalty for being " << daysLate << " days late!" << endl;
+			}
+			cout << "Publication returned" << endl << endl;
+			m_changed = true;
+		}
+
 	}
 
 	void LibApp::run()
