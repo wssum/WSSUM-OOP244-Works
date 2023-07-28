@@ -124,7 +124,7 @@ namespace sdds {
 		}
 	}
 
-	int LibApp::search()
+	int LibApp::search(int method)
 	{
 		int bOrP = -1, matches = 0, choice = -1;
 		char ptype{};
@@ -158,8 +158,30 @@ namespace sdds {
 				{
 					if (strstr(static_cast<const char*>(*PPA[i]), filterTitleBy.c_str()))
 					{
-						filterMenu << PPA[i];
-						matches++;
+						if (method == 0)
+						{
+							filterMenu << PPA[i];
+							matches++;
+						}
+						
+					    if (method == 1)
+						{
+							if (!PPA[i]->onLoan())
+							{
+								filterMenu << PPA[i];
+								matches++;
+							}
+						}
+
+						if (method == 2)
+						{
+							if (PPA[i]->onLoan())
+							{
+								filterMenu << PPA[i];
+								matches++;
+							}
+						}
+						
 					}
 				}
 			}
@@ -281,7 +303,7 @@ namespace sdds {
 		bool decider = false;//Bool variable to hold decision of confirm
 		int bookRef = -1;
 		cout << "Removing publication from library" << endl;
-		bookRef = search();
+		bookRef = search(1);
 		if (bookRef > 0)
 		{
 			decider = confirm("Remove this publication from the library?");

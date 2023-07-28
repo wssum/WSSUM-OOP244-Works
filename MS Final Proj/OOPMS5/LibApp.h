@@ -41,7 +41,7 @@ namespace sdds {
 		bool confirm(const char* message);
 		void load();  //proto Done
 		void save(); //proto Done
-		int search();  //To Do
+		int search(int method = 0);  //To Do
 		void returnPub();  //To Do
 	public:
 		void newPublication();//proto Done
