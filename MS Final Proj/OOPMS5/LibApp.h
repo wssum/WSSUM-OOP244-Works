@@ -51,7 +51,7 @@ namespace sdds {
 		Publication* getPub(int libRef);
 		LibApp(const char* fileName);
 		LibApp();
-		virtual ~LibApp();
+		~LibApp();
 	};
 }
 #endif // !SDDS_LIBAPP_H

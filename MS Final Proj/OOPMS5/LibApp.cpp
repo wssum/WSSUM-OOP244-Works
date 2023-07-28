@@ -61,7 +61,7 @@ namespace sdds {
 		m_exitMenu << "Save changes and exit" << "Cancel and go back to the main menu";
 	}
 
-	LibApp::LibApp(const char* fileName)
+	LibApp::LibApp(const char* fileName) : m_mainMenu("Seneca Library Application"), m_exitMenu("Changes have been made to the data, what would you like to do?")
 	{
 		
 		if (fileName != nullptr)
@@ -95,7 +95,6 @@ namespace sdds {
 				PPA[NOLP] = new Publication;
 				istr >> *PPA[NOLP];
 				LLRN = PPA[NOLP]->getRef();
-				cout << LLRN << endl;
 				NOLP++;
 			}
 			else if (pType == 'B')
@@ -103,7 +102,6 @@ namespace sdds {
 				PPA[NOLP] = new Book;
 				istr >> *PPA[NOLP];
 				LLRN = PPA[NOLP]->getRef();
-				cout << LLRN<<endl;
 				NOLP++;
 			}	
 		}
@@ -118,7 +116,6 @@ namespace sdds {
 		{
 			if (PPA[i]->getRef() != 0)
 			{
-				cout << PPA[i]->getRef()<<endl;
 				ostr << *PPA[i];
 			}
 		}
@@ -216,7 +213,7 @@ namespace sdds {
 		int select = -1;//The variable that will hold the result.
 		bool yeOrNo = false;
 
-		tempMenu << "yes";//Using the << overload operator yes is the only given MenuItem as well as the mandatory exit from the menu.
+		tempMenu << "Yes";//Using the << overload operator yes is the only given MenuItem as well as the mandatory exit from the menu.
 
 		select = tempMenu.run();//Option chosen by user will be assigned to select variable and be evaluated to return the proper bool.
 
@@ -248,7 +245,7 @@ namespace sdds {
 		int bOrP = 0;
 		if (NOLP != SDDS_LIBRARY_CAPACITY)
 		{
-			cout << "Adding new publication to library" << endl;
+			cout << "Adding new publication to the library" << endl;
 			cout << "Choose the type of publication:" << endl;
 			bOrP = publicationMenu.run();
 			if (bOrP == 1)
@@ -256,7 +253,7 @@ namespace sdds {
 				PPA[NOLP] = new Book;
 				if (cin >> *PPA[NOLP])
 				{
-					decider = confirm("Add this publication to library?");
+					decider = confirm("Add this publication to the library?");
 				}
 				else
 				{
@@ -271,7 +268,7 @@ namespace sdds {
 				PPA[NOLP] = new Publication;
 				if (cin >> *PPA[NOLP])
 				{
-					decider = confirm("Add this publication to library?");
+					decider = confirm("Add this publication to the library?");
 				}
 				else
 				{
@@ -361,7 +358,7 @@ namespace sdds {
 				}
 				else
 				{
-					"Invalid membership number, try again: ";
+					cout<<"Invalid membership number, try again: ";
 				}
 			} 
 		    
@@ -385,7 +382,10 @@ namespace sdds {
 		if (bookRef > 0)
 		{
 			decider = confirm("Return Publication?");
-
+		}
+		
+		if (decider == true)
+		{
 			for (int i = 0; i < NOLP; i++)
 			{
 				if (PPA[i]->getRef() == bookRef)
@@ -405,6 +405,7 @@ namespace sdds {
 			cout << "Publication returned" << endl << endl;
 			m_changed = true;
 		}
+		
 
 	}
 

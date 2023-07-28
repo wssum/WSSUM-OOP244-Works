@@ -271,14 +271,13 @@ namespace sdds {
 		}
 		else
 		{
-			if (!os.tellp()) 
+			if (os.tellp()) 
 			{
-			}
-			else {
-				os << '\n'; // Append a newline character to separate records
+				os << '\n';
 			}
 			os<< type() << "\t" << m_libRef << "\t" << m_shelfId << "\t" << m_title << "\t" << m_membership << "\t" << m_date;
 		}
+ 
 		return os;
 	}
 	Publication& Publication:: operator=(const Publication& arg)

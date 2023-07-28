@@ -1,28 +1,34 @@
-#define CRT_SECURE_NO_WARNINGS
+/***********************************************************************
+// Intro. to Object Oriented Programming
+// Milestone 5 stage 4
+// Version 1.0
+// Description
+//
+// Revision History
+// -----------------------------------------------------------
+// Name            Date            Reason
+//
+/////////////////////////////////////////////////////////////////
+***********************************************************************/
 #include <iostream>
-#include <cstdio>
-#include <string>
-#include <cstring>
-#include "Book.h"
-#include "Date.h"
+#include <fstream>
 #include "LibApp.h"
-#include "Menu.h"
-#include "Publication.h"
+#include "Date.h"
 
-using namespace std;
-using namespace sdds;
-
-int main(void)
-{
-	sdds::LibApp theApp("LibRecsSmall.txt");
-
-	cout << endl << "Testing exiting with no change:" << endl;
-	theApp.run();
-	cout << endl << "Testing exiting with change and discarding data:" << endl;
-	theApp.run();
-	cout << endl << "Testing exiting with change and saving data:" << endl;
-	theApp.run();
-	cout << endl << "Testing all actions:" << endl;
-	theApp.run();
-	return 0;
+void runLibApp(const char* filename) {
+    char ch{};
+    sdds::LibApp theApp(filename);
+    theApp.run();
+    std::ifstream file(filename);
+    while (file) {
+        if (file.get(ch)) std::cout << ch;
+    }
+}
+int main() {
+    sdds::sdds_day = 10;
+    sdds::sdds_mon = 8;
+    sdds::sdds_year = 2023;
+    sdds::sdds_test = true;
+    runLibApp("LibRecsSmall.txt");
+    return 0;
 }
