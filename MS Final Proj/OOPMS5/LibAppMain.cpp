@@ -14,7 +14,7 @@ using namespace sdds;
 
 int main(void)
 {
-	sdds::LibApp theApp("Testing 123.txt");
+	sdds::LibApp theApp("LibRecsSmall.txt");
 
 	cout << endl << "Testing exiting with no change:" << endl;
 	theApp.run();

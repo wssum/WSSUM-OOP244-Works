@@ -42,9 +42,11 @@ piece of work is entirely of my own creation.
 #include <ctype.h>
 #include <cstring>
 #include <fstream>
+#include "string"
 #include "Utils.h"
 #include "LibApp.h"
 #include "Book.h"
+#include "PublicationSelector.h"
 
 using namespace std;
 
@@ -124,10 +126,55 @@ namespace sdds {
 
 	void LibApp::search()
 	{
-		int bOrP = -1;
+		int bOrP = -1, matches = 0;
+		char ptype{};
+		string filterTitleBy{};
+		PublicationSelector filterMenu("Select one of the following found matches:");
 		cout << "Choose the type of publication:" << endl;
 		bOrP = publicationMenu.run();
-		//cout << "Searching for publication" << endl;
+		if (bOrP == 1)
+		{
+			ptype = 'B';
+		}
+		else if (bOrP == 2)
+		{
+			ptype = 'P';
+		}
+		else if (bOrP == 0)
+		{
+			cout << "Aborted!" << endl;
+		}
+
+		if (bOrP > 0)
+		{
+			cout << "Publication Title: ";
+			cin.clear();
+			cin.ignore(1000, '\n');
+			getline(cin, filterTitleBy);
+
+			for (int i = 0; i < NOLP; i++)
+			{
+				if (PPA[i]->type() == ptype)
+				{
+					if (strstr(static_cast<const char*>(*PPA[i]), filterTitleBy.c_str()))
+					{
+						filterMenu << PPA[i];
+						matches++;
+					}
+				}
+			}
+
+			if (matches > 0)
+			{
+				filterMenu.sort();
+				filterMenu.run();
+			}
+			else
+			{
+				cout << "No matches found!" << endl;
+			}
+		}
+		
 	}
 
 	bool LibApp::confirm(const char* message)
