@@ -124,9 +124,9 @@ namespace sdds {
 		}
 	}
 
-	void LibApp::search()
+	int LibApp::search()
 	{
-		int bOrP = -1, matches = 0;
+		int bOrP = -1, matches = 0, choice = -1;
 		char ptype{};
 		string filterTitleBy{};
 		PublicationSelector filterMenu("Select one of the following found matches:");
@@ -167,14 +167,18 @@ namespace sdds {
 			if (matches > 0)
 			{
 				filterMenu.sort();
-				filterMenu.run();
+				choice = filterMenu.run();
+				if (choice == 0)
+				{
+					cout << "Aborted!" << endl;
+				}
 			}
 			else
 			{
 				cout << "No matches found!" << endl;
 			}
 		}
-		
+		return choice;
 	}
 
 	bool LibApp::confirm(const char* message)
@@ -275,10 +279,13 @@ namespace sdds {
 	void LibApp::removePublication()
 	{
 		bool decider = false;//Bool variable to hold decision of confirm
+		int bookRef = -1;
 		cout << "Removing publication from library" << endl;
-		search();
-
-		decider = confirm("Remove this publication from the library?");//Calling confirm function to decide whether or not to remove a item to publication and assigning the bool result to decider.
+		bookRef = search();
+		if (bookRef > 0)
+		{
+			decider = confirm("Remove this publication from the library?");
+		}
 
 		if (decider == true)//If decider is true then the value of m_changed will become true to signify change.
 		{
