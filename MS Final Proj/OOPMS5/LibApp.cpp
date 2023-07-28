@@ -300,17 +300,24 @@ namespace sdds {
 
 	void LibApp::removePublication()
 	{
-		bool decider = false;//Bool variable to hold decision of confirm
+		bool decider = false;
 		int bookRef = -1;
 		cout << "Removing publication from library" << endl;
-		bookRef = search(1);
+		bookRef = search();
 		if (bookRef > 0)
 		{
 			decider = confirm("Remove this publication from the library?");
 		}
 
-		if (decider == true)//If decider is true then the value of m_changed will become true to signify change.
+		if (decider == true)
 		{
+			for (int i = 0; i < NOLP; i++)
+			{
+				if (PPA[i]->getRef() == bookRef)
+				{
+					PPA[i]->setRef(0);
+				}
+			}
 			m_changed = true;
 			cout << "Publication removed" << endl << endl;
 		}
@@ -319,14 +326,38 @@ namespace sdds {
 
 	void LibApp::checkOutPub()
 	{
-		bool decider = false;//Bool variable to hold decision of confirm.
+		bool decider = false;
+		int bookRef = -1,memberId = -1, flag = 0;
 		cout << "Checkout publication from the library" << endl;
-		search();
-
-		decider = confirm("Check out publication?");//Calling confirm function to decide whether or not to checkout a item to publication and assigning the bool result to decider.
+		bookRef = search(1);
+		if (bookRef > 0)
+		{
+			decider = confirm("Check out publication?");
+		}
 
 		if (decider == true)//If decider is true then the value of m_changed will become true to signify change.
 		{
+			cout << "Enter Membership number: ";
+			while (flag == 0)
+			{
+				cin >> memberId;
+				if ((memberId >= 10000) && (memberId <= 99999))
+				{
+					for (int i = 0; i < NOLP; i++)
+					{
+						if (PPA[i]->getRef() == bookRef)
+						{
+							PPA[i]->set(memberId);
+						}
+					}
+					flag = 1;
+				}
+				else
+				{
+					"Invalid membership number, try again: ";
+				}
+			} 
+		    
 			m_changed = true;
 			cout << "Publication checked out" << endl;
 		}

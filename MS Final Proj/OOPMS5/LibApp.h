@@ -41,12 +41,12 @@ namespace sdds {
 		bool confirm(const char* message);
 		void load();  //proto Done
 		void save(); //proto Done
-		int search(int method = 0);  //To Do
+		int search(int method = 0);  //proto Done
 		void returnPub();  //To Do
 	public:
 		void newPublication();//proto Done
-		void removePublication();//To Do
-		void checkOutPub();//To Do
+		void removePublication();//proto Done
+		void checkOutPub();//proto Done
 		void run();
 		Publication* getPub(int libRef);
 		LibApp(const char* fileName);
