@@ -97,8 +97,7 @@ namespace sdds {
 
 	Publication::Publication() :m_date()
 	{
-		m_title = new char[255];
-		strcpy(m_title, "");
+		m_title = nullptr;
 		strcpy(m_shelfId, "");
 		set(0);
 		setRef(-1);
@@ -175,8 +174,13 @@ namespace sdds {
 		strcpy(m_shelfId, "");
 		resetDate();
 		char id[100] = " ";
-		string title{};
-
+		char title[256]{};
+		Date tempdate;
+		if (m_title != nullptr)
+		{
+			delete[] m_title;
+			m_title = nullptr;
+		}
 		if (conIO(istr))
 		{
 			cout << "Shelf No: ";
@@ -191,9 +195,9 @@ namespace sdds {
 				istr.ignore(1000, '\n');
 			}
 			cout << "Title: ";
-			getline(istr, title);
+			istr.getline(title,256);
 			cout << "Date: ";
-			m_date.read(istr);
+			tempdate.read(istr);
 
 		}
 		else
@@ -204,32 +208,28 @@ namespace sdds {
 			istr >> id;
 			istr.ignore();
 
-			getline(istr, title, '\t');
+			istr.getline(title, 256, '\t');
 
 			istr >> m_membership;
 			istr.ignore();
 
-			m_date.read(istr);
+			tempdate.read(istr);
 		}
 
 
 
-		if (m_date.errCode() != 0)
+		if (tempdate.errCode() != 0)
 		{
 			istr.setstate(std::ios::failbit);
 		}
 
 		if (istr)
 		{
-			if (m_title != nullptr)
-			{
-				delete[] m_title;
-				m_title = nullptr;
-				m_title = new char[strlen(title.c_str()) + 1];
-			}
 
+			m_title = new char[strlen(title) + 1];
+			m_date = tempdate;
 			strcpy(m_shelfId, id);
-			strcpy(m_title, title.c_str());
+			strcpy(m_title, title);
 		}
 
 		return istr;

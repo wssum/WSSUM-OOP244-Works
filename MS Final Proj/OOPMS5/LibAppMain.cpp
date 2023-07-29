@@ -23,6 +23,7 @@ void runLibApp(const char* filename) {
     while (file) {
         if (file.get(ch)) std::cout << ch;
     }
+
 }
 int main() {
     sdds::sdds_day = 10;

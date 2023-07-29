@@ -306,7 +306,7 @@ namespace sdds {
 	{
 		bool decider = false;
 		int bookRef = -1;
-		cout << "Removing publication from library" << endl;
+		cout << "Removing publication from the library" << endl;
 		bookRef = search();
 		if (bookRef > 0)
 		{
