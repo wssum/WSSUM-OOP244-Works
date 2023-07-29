@@ -134,11 +134,13 @@ namespace sdds {
 		{
 			ptype = 'B';
 		}
-		else if (bOrP == 2)
+		
+		if (bOrP == 2)
 		{
 			ptype = 'P';
 		}
-		else if (bOrP == 0)
+		
+		if (bOrP == 0)
 		{
 			cout << "Aborted!" << endl;
 		}
@@ -197,12 +199,12 @@ namespace sdds {
 				}
 				if (choice == 0)
 				{
-					cout << "Aborted!";
+					cout << "Aborted!"<<endl<<endl;
 				}
 			}
 			else
 			{
-				cout << "No matches found!";
+				cout << "No matches found!"<<endl;
 			}
 		}
 		return choice;
@@ -258,8 +260,6 @@ namespace sdds {
 				}
 				else
 				{
-					cin.clear();
-					cin.ignore(1000, '\n');
 					cout << "Aborted!" << endl;
 				}
 
@@ -273,10 +273,13 @@ namespace sdds {
 				}
 				else
 				{
-					cin.clear();
-					cin.ignore(1000, '\n');
 					cout << "Aborted!" << endl;
 				}
+			}
+
+			if (bOrP == 0)
+			{
+				cout << "Aborted!" << endl;
 			}
 
 			if (decider == true)
@@ -295,9 +298,9 @@ namespace sdds {
 			}
 
 		}
-		else
+		else if(NOLP == SDDS_LIBRARY_CAPACITY)
 		{
-			cout << "Library is at its maximum capacity!" << endl;
+			cout << "Library is at its maximum capacity!" << endl<<endl;
 		}
 
 	}
