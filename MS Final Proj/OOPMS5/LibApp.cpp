@@ -63,10 +63,10 @@ namespace sdds {
 
 	LibApp::LibApp(const char* fileName) : m_mainMenu("Seneca Library Application"), m_exitMenu("Changes have been made to the data, what would you like to do?")
 	{
-		
+
 		if (fileName != nullptr)
 		{
-		strcpy(m_fileName, fileName);
+			strcpy(m_fileName, fileName);
 		}
 		load();
 		publicationMenu << "Book" << "Publication";
@@ -103,7 +103,7 @@ namespace sdds {
 				istr >> *PPA[NOLP];
 				LLRN = PPA[NOLP]->getRef();
 				NOLP++;
-			}	
+			}
 		}
 	}
 
@@ -119,6 +119,7 @@ namespace sdds {
 				ostr << *PPA[i];
 			}
 		}
+		ostr << '\n';
 	}
 
 	int LibApp::search(int method)
@@ -160,8 +161,8 @@ namespace sdds {
 							filterMenu << PPA[i];
 							matches++;
 						}
-						
-					    if (method == 1)
+
+						if (method == 1)
 						{
 							if (!PPA[i]->onLoan())
 							{
@@ -178,7 +179,7 @@ namespace sdds {
 								matches++;
 							}
 						}
-						
+
 					}
 				}
 			}
@@ -191,7 +192,7 @@ namespace sdds {
 				{
 					if (PPA[i]->getRef() == choice)
 					{
-						cout << *PPA[i]<<endl;
+						cout << *PPA[i] << endl;
 					}
 				}
 				if (choice == 0)
@@ -261,7 +262,7 @@ namespace sdds {
 					cin.ignore(1000, '\n');
 					cout << "Aborted!" << endl;
 				}
-				
+
 			}
 			else if (bOrP == 2)
 			{
@@ -298,7 +299,7 @@ namespace sdds {
 		{
 			cout << "Library is at its maximum capacity!" << endl;
 		}
-		
+
 	}
 
 
@@ -315,7 +316,7 @@ namespace sdds {
 
 		if (decider == true)
 		{
-			getPub(bookRef)->set(0);
+			getPub(bookRef)->setRef(0);
 			m_changed = true;
 			cout << "Publication removed" << endl << endl;
 		}
@@ -325,7 +326,7 @@ namespace sdds {
 	void LibApp::checkOutPub()
 	{
 		bool decider = false;
-		int bookRef = -1,memberId = -1, flag = 0;
+		int bookRef = -1, memberId = -1, flag = 0;
 		cout << "Checkout publication from the library" << endl;
 		bookRef = search(1);
 		if (bookRef > 0)
@@ -346,10 +347,10 @@ namespace sdds {
 				}
 				else
 				{
-					cout<<"Invalid membership number, try again: ";
+					cout << "Invalid membership number, try again: ";
 				}
-			} 
-		    
+			}
+
 			m_changed = true;
 			cout << "Publication checked out" << endl;
 		}
@@ -362,7 +363,7 @@ namespace sdds {
 
 	void LibApp::returnPub()
 	{
-		int bookRef = -1, k = 0, daysGone = -1, daysLate = 0;
+		int bookRef = -1, daysGone = -1, daysLate = 0;
 		double owing{};
 		bool decider = false;
 		cout << "Return publication to the library" << endl;
@@ -371,7 +372,7 @@ namespace sdds {
 		{
 			decider = confirm("Return Publication?");
 		}
-		
+
 		if (decider == true)
 		{
 
@@ -386,7 +387,7 @@ namespace sdds {
 			cout << "Publication returned" << endl << endl;
 			m_changed = true;
 		}
-		
+
 
 	}
 
