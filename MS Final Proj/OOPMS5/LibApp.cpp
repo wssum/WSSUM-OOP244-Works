@@ -315,13 +315,7 @@ namespace sdds {
 
 		if (decider == true)
 		{
-			for (int i = 0; i < NOLP; i++)
-			{
-				if (PPA[i]->getRef() == bookRef)
-				{
-					PPA[i]->setRef(0);
-				}
-			}
+			getPub(bookRef)->set(0);
 			m_changed = true;
 			cout << "Publication removed" << endl << endl;
 		}
@@ -347,13 +341,7 @@ namespace sdds {
 				cin >> memberId;
 				if ((memberId >= 10000) && (memberId <= 99999))
 				{
-					for (int i = 0; i < NOLP; i++)
-					{
-						if (PPA[i]->getRef() == bookRef)
-						{
-							PPA[i]->set(memberId);
-						}
-					}
+					getPub(bookRef)->set(memberId);
 					flag = 1;
 				}
 				else
@@ -386,15 +374,8 @@ namespace sdds {
 		
 		if (decider == true)
 		{
-			for (int i = 0; i < NOLP; i++)
-			{
-				if (PPA[i]->getRef() == bookRef)
-				{
-					k = i;
-				}
-			}
 
-			daysGone = Date() - PPA[k]->checkoutDate();
+			daysGone = Date() - getPub(bookRef)->checkoutDate();
 
 			if (daysGone > 15)
 			{
