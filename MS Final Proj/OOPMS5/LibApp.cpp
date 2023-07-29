@@ -202,7 +202,7 @@ namespace sdds {
 			}
 			else
 			{
-				cout << "No matches found!" << endl;
+				cout << "No matches found!";
 			}
 		}
 		return choice;
@@ -375,20 +375,19 @@ namespace sdds {
 
 		if (decider == true)
 		{
-
 			daysGone = Date() - getPub(bookRef)->checkoutDate();
 
 			if (daysGone > 15)
 			{
 				daysLate = daysGone - 15;
 				owing = daysLate * 0.50;
-				cout << "Please pay " << owing << " penalty for being " << daysLate << " days late!" << endl;
+				cout << "Please pay $" << fixed<<setprecision(2) << owing;
+				cout<<" penalty for being " << daysLate << " days late!" << endl;
 			}
 			cout << "Publication returned" << endl << endl;
 			m_changed = true;
+			getPub(bookRef)->set(0);
 		}
-
-
 	}
 
 	void LibApp::run()
