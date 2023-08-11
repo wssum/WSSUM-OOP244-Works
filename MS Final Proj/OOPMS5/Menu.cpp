@@ -143,12 +143,7 @@ namespace sdds {
 	/*Returns true if the amtOfItems variable is more than 0 meaning its not empty.*/
 	Menu::operator bool()
 	{
-		if (amtOfItems > 0)
-		{
-			return true;
-		}
-
-		return false;
+		return amtOfItems > 0;
 	}
 
 	/*Returns the amtOfItems as a unsigned int*/
